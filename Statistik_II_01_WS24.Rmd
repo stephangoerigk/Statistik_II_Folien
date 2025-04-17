@@ -479,6 +479,7 @@ class: top, left
 df = data.frame(Placebo = c(6,7,7,8),
                 `Medikament 1` = c(10,11,11,12),
                 `Medikament 2` = c(11, 12, 12, 13))
+names(df) = c("Placebo", "Medikament 1", "Medikament 2")
 kable(df[,])
 ```
 ]
@@ -491,8 +492,13 @@ df_long= pivot_longer(df, cols = 1:3)
 df_long$name[df_long$name == "Medikament.1"] = "Medikament 1"
 df_long$name[df_long$name == "Medikament.2"] = "Medikament 2"
 
+df_long2 = df_long
+df_long2$name = "Gesamt"
+df_long = rbind(df_long, df_long2)
+
 ggplot(data = df_long, aes(x = name, y = value)) +
-  stat_summary(geom = "bar") +
+  geom_hline(yintercept = 10, linetype = "dashed") +
+  stat_summary(geom = "bar", width = .75) +
   labs(x = "", y= "Verbesserung") +
   coord_cartesian(ylim = c(0,13)) +
   theme_classic() +
