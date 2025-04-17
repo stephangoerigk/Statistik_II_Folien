@@ -56,7 +56,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 1: Einfaktorielle Varianzanalyse (1)
-##### `r format(as.Date(data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum), "%d.%m.%Y")[1]` | Prof. Dr. Stephan Goerigk
+##### `r data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum[1]` | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
@@ -95,10 +95,6 @@ Kenncode: 807174
 class: top, left
 ### Übersicht Lehrveranstaltung 
 
-Termine:
-* 14 Termine
-* Mittwoch 13:05 - 14:35 (Audimax)
-
 Begleitendes Seminar:
 * Dozentin: Sara Vragolic ([sara.vragolic@charlotte-fresenius-uni.de](mailto:sara.vragolic@charlotte-fresenius-uni.de))
 
@@ -114,8 +110,8 @@ class: top, left
 ### Termine
 
 ```{r echo = F}
-df = readxl::read_xlsx("Modul Quantitative Methoden II_Termine.xlsx", sheet = "Tabellenblatt1")[1:14, 1:3]
-df$Datum = format(as.Date(df$Datum), "%d.%m.%Y")
+df = readxl::read_xlsx("Modul Quantitative Methoden II_Termine.xlsx", sheet = "Tabellenblatt1")[1:13, 1:3]
+#df$Datum = format(as.Date(df$Datum), "%d.%m.%Y")
 df %>%
   kbl() %>%
   kable_classic(full_width = T, position = "left", font_size = 15)
@@ -488,17 +484,23 @@ kable(df[,])
 ]
 
 .pull-right[
-```{r echo=F, message=FALSE, warning=FALSE, out.width = "250px"}
-# df_long= pivot_longer(df, cols = 1:3)
-# 
-# ggplot(data = df_long, aes(x = name, y = value)) +
-#   stat_summary() +
-#   labs(x = "", y= "Verbesserung") +
-#   theme_classic()
-```
 .center[
+```{r echo=F, message=FALSE, warning=FALSE, fig.height= 4}
+df_long= pivot_longer(df, cols = 1:3)
+
+df_long$name[df_long$name == "Medikament.1"] = "Medikament 1"
+df_long$name[df_long$name == "Medikament.2"] = "Medikament 2"
+
+ggplot(data = df_long, aes(x = name, y = value)) +
+  stat_summary(geom = "bar") +
+  labs(x = "", y= "Verbesserung") +
+  coord_cartesian(ylim = c(0,13)) +
+  theme_classic() +
+  theme(text = element_text(size = 20))
+```
+
 ```{r eval = TRUE, echo = F, out.width = "350px"}
-knitr::include_graphics("bilder/groups.png")
+#knitr::include_graphics("bilder/groups.png")
 ```
 ]
 ]
