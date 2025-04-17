@@ -56,7 +56,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 2: Einfaktorielle Varianzanalyse (2)
-##### `r format(as.Date(data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum), "%d.%m.%Y")[2]` | Prof. Dr. Stephan Goerigk
+##### `r data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum[2]` | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
