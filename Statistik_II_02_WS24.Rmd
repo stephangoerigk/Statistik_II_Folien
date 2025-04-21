@@ -781,6 +781,62 @@ by(df$Symptome, df$Gruppe, shapiro.test)
 
 ---
 class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Berichten der Ergebnisse nach APA anhand unseres Beispiels
+
+**Statistischer Bericht: (ausführlich)**
+
+Eine einfaktorielle ANOVA wurde durchgeführt, um die Symptomverbesserung zwischen verschiedenen Medikamentgruppen (Medikament.1, Medikament.2 und Placebo) zu vergleichen. 
+
+Vor der Analyse wurden die Voraussetzungen überprüft. Der Levene Test zeigte kein signifikantes Ergebnis ( $p$ = .75). Die Annahme der Varianzhomogenität ist also erfüllt. Auch die Normalverteilungsannahme ist erfüllt: Die Shapiro Wilk Tests für Medikament.1 ( $p$ = .96), Medikament.2 ( $p$ = .28) sowie Placebo ( $p$ = .93) wurden nicht signifikant. 
+
+Deskriptiv zeigte die Gruppe Medikament.1 die größte Verbesserung ( $M$ = 11.59, $SD$ = 3,62) im Vergleich zu den Gruppen Medikament.2 ( $M$ = 10,98, $SD$ = 3.96) und Placebo ( $M$ = 7.14, $SD$ = 3.70).
+
+Die ANOVA ergab einen signifikanten Unterschied in der Symptomverbesserung zwischen den Gruppen, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21.
+
+Ein Post-Hoc Test mit Tukey Korrektur zeigte keinen signifikanten Unterschied ( $p$ = .70) zwischen Medikament.1 und Medikament.2, aber signifikante Unterschiede zwischen Medikament.1 und Placebo (4.45, $p$ < .001) und Medikament.2 und Placebo (3.85, $p$ < .001)
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Berichten der Ergebnisse nach APA anhand unseres Beispiels
+
+**Statistischer Bericht: (Verkürzte Version bei händischer Berechung in Ihrer Prüfung)**
+
+>Eine einfaktorielle ANOVA wurde durchgeführt, um die Symptomverbesserung zwischen verschiedenen Medikamentgruppen (Medikament.1, Medikament.2 und Placebo) zu vergleichen.
+
+>Die ANOVA zeigte, dass der Effekt des Medikaments für die Symptomverbesserung der Patient:innen signifikant war, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21. 
+
+oder 
+
+>Eine einfaktorielle ANOVA wurde durchgeführt, um die Symptomverbesserung zwischen verschiedenen Medikamentgruppen (Medikament.1, Medikament.2 und Placebo) zu vergleichen.
+
+>Die ANOVA zeigte, dass es signifikante Mittelwertsunterschiede hinsichtlich der Symptomverbesserung zwischen den Medikamentgruppen gab, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21. 
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Berichten der Ergebnisse nach APA anhand unseres Beispiels
+
+**Hinweis zum Berichten statistischer Ergebnisse**
+
+Die Ergebnisse einer **Varianzanalyse (ANOVA)** werden mit zwei Freiheitsgraden berichtet. Es folgen der $F$-Wert, das Signifikanzniveau sowie die Effektstärke (häufig das partielle Eta-Quadrat: $\eta^2_p$, oder Omega-Quadrat: $\omega^2$).  
+
+$F$(df<sub>Zähler</sub>, df<sub>Nenner</sub>) = F-Wert, $p$ = Signifiknaz, $ω^2$ = Effektstärke
+
+Wichtig ist außerdem, dass Sie genau angeben, **um welche Art von ANOVA** es sich handelt – also z.B. einfaktoriell oder mehrfaktoriell, mit oder ohne Messwiederholung.
+
+Berichten Sie immer das, was die Daten tatsächlich hergeben. Wenn eine Effektstärke berechnet wurde, gehört sie in den Bericht Wenn Post-Hoc Tests durchgeführt wurden, sollten auch deren Ergebnisse mit angegeben werden.  
+
+Dasselbe gilt für die Prüfung der Voraussetzungen: Wenn Sie in der Aufgabe Informationen zu Tests wie dem Levene-Test oder dem Shapiro-Wilk-Test sehen, dann berichten Sie diese. Wenn hingegen keine Testergebnisse angegeben sind, können (und sollen) Sie auch keine angeben.  
+
+Bleiben Sie also flexibel und passen Sie Ihre Berichterstattung daran an, was Ihnen vorliegt.
+
+---
+class: top, left
 ### Take-aways
 
 .full-width[.content-box-gray[
@@ -799,5 +855,6 @@ class: top, left
 ]
 
 ]
+
 
 
