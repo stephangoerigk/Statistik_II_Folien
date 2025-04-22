@@ -765,7 +765,8 @@ Mögliche Werte und deren Interpretation:
 
 * $F=1$
 
-  * Der F-Wert ist gleich 1 wenn die systematische Varianz gleich 0 ist.
+  * Der F-Wert ist gleich 0 wenn die systematische Varianz 0 ist (alle Mittelwerte gleich).
+  * Der F-Wert ist gleich 1 wenn die systematische Varianz gleich der unsystematischen Varianz ist.
   * Es wird lediglich die Residualvarianz durch sich selbst geteilt
   * Grupppenmittelwerte unterscheiden sich höchstens durch unsystematische Einflüsse
 
