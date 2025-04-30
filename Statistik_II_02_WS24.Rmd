@@ -826,7 +826,8 @@ Die Ergebnisse einer **Varianzanalyse (ANOVA)** werden mit zwei Freiheitsgraden 
 
 $F$(df<sub>Zähler</sub>, df<sub>Nenner</sub>) = F-Wert, $p$ = Signifiknaz, $ω^2$ = Effektstärke
 
-Wichtig ist außerdem, dass Sie genau angeben, **um welche Art von ANOVA** es sich handelt – also z.B. einfaktoriell oder mehrfaktoriell, mit oder ohne Messwiederholung.
+> **Berichten des $p$-Werts** <br>
+> Ist der $p$-Wert kleiner als .001, schreiben Sie $p$ < .001. Ist er genau .001 oder größer, schreiben Sie den exakten $p$-Wert auf drei Nachkommastellen gerundet. 
 
 Berichten Sie immer das, was die Daten tatsächlich hergeben. Wenn eine Effektstärke berechnet wurde, gehört sie in den Bericht. Wenn Post-Hoc Tests durchgeführt wurden, sollten auch deren Ergebnisse mit angegeben werden.  
 
