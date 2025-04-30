@@ -801,15 +801,16 @@ class: top, left
 
 #### Berichten der Ergebnisse nach APA
 
-**Statistischer Bericht: (Verkürzte Version bei händischer Berechung in Ihrer Prüfung)**
+**Statistischer Bericht: (In Ihrer Klausur)**
 
->Eine einfaktorielle ANOVA wurde durchgeführt, um die Symptomverbesserung zwischen verschiedenen Medikamentgruppen (Medikament.1, Medikament.2 und Placebo) zu vergleichen.
+Wenn Sie in Ihrer Klausur eine ANOVA händisch berechnen, könnte Ihr Antwortsatz so aussehen: 
+<br>
+<br>
 
 >Die ANOVA zeigte, dass der Effekt des Medikaments für die Symptomverbesserung der Patient:innen signifikant war, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21. 
 
 oder 
 
->Eine einfaktorielle ANOVA wurde durchgeführt, um die Symptomverbesserung zwischen verschiedenen Medikamentgruppen (Medikament.1, Medikament.2 und Placebo) zu vergleichen.
 
 >Die ANOVA zeigte, dass es signifikante Mittelwertsunterschiede hinsichtlich der Symptomverbesserung zwischen den Medikamentgruppen gab, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21. 
 
