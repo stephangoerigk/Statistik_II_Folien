@@ -781,6 +781,65 @@ by(df$Symptome, df$Gruppe, shapiro.test)
 
 ---
 class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Berichten der Ergebnisse nach APA
+
+**Statistischer Bericht: (ausführlich)**
+
+Eine einfaktorielle ANOVA wurde durchgeführt, um die Symptomverbesserung zwischen verschiedenen Medikamentgruppen (Medikament 1, Medikament 2 und Placebo) zu vergleichen. 
+
+Vor der Analyse wurden die Voraussetzungen überprüft. Die Annahme der Varianzhomogenität konnte nach Prüfung mit dem Levene Test bestätigt werden ( $p$ = .748). Auch die Normalverteilungsannahme, welche mit Shapiro Wilk Tests überprüft wurde, war gegebn (Medikament 1: $p$ = .962; Medikament 2: $p$ = .281; Placebo: $p$ = .928). 
+
+Die ANOVA ergab einen signifikanten Unterschied in der Symptomverbesserung zwischen den Gruppen, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21.
+
+Ein Post-Hoc Test mit Tukey Korrektur zeigte keinen signifikanten Unterschied ( $p$ = .704) zwischen Medikament 1 und Medikament 2, aber signifikante Unterschiede zwischen Medikament 1 und Placebo (4.45, $p$ < .001) und Medikament 2 und Placebo (3.85, $p$ < .001)
+
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Berichten der Ergebnisse nach APA 
+
+**Hinweis zum Berichten statistischer Ergebnisse**
+
+<small>
+
+Die Ergebnisse einer **Varianzanalyse (ANOVA)** werden mit zwei Freiheitsgraden berichtet. Es folgen der $F$-Wert, das Signifikanzniveau sowie die Effektstärke (häufig das partielle Eta-Quadrat: $\eta^2_p$, oder Omega-Quadrat: $\omega^2$).  
+
+$F$(df<sub>Zähler</sub>, df<sub>Nenner</sub>) = F-Wert, $p$ = Signifikanz, $ω^2$ = Effektstärke
+
+> **Berichten des $p$-Werts** <br>
+> Ist der $p$-Wert kleiner als .001, schreiben Sie $p$ < .001. Ist er genau .001 oder größer, schreiben Sie den exakten $p$-Wert auf drei Nachkommastellen gerundet. 
+
+Berichten Sie nur, was die Daten tatsächlich hergeben. Wenn eine Effektstärke berechnet wurde, gehört sie in den Bericht. Wenn Post-Hoc Tests durchgeführt wurden, sollten auch deren Ergebnisse mit angegeben werden.  
+
+Dasselbe gilt für die Prüfung der Voraussetzungen: Wenn Sie in der Aufgabe Informationen zu Tests, wie dem Levene-Test oder dem Shapiro-Wilk-Test sehen, dann berichten Sie diese. Wenn keine Testergebnisse angegeben sind, können (und sollen) Sie auch keine angeben.  
+
+$\rightarrow$ Bleiben Sie also flexibel und passen Sie Ihre Berichterstattung daran an, was Ihnen vorliegt.
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Berichten der Ergebnisse nach APA
+
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur eine ANOVA händisch berechnen, könnte Ihr Antwortsatz so aussehen: 
+<br>
+<br>
+
+>Die ANOVA zeigte, dass der Effekt des Medikaments für die Symptomverbesserung der Patient:innen signifikant war, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21. 
+
+oder 
+
+
+>Die ANOVA zeigte, dass es signifikante Mittelwertsunterschiede hinsichtlich der Symptomverbesserung zwischen den Medikamentgruppen gab, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21. 
+
+---
+class: top, left
 ### Take-aways
 
 .full-width[.content-box-gray[
@@ -799,5 +858,6 @@ class: top, left
 ]
 
 ]
+
 
 
