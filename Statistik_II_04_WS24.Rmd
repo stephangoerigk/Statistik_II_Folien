@@ -1279,7 +1279,33 @@ knitr::include_graphics("bilder/gpower_reg.png")
 ]
 ]
 
-  
+---
+class: top, left
+### Einfache lineare Regression
+
+#### Berichten der Ergebnisse nach APA 
+
+**Statistischer Bericht: (ausführlich)**
+
+Es wurde eine lineare Regression mit dem Prädiktor IQ und dem Kriterium Testleistung durchgeführt. Die Analyse ergab, dass IQ ein signifikanter Prädiktor für die Testleistung ist, $β$ = 0.12, $t$(18) = 3.83, $p$ = .001. Das Modell erklärte etwa 44.9% der Varianz der Testleistung, $R^2$ = .42, $F$(1,18) = 14.69, $p$ = .001.
+
+Eine Prüfung der Normalverteilung der standardisierten Residuen mittels Shapiro-Wilk-Test ergab keinen Hinweis auf eine signifikante Abweichung von der Normalverteilung, $W$ = 0.98, $p$ = .92. Die visuelle Inspektion des Residualplots („Residuals vs. Fitted“) zeigt ebenfalls keine systematische Verletzung der Homoskedastizität.
+
+
+---
+class: top, left
+### Einfache lineare Regression
+
+#### Berichten der Ergebnisse nach APA 
+
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur eine Regression händisch berechnen und auf signifikanz prüfen, könnte Ihr Antwortsatz so aussehen: 
+
+>Es wurde eine lineare Regression mit dem Prädiktor IQ und dem Kriterium Testleistung durchgeführt. Die Analyse ergab, dass IQ ein signifikanter Prädiktor für die Testleistung ist, $β$ = 0.12, $t$(18) = 3.83, $p$ = .001. Das Modell erklärte etwa 44.9% der Varianz der Testleistung.
+**Inhaltliche Interpretation der Modellparameter**
+
+>Bei einem IQ von 0 liegt die erwartete Testleistung bei -7.83. Wenn der IQ um eine Einheit zunimmt, steigt die erwartete Testleistung um 0.12 Einheiten.
 
 ---
 class: top, left
