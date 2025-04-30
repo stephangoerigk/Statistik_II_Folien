@@ -63,7 +63,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 5: Mehrfaktorielle ANOVA
-##### `r format(as.Date(data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum), "%d.%m.%Y")[5]` | Prof. Dr. Stephan Goerigk
+##### `r data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum[5]` | Prof. Dr. Stephan Goerigk
 
 ```{r echo = F}
 Medikament = rep(c("Verum", "Placebo"), each = 8)

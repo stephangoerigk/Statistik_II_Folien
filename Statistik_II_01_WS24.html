@@ -746,7 +746,8 @@ Mögliche Werte und deren Interpretation:
 
 * `\(F=1\)`
 
-  * Der F-Wert ist gleich 1 wenn die systematische Varianz gleich 0 ist.
+  * Der F-Wert ist gleich 0 wenn die systematische Varianz 0 ist (alle Mittelwerte gleich).
+  * Der F-Wert ist gleich 1 wenn die systematische Varianz gleich der unsystematischen Varianz ist.
   * Es wird lediglich die Residualvarianz durch sich selbst geteilt
   * Grupppenmittelwerte unterscheiden sich höchstens durch unsystematische Einflüsse
 
@@ -921,28 +922,19 @@ psych::describeBy(x = df[,c("Symptome", "Gruppe")], group = df$Gruppe)
 ## 
 ##  Descriptive statistics by group 
 ## group: Medikament.1
-##          vars  n  mean   sd median trimmed  mad  min   max range  skew kurtosis
-## Symptome    1 50 11.59 3.62  11.61   11.58 3.01 1.76 19.75 17.99 -0.04     0.05
-## Gruppe      2 50  1.00 0.00   1.00    1.00 0.00 1.00  1.00  0.00   NaN      NaN
-##            se
-## Symptome 0.51
-## Gruppe   0.00
-## ------------------------------------------------------------ 
+##          vars  n  mean   sd median trimmed  mad  min   max range  skew kurtosis   se
+## Symptome    1 50 11.59 3.62  11.61   11.58 3.01 1.76 19.75 17.99 -0.04     0.05 0.51
+## Gruppe      2 50  1.00 0.00   1.00    1.00 0.00 1.00  1.00  0.00   NaN      NaN 0.00
+## --------------------------------------------------------------------------------------------- 
 ## group: Medikament.2
-##          vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis
-## Symptome    1 50 10.98 3.96  10.78   10.74 3.82 3.79 20.4 16.61 0.41    -0.38
-## Gruppe      2 50  2.00 0.00   2.00    2.00 0.00 2.00  2.0  0.00  NaN      NaN
-##            se
-## Symptome 0.56
-## Gruppe   0.00
-## ------------------------------------------------------------ 
+##          vars  n  mean   sd median trimmed  mad  min  max range skew kurtosis   se
+## Symptome    1 50 10.98 3.96  10.78   10.74 3.82 3.79 20.4 16.61 0.41    -0.38 0.56
+## Gruppe      2 50  2.00 0.00   2.00    2.00 0.00 2.00  2.0  0.00  NaN      NaN 0.00
+## --------------------------------------------------------------------------------------------- 
 ## group: Placebo
-##          vars  n mean  sd median trimmed  mad   min   max range skew kurtosis
-## Symptome    1 50 7.14 3.7   6.71    7.06 3.67 -0.87 15.68 16.54 0.16    -0.52
-## Gruppe      2 50 3.00 0.0   3.00    3.00 0.00  3.00  3.00  0.00  NaN      NaN
-##            se
-## Symptome 0.52
-## Gruppe   0.00
+##          vars  n mean  sd median trimmed  mad   min   max range skew kurtosis   se
+## Symptome    1 50 7.14 3.7   6.71    7.06 3.67 -0.87 15.68 16.54 0.16    -0.52 0.52
+## Gruppe      2 50 3.00 0.0   3.00    3.00 0.00  3.00  3.00  0.00  NaN      NaN 0.00
 ```
 
 ]
@@ -1020,11 +1012,11 @@ class: top, left
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"slideNumberFormat": "%current%",
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
+  "slideNumberFormat": "%current%",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));
