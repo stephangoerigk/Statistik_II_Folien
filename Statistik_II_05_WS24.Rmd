@@ -1257,6 +1257,7 @@ class: top, left
 
 **Statistischer Bericht: (In Ihrer Klausur)**
 
+<small>
 Wenn Sie in Ihrer Klausur den Output einer zweifaktoriellen Varianzanalyse berichten sollen, könnte dies so aussehen: 
 
 >Die zweifaktoriellen ANOVA ergab einen signifikanten Haupteffekt des Medikaments auf die Verbesserung, $F$(1, 12) = 38.46, $p$ < .001, $ω^2$ = 0.70. Der Haupteffekt der Dosis wurde ebenfalls signifikant, $F$(1, 12) = 17.79, $p$ = .001, $ω^2$ = 0.51. Es gab eine signifikante Interaktion zwischen Medikament und Dosis, $F$(1, 12) = 12.06, $p$ = .004, $ω^2$ = 0.41.
