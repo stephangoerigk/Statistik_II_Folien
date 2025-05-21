@@ -65,7 +65,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 7: Regressionsmodelle mit Interaktionen
-##### `r format(as.Date(data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum), "%d.%m.%Y")[7]` | Prof. Dr. Stephan Goerigk
+##### `r data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum[7]` | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
@@ -1251,7 +1251,7 @@ anova(model)
 .pull-right[
 * Der Omnibustest funktioniert wie bei der ANOVA $(\geq$ 2 Stufen) 
 
-* Alle 3 Steigungen werden auf simultan auf Signifikanz getestet
+* Alle 3 Steigungen werden simultan auf Signifikanz getestet
 
 * So wird eine $\alpha-$Fehlerkumulierung verhindert
 
@@ -1307,6 +1307,273 @@ emtrends(model, pairwise ~ Erfahrung, var = "Konfrontativ")
 
 * P-Werte sind Tukey-korrigiert, um Typ-I Fehler zu kontrollieren
 ]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - stetig x stetig 
+
+#### Berichten der Ergebnisse nach APA
+```{r include=FALSE}
+set.seed(123)
+n <- 300
+CTQ <- round(runif(n, min = 30, max = 100))
+CDRISC <- round(runif(n, min = 20, max = 95))
+CTQ_c <- scale(CTQ, scale = FALSE)
+CDRISC_c <- scale(CDRISC, scale = FALSE)
+
+BDI <- 0.5 * CTQ_c - 0.7 * CDRISC_c - 0.3 * (CTQ_c * CDRISC_c) + 
+       rnorm(n, mean = 12, sd = 6)
+
+BDI <- round(pmax(pmin(BDI, 63), 0))
+
+df <- data.frame(BDI, CTQ, CDRISC, CTQ_c, CDRISC_c)
+model <- lm(BDI ~ CTQ_c * CDRISC_c, data = df)
+
+
+
+```
+<small>
+<small>
+.code60[
+.pull-left[
+**Depressivität** gemessen durch BDI-II (Beck Depressions Inventar-II) <br>
+**Kindheitstrauma** gemessen durch CTQ (Childhood Trauma Questionnaire) <br>
+**Resilienz** gemessen durch CD-RISC (Connor-Davidson Resilience Scale) <br>
+Die Prädiktoren wurden für eine bessere Interpretierbarkeit **zentriert**.</small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
+
+.content-box-gray[
+Eine multiple Regression mit Interkation mit den Prädiktoren Kindheitstrauma sowie Resilienz und dem Kriterium Depressivität wurde durchgeführt. 
+Der Prädiktor Kindheitstrauma sagt unter Konstanthaltung von Resilienz Depressivität signifikant vorher, $b$ = 0.13, $t$(296) = 2.75, $p$ = .006. 
+Auch der Prädiktor Resilienz ist bei Konstanthaltung von Kindheitstrauma signifikant mit Depressivität assoziiert, $b$ = -0.10, $t$(296) = -2.33, $p$ = .020. 
+Es zeigt sich ein signifikanter Moderationseffekt, $b$ = -0.06, $t$(296) = -25.73, $p$ < .001. 
+Das Gesamtmodell erklärt einen signifikanten Anteil der Varianz in der AV Depressivität, $F$(3, 296) = 226.5, $p$ < .001, $R^2$ = .70. 
+]
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - stetig x stetig 
+.code60[
+.pull-left[
+#### Inhaltliche Interpretation der Modellparameter 
+
+<small>
+<small>
+
+**Depressivität** gemessen durch BDI-II (Beck Depressions Inventar-II) <br>
+**Kindheitstrauma** gemessen durch CTQ (Childhood Trauma Questionnaire) <br>
+**Resilienz** gemessen durch CD-RISC (Connor-Davidson Resilience Scale) <br>
+Die Prädiktoren wurden für eine bessere Interpretierbarkeit **zentriert**.</small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Inhaltliche Interpretation**
+
+.content-box-gray[
+**Intercept:** Eine Person mit durchschnittlichen Werten auf Kindheitstrauma und Resilienz (aufgrund der Zentrierung) hätte einen erwarteten Depressionswert von 25.56. <br>
+**Kindheitstrauma:** Bei einer zusätzlichen Einheit Kindheitstrauma steigt die durchschnittliche Depressivität um 0.13 Einheiten (Unter Konstanthaltung von Resilienz). <br>
+**Resilienz:** Wenn die Resilienz um eine Einheit zunimmt, sinkt die erwartete Depressivität um 0.10 Einheiten (Unter Konstanthaltung von Kindheitstrauma). <br>
+**Interaktionseffekt:** Mit zunehmender Resilienz verringert sich der positive Effekt von Kindheitstrauma auf Depressivität. Resilienz wirkt damit als Moderator und schwächt den Zusammenhang zwischen Kindheitstrauma und Depressivität ab.
+]
+
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x stetig 
+
+#### Berichten der Ergebnisse nach APA
+```{r include=FALSE}
+set.seed(123) 
+n <- 100
+Gruppe <- rep(c(0,1), each = n)
+Schlafqualität <- c(
+  rnorm(n, mean = 4, sd = 1.5), 
+  rnorm(n, mean = 6, sd = 1.5)    
+)
+
+error <- rnorm(n*2, mean = 0, sd = 3)
+Depressivität <- 25 + (-2 * Schlafqualität) + (-3 * Gruppe) + (-2 * Schlafqualität * Gruppe) + error
+
+data <- data.frame(
+  Gruppe = factor(Gruppe, labels = c("Warteliste", "Psychotherapie")),
+  Schlafqualität = Schlafqualität,
+  Depressivität = Depressivität
+)
+model = lm(Depressivität~Schlafqualität*Gruppe, data)
+
+```
+<small>
+<small>
+.code60[
+.pull-left[
+Kriterium: **Depressivität** </br>
+Prädiktor 1: **Schlafqualität** (stetig) </br>
+Prädiktor 2: **Therapiegruppe** (diskret: Warteliste / Psychotherapie) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
+
+.content-box-gray[
+Eine multiple lineare Regression mit Interkation wurde durchgeführt, um die Effekte von Schlafqualität und Therapiegruppe (Warteliste vs. Psychotherapie) auf Depressivität zu untersuchen. 
+Der Prädiktor Schlafqualität sagte innerhalb der Wartelistengruppe die Depressivität signifikant vorher, $b$ = -2.27, $t$(196) = -10.34, $p$ < .001. 
+Auch der Prädiktor Gruppenzugehörigkeit erwies sich als signifikant, $b$ = -5.13, $t$(196) = -3.27, $p$ = .001. 
+Es zeigt sich ein signifikanter Moderationseffekt, $b$ = -1.64, $t$(196) = -5.43, $p$ < .001. 
+Das Gesamtmodell erklärt einen signifikanten Anteil der Varianz in der AV Depressivität, $F$(3, 196) = 796.8, $p$ < .001, $R^2$ = .92. 
+]
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x stetig 
+.code60[
+.pull-left[
+#### Inhaltliche Interpretation der Modellparameter 
+
+<small>
+<small>
+
+Kriterium: **Depressivität** </br>
+Prädiktor 1: **Schlafqualität** (stetig) </br>
+Prädiktor 2: **Therapiegruppe** (diskret: Warteliste / Psychotherapie) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Inhaltliche Interpretation**
+
+.content-box-gray[
+**Intercept:** Eine Person aus der Warteliste (Gruppe = 0) hätte bei einer Schlafqualität von 0 eine erwartete Depressivität von 26.47. <br>
+**Schlafqualität:** Wenn bei einer Person aus der Wartelistegruppe die Schlafqualität um eine Einheit zunimmt, sinkt die erwartete Depressivität um 2.27 Einheiten. <br>
+**Therapiegruppe:** Der Mittelwertsunterschied in der Depressivität zwischen den beiden Therapiegruppe (Warteliste vs. Psychotherapie) liegt bei Konstanthaltung der Schlafqualität bei -5.13<br>
+**Interaktionseffekt:** Wenn bei einer Person aus der Psychotherapiegruppe (Gruppe = 1) die Schlafqualität um eine Einheit zunimmt, sinkt die Depressivität um 1.64 Einheiten mehr als in der Referenzgruppe (Gruppe = 0), also insgesamt um -2.27 - 1.64 = -3.91 Einheiten.
+]
+
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x diskret 
+
+#### Berichten der Ergebnisse nach APA
+```{r include=FALSE}
+set.seed(14)
+n <- 150  
+
+df <- data.frame(
+  Lernstrategie = factor(sample(c("A", "B"), n, replace = TRUE)),
+  Motivation = factor(sample(c("Niedrig", "Hoch"), n, replace = TRUE))
+)
+
+df$Testergebnis <- with(df, 
+                        ifelse(Lernstrategie == "A" & Motivation == "Niedrig", rnorm(n, mean = 60, sd = 6),
+                               ifelse(Lernstrategie == "A" & Motivation == "Hoch", rnorm(n, mean = 65, sd = 8),
+                                      ifelse(Lernstrategie == "B" & Motivation == "Niedrig", rnorm(n, mean = 70, sd = 6),
+                                             rnorm(n, mean = 80, sd = 5)))))
+
+df$Motivation <- relevel(df$Motivation, ref = "Niedrig")
+
+model <- lm(Testergebnis ~ Lernstrategie * Motivation, data = df)
+summary(model)
+
+```
+<small>
+<small>
+.code60[
+.pull-left[
+Kriterium: **Testergebnis** </br>
+Prädiktor 1: **Lernstrategie** (diskret: Lernstrategie A / Lernstrategie B) </br>
+Prädiktor 2: **Motivation** (diskret: niedrig / hoch) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
+
+.content-box-gray[
+Eine multiple lineare Regression mit Interkation wurde durchgeführt, um die Effekte von Lernstratien (A vs. B) und Motivation (niedrig vs. hoch) auf das Testergebnis zu untersuchen. 
+Sowohl der Prädiktor Lernstrategie, $b$ = 9.41, $t$(146) = 6.24, $p$ < .001., als auch der Prädiktor Motivation, $b$ = 5.53, $t$(146) = 3.59, $p$ < .001, konnten das Testergebnis signifikant vorhersagen. 
+Es zeigt sich ein signifikanter Moderationseffekt, $b$ = 5.85, $t$(146) = 2.77, $p$ = .006. 
+Das Gesamtmodell erklärte einen signifikanten Anteil der Varianz im Testergebnis, $F$(3, 146) = 796.8, $p$ < .001, $R^2$ = .92. 
+]
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x diskret 
+
+
+.code60[
+.pull-left[
+
+#### Inhaltliche Interpretation der Modellparameter
+
+<small>
+<small>
+
+Kriterium: **Testergebnis** </br>
+Prädiktor 1: **Lernstrategie** (diskret: Lernstrategie A / Lernstrategie B) </br>
+Prädiktor 2: **Motivation** (diskret: niedrig / hoch) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Inhaltliche Interpretation**
+
+.content-box-gray[
+**Intercept:** Das durchschnittliche Testergebnis von Proband:innen mit Lernstrategie A und niedriger Motivation lag bei 59.72<br><br>
+**Gruppenmittelwerte:** Das durchschnittliche Testergebnis von Proband:innen mit Lernstrategie B und niedriger Motivation war um 9.42 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 9.42 = 69.14 <br><br>
+Das durchschnittliche Testergebnis von Proband:innen mit Lernstrategie A und hoher Motivation war um 5.53 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 5.53 = 65.25 <br><br>
+Für Proband:innen mit Lernstrategie B und hoher Motivation ergab sich ein geschätzter Mittelwert von 80.52 (59.72 + 9.42 + 5.53 + 5.85)
+]
+
+]
+
+
 
 ---
 class: top, left
