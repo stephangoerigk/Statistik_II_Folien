@@ -1483,6 +1483,93 @@ with(options(scipen = 0), {
 
 ]
 
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x diskret 
+
+#### Berichten der Ergebnisse nach APA
+```{r include=FALSE}
+set.seed(14)
+n <- 150  
+
+df <- data.frame(
+  Lernstrategie = factor(sample(c("A", "B"), n, replace = TRUE)),
+  Motivation = factor(sample(c("Niedrig", "Hoch"), n, replace = TRUE))
+)
+
+df$Testergebnis <- with(df, 
+                        ifelse(Lernstrategie == "A" & Motivation == "Niedrig", rnorm(n, mean = 60, sd = 6),
+                               ifelse(Lernstrategie == "A" & Motivation == "Hoch", rnorm(n, mean = 65, sd = 8),
+                                      ifelse(Lernstrategie == "B" & Motivation == "Niedrig", rnorm(n, mean = 70, sd = 6),
+                                             rnorm(n, mean = 80, sd = 5)))))
+
+df$Motivation <- relevel(df$Motivation, ref = "Niedrig")
+
+model <- lm(Testergebnis ~ Lernstrategie * Motivation, data = df)
+summary(model)
+
+```
+<small>
+<small>
+.code60[
+.pull-left[
+Kriterium: **Testergebnis** </br>
+Prädiktor 1: **Lernstrategie** (diskret: Lernstrategie A / Lernstrategie B) </br>
+Prädiktor 2: **Motivation** (diskret: niedrig / hoch) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
+
+.content-box-gray[
+Eine multiple lineare Regression mit Interkation wurde durchgeführt, um die Effekte von Lernstratien (A vs. B) und Motivation (niedrig vs. hoch) auf das Testergebnis zu untersuchen. 
+Sowohl der Prädiktor Lernstrategie, $b$ = 9.41, $t$(146) = 6.24, $p$ < .001., als auch der Prädiktor Motivation, $b$ = 5.53, $t$(146) = 3.59, $p$ < .001, konnten das Testergebnis signifikant vorhersagen. 
+Es zeigt sich ein signifikanter Moderationseffekt, $b$ = 5.85, $t$(146) = 2.77, $p$ = .006. 
+Das Gesamtmodell erklärte einen signifikanten Anteil der Varianz im Testergebnis, $F$(3, 146) = 796.8, $p$ < .001, $R^2$ = .92. 
+]
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x diskret 
+
+#### Inhaltliche Interpretation der Modellparameter 
+
+<small>
+<small>
+.code60[
+.pull-left[
+Kriterium: **Testergebnis** </br>
+Prädiktor 1: **Lernstrategie** (diskret: Lernstrategie A / Lernstrategie B) </br>
+Prädiktor 2: **Motivation** (diskret: niedrig / hoch) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Inhaltliche Interpretation**
+
+.content-box-gray[
+**Intercept:** Das mittlere Testergebnis von Proband:innen mit Lernstrategie A und niedriger Motivation lag bei 59.72<br><br>
+**Gruppenmittelwerte:** Das mittlere Testergebnis von Proband:innen mit Lernstrategie B und niedriger Motivation war um 9.42 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 9.42 = 69.14 <br><br>
+Das mittlere Testergebnis von Proband:innen mit Lernstrategie A und hoher Motivation war um 5.53 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 5.53 = 65.25 <br><br>
+Für Proband:innen mit Lernstrategie B und hoher Motivation ergab sich ein geschätzter Mittelwert von 80.52 (59.72 + 9.42 + 5.53 + 5.85)
+]
+
+]
+
 
 
 ---
