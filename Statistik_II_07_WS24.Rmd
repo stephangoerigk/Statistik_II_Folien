@@ -1341,7 +1341,9 @@ model <- lm(BDI ~ CTQ_c * CDRISC_c, data = df)
 **Resilienz** gemessen durch CD-RISC (Connor-Davidson Resilience Scale) <br>
 Die Prädiktoren wurden für eine bessere Interpretierbarkeit **zentriert**.</small>
 ```{r echo=FALSE}
-summary(model)
+with(options(scipen = 0), {
+  summary(model)
+})
 ```
 ]
 ]
@@ -1375,7 +1377,9 @@ class: top, left
 **Resilienz** gemessen durch CD-RISC (Connor-Davidson Resilience Scale) <br>
 Die Prädiktoren wurden für eine bessere Interpretierbarkeit **zentriert**.</small>
 ```{r echo=FALSE}
-summary(model)
+with(options(scipen = 0), {
+  summary(model)
+})
 ```
 ]
 ]
@@ -1384,10 +1388,97 @@ summary(model)
 **Inhaltliche Interpretation**
 
 .content-box-gray[
-**Intercept** Eine Person mit durchschnittlichen Werten auf Kindheitstrauma und Resilienz (aufgrund der Zentrierung) hätte einen erwarteten Depressionswert von 25.56. <br>
-**Kindheitstrauma** Bei einer zusätzlichen Einheit Kindheitstrauma steigt die durchschnittliche Depressivität um 0.13 Einheiten (Unter Konstanthaltung von Resilienz). <br>
-**Resilienz** Wenn die Resilienz um eine Einheit zunimmt, sinkt die erwartete Depressivität um 0.10 Einheiten (Unter Konstanthaltung von Kindheitstrauma). <br>
-**Interaktionseffekt** Mit zunehmender Resilienz verringert sich der positive Effekt von Kindheitstrauma auf Depressivität. Resilienz wirkt damit als Moderator und schwächt den Zusammenhang zwischen Kindheitstrauma und Depressivität ab.
+**Intercept:** Eine Person mit durchschnittlichen Werten auf Kindheitstrauma und Resilienz (aufgrund der Zentrierung) hätte einen erwarteten Depressionswert von 25.56. <br>
+**Kindheitstrauma:** Bei einer zusätzlichen Einheit Kindheitstrauma steigt die durchschnittliche Depressivität um 0.13 Einheiten (Unter Konstanthaltung von Resilienz). <br>
+**Resilienz:** Wenn die Resilienz um eine Einheit zunimmt, sinkt die erwartete Depressivität um 0.10 Einheiten (Unter Konstanthaltung von Kindheitstrauma). <br>
+**Interaktionseffekt:** Mit zunehmender Resilienz verringert sich der positive Effekt von Kindheitstrauma auf Depressivität. Resilienz wirkt damit als Moderator und schwächt den Zusammenhang zwischen Kindheitstrauma und Depressivität ab.
+]
+
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x stetig 
+
+#### Berichten der Ergebnisse nach APA
+```{r include=FALSE}
+set.seed(123) 
+n <- 100
+Gruppe <- rep(c(0,1), each = n)
+Schlafqualität <- c(
+  rnorm(n, mean = 4, sd = 1.5), 
+  rnorm(n, mean = 6, sd = 1.5)    
+)
+
+error <- rnorm(n*2, mean = 0, sd = 3)
+Depressivität <- 25 + (-2 * Schlafqualität) + (-3 * Gruppe) + (-2 * Schlafqualität * Gruppe) + error
+
+data <- data.frame(
+  Gruppe = factor(Gruppe, labels = c("Warteliste", "Psychotherapie")),
+  Schlafqualität = Schlafqualität,
+  Depressivität = Depressivität
+)
+model = lm(Depressivität~Schlafqualität*Gruppe, data)
+
+```
+<small>
+<small>
+.code60[
+.pull-left[
+Kriterium: **Depressivität** </br>
+Prädiktor 1: **Schlafqualität** (stetig) </br>
+Prädiktor 2: **Therapiegruppe** (diskret: Warteliste / Psychotherapie) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
+
+.content-box-gray[
+Eine multiple lineare Regression mit Interkation wurde durchgeführt, um die Effekte von Schlafqualität und Therapiegruppe (Warteliste vs. Psychotherapie) auf Depressivität zu untersuchen. 
+Der Prädiktor Schlafqualität sagte innerhalb der Wartelistengruppe die Depressivität signifikant vorher, $b$ = -2.27, $t$(196) = -10.34, $p$ < .001. 
+Auch der Prädiktor Gruppenzugehörigkeit erwies sich als signifikant, $b$ = -5.13, $t$(196) = -3.27, $p$ = .001. 
+Es zeigt sich ein signifikanter Moderationseffekt, $b$ = -1.64, $t$(196) = -5.43, $p$ < .001. 
+Das Gesamtmodell erklärt einen signifikanten Anteil der Varianz in der AV Depressivität, $F$(3, 196) = 796.8, $p$ < .001, $R^2$ = .92. 
+]
+]
+
+---
+class: top, left
+### Multiple Regression mit Interaktion - diskret x stetig 
+
+#### Inhaltliche Interpretation der Modellparameter 
+
+<small>
+<small>
+.code60[
+.pull-left[
+Kriterium: **Depressivität** </br>
+Prädiktor 1: **Schlafqualität** (stetig) </br>
+Prädiktor 2: **Therapiegruppe** (diskret: Warteliste / Psychotherapie) </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+```
+]
+]
+
+.pull-right[
+**Inhaltliche Interpretation**
+
+.content-box-gray[
+**Intercept:** Eine Person aus der Warteliste (Gruppe = 0) hätte bei einer Schlafqualität von 0 eine erwartete Depressivität von 26.47. <br>
+**Schlafqualität:** Wenn bei einer Person aus der Wartelistegruppe die Schlafqualität um eine Einheit zunimmt, sinkt die erwartete Depressivität um 2.27 Einheiten. <br>
+**Therapiegruppe:** Der Mittelwertsunterschied in der Depressivität zwischen den beiden Therapiegruppe (Warteliste vs. Psychotherapie) liegt bei Konstanthaltung der Schlafqualität bei -5.13<br>
+**Interaktionseffekt:** Wenn bei einer Person aus der Psychotherapiegruppe (Gruppe = 1) die Schlafqualität um eine Einheit zunimmt, sinkt die Depressivität um 1.64 Einheiten mehr als in der Referenzgruppe (Gruppe = 0), also insgesamt um -2.27 - 1.64 = -3.91 Einheiten.
 ]
 
 ]
