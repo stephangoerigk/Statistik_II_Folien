@@ -1365,13 +1365,13 @@ Das Gesamtmodell erklärt einen signifikanten Anteil der Varianz in der AV Depre
 ---
 class: top, left
 ### Multiple Regression mit Interaktion - stetig x stetig 
-
+.code60[
+.pull-left[
 #### Inhaltliche Interpretation der Modellparameter 
 
 <small>
 <small>
-.code60[
-.pull-left[
+
 **Depressivität** gemessen durch BDI-II (Beck Depressions Inventar-II) <br>
 **Kindheitstrauma** gemessen durch CTQ (Childhood Trauma Questionnaire) <br>
 **Resilienz** gemessen durch CD-RISC (Connor-Davidson Resilience Scale) <br>
@@ -1453,13 +1453,13 @@ Das Gesamtmodell erklärt einen signifikanten Anteil der Varianz in der AV Depre
 ---
 class: top, left
 ### Multiple Regression mit Interaktion - diskret x stetig 
-
+.code60[
+.pull-left[
 #### Inhaltliche Interpretation der Modellparameter 
 
 <small>
 <small>
-.code60[
-.pull-left[
+
 Kriterium: **Depressivität** </br>
 Prädiktor 1: **Schlafqualität** (stetig) </br>
 Prädiktor 2: **Therapiegruppe** (diskret: Warteliste / Psychotherapie) </small>
@@ -1541,12 +1541,15 @@ Das Gesamtmodell erklärte einen signifikanten Anteil der Varianz im Testergebni
 class: top, left
 ### Multiple Regression mit Interaktion - diskret x diskret 
 
-#### Inhaltliche Interpretation der Modellparameter 
+
+.code60[
+.pull-left[
+
+#### Inhaltliche Interpretation der Modellparameter
 
 <small>
 <small>
-.code60[
-.pull-left[
+
 Kriterium: **Testergebnis** </br>
 Prädiktor 1: **Lernstrategie** (diskret: Lernstrategie A / Lernstrategie B) </br>
 Prädiktor 2: **Motivation** (diskret: niedrig / hoch) </small>
@@ -1562,9 +1565,9 @@ with(options(scipen = 0), {
 **Inhaltliche Interpretation**
 
 .content-box-gray[
-**Intercept:** Das mittlere Testergebnis von Proband:innen mit Lernstrategie A und niedriger Motivation lag bei 59.72<br><br>
-**Gruppenmittelwerte:** Das mittlere Testergebnis von Proband:innen mit Lernstrategie B und niedriger Motivation war um 9.42 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 9.42 = 69.14 <br><br>
-Das mittlere Testergebnis von Proband:innen mit Lernstrategie A und hoher Motivation war um 5.53 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 5.53 = 65.25 <br><br>
+**Intercept:** Das durchschnittliche Testergebnis von Proband:innen mit Lernstrategie A und niedriger Motivation lag bei 59.72<br><br>
+**Gruppenmittelwerte:** Das durchschnittliche Testergebnis von Proband:innen mit Lernstrategie B und niedriger Motivation war um 9.42 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 9.42 = 69.14 <br><br>
+Das durchschnittliche Testergebnis von Proband:innen mit Lernstrategie A und hoher Motivation war um 5.53 Einheiten höher als in der Referenzgruppe (Lernstrategie A & niedrige Motivation) und lag bei 59.72 + 5.53 = 65.25 <br><br>
 Für Proband:innen mit Lernstrategie B und hoher Motivation ergab sich ein geschätzter Mittelwert von 80.52 (59.72 + 9.42 + 5.53 + 5.85)
 ]
 
