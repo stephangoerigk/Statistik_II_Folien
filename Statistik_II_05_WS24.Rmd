@@ -637,7 +637,7 @@ $\rightarrow$ Die Varianzen werden addiert und durch die Anzahl der Zellen getei
 $$\hat{\sigma}^2_{Res}= \hat{\sigma}^2_{innerhalb}= \frac{\hat{\sigma}^2_{11} + \hat{\sigma}^2_{12} +...+\hat{\sigma}^2_{1q} + \hat{\sigma}^2_{21} + \hat{\sigma}^2_{22} +...+\hat{\sigma}^2_{pq}}{p \cdot q}$$
 
 $$df_{Res}=p \cdot q \cdot (n-1)$$
-$$\hat{\sigma}_{Res}^2 = =\frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}QS_{ij}}{p \cdot q \cdot (n-1)}=\frac{QS_{Res}}{df_{Res}}$$
+$$\hat{\sigma}_{Res}^2 = \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}QS_{ij}}{p \cdot q \cdot (n-1)}=\frac{QS_{Res}}{df_{Res}}$$
 
 ---
 class: top, left
