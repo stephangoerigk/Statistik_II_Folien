@@ -92,7 +92,7 @@ Wir beschränken uns heute zunächst auf die einfachste Form der multiplen Regre
 
 Dies lässt sich durch die folgende **Erweiterung der Regressionsgleichung** darstellen:
 
-`$$Y_i=a + \beta_1 \cdot X_{i1} + \beta_2 \cdot X_{i2} + \epsilon_i$$`
+`$$Y_i=a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2} + \epsilon_i$$`
 
 wobei: 
 
@@ -106,17 +106,17 @@ class: top, left
 
 #### Elemente der multiplen Regressionsgleichung
 
-`$$Y_i=a + \beta_1 \cdot X_{i1} + \beta_2 \cdot X_{i2} + \epsilon_i$$`
+`$$Y_i=a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2} + \epsilon_i$$`
 
 * `\(X_1\)` und `\(X_2\)` sind Zufallsvariablen. Ihre Realisationen sind jeweils die Werte der zufällig gezogenen Person `\(i\)` bezüglich der `\(UV_1\)` und der `\(UV_2\)`
 
-* `\(a, \beta_1, \beta_2\)` und `\(\sigma^2\)` sind die zu schätzenden Modellparameter
+* `\(a, b_1, b_2\)` und `\(\sigma^2\)` sind die zu schätzenden Modellparameter
 
   * `\(a\)` = Y-Achsenabschnitt
 
-  * `\(\beta_1\)` = Steigungsparameter der `\(UV_1\)`
+  * `\(b_1\)` = Steigungsparameter der `\(UV_1\)`
 
-  * `\(\beta_2\)` = Steigungsparameter der `\(UV_2\)`
+  * `\(b_2\)` = Steigungsparameter der `\(UV_2\)`
 
   * `\(\sigma^2\)` = Varianz des Fehlerterms (für Hypothesen meist inhaltlich nicht relevant)
 
@@ -172,7 +172,7 @@ class: top, left
 
 #### Graphische Darstellung 
 
-`$$Y_i=a + \beta_1 \cdot X_{i1} + \beta_2 \cdot X_{i2} + \epsilon_i$$`
+`$$Y_i=a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2} + \epsilon_i$$`
 
 .pull-left[
 .center[
@@ -187,13 +187,13 @@ class: top, left
 
   * `\(a\)` ist der Wert der AV, wenn `\(UV_1\)` und `\(UV_2\)` gleich 0 sind
   
-  * `\(a=a + \beta_1 \cdot 0 + \beta_2 \cdot 0\)`
+  * `\(a=a + b_1 \cdot 0 + b_2 \cdot 0\)`
   
   * Ob `\(a\)` sinnvoll interpretiert werden kann, hängt davon ab, ob `\(UV_1=0\)` und `\(UV_2=0\)` inhaltlich sinnvolle Werte darstellen
 
-* `\(\beta_1\)` gibt an, wie stark die Regressionsebene auf der `\(xy\)`-Gerade steigt bzw. fällt, wenn `\(UV_1\)` um 1 Einheit zunimmt.
+* `\(b_1\)` gibt an, wie stark die Regressionsebene auf der `\(xy\)`-Gerade steigt bzw. fällt, wenn `\(UV_1\)` um 1 Einheit zunimmt.
 
-* `\(\beta_2\)` gibt an, wie stark die Regressionsebene auf der `\(zy\)`-Gerade steigt bzw. fällt, wenn `\(UV_2\)` um 1 Einheit zunimmt.
+* `\(b_2\)` gibt an, wie stark die Regressionsebene auf der `\(zy\)`-Gerade steigt bzw. fällt, wenn `\(UV_2\)` um 1 Einheit zunimmt.
 
 &lt;/small&gt;
 ]
@@ -210,7 +210,7 @@ class: top, left
 ]
 
 .pull-right[
-* Die unbekannten Modellparameter `\(a, \beta_1\)` und `\(\beta_2\)` können mit der **Methode der kleinsten Quadrate** bestimmt werden (wie bei einfacher Regression)
+* Die unbekannten Modellparameter `\(a, b_1\)` und `\(b_2\)` können mit der **Methode der kleinsten Quadrate** bestimmt werden (wie bei einfacher Regression)
 
 * Die Ebene wird so definiert, dass die Residuen minimiert werden
 
@@ -224,7 +224,7 @@ class: top, left
 
 #### Standardfehler der Modellparameter
 
-* Während wir die Schätzung der Modellparameter R überlassen, schauen wir uns einmal die Berechnung der Standardfehler für `\(\beta_1\)` und `\(\beta_2\)` an.
+* Während wir die Schätzung der Modellparameter R überlassen, schauen wir uns einmal die Berechnung der Standardfehler für `\(b_1\)` und `\(b_2\)` an.
 
 * Diese brauchen wir, um Hypothesentests/Konfidenzintervalle für diese Parameter zu berechnen
 
@@ -241,9 +241,9 @@ class: top, left
 
 #### Konfidenzintervalle der Modellparameter
 
-Die Konfidenzintervalle für `\(\beta_1\)` und `\(\beta_2\)` lassen sich wie folgt berechnen:
+Die Konfidenzintervalle für `\(b_1\)` und `\(b_2\)` lassen sich wie folgt berechnen:
 
-`$$\beta \pm t_{1-\frac{\alpha}{2} \cdot SE(B_j)}$$`
+`$$b \pm t_{1-\frac{\alpha}{2} \cdot SE(B_j)}$$`
 
 * Die Freiheitsgerade für den t-Wert errechnen sich als `\(df=n-3\)`
 
@@ -431,15 +431,15 @@ summary(model)
 ]
 
 .pull-right[
-Die Schätzwerte für `\(a, \beta_1\)` und `\(\beta_2\)` können in der Spalte `Estimate` abgelesen werden
+Die Schätzwerte für `\(a, b_1\)` und `\(b_2\)` können in der Spalte `Estimate` abgelesen werden
 
 **Interpretation:**
 
-* Der durchschnittliche Aggressionswert eines Kindes, das 0h TV sieht und einen Emotionsregulationsscore von 0 hat ist `\(a=86.24\)`
+* Der durchschnittliche Aggressionswert eines Kindes, das 0h TV sieht und einen Emotionsregulationsscore von 0 hat ist `\(a = 86.24\)`
 
-* Mit jeder zusätzlichen Stunde TV nimmt der Aggressionswert um `\(\beta_1= 0.11\)` Punkte zu.
+* Mit jeder zusätzlichen Stunde TV nimmt der Aggressionswert um `\(b_1= 0.11\)` Punkte zu.
 
-* Mit jedem zusätzlichen Punkt auf der Emotionsregulationsskale nimmt der Aggressionswert um `\(\beta_2= -0.53\)` Punkte ab.
+* Mit jedem zusätzlichen Punkt auf der Emotionsregulationsskale nimmt der Aggressionswert um `\(b_2= -0.53\)` Punkte ab.
 ]
 
 ---
@@ -542,7 +542,7 @@ summary(model)
 .pull-right[
 Allgemeine Form:
 
-`$$Y_i=a + \beta_1 \cdot X_{i1} + \beta_2 \cdot X_{i2} + \epsilon_i$$`
+`$$Y_i=a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2} + \epsilon_i$$`
 mit `\(\epsilon_i ~ N(0,\sigma^2)\)`
 
 In unserem Fall ergibt sich die Modellgleichung:
@@ -565,7 +565,7 @@ Wir besprechen (zunächst) zwei Arten von Hypothesentests für die multiple Regr
 
 1. Hypothesentests für einzelne Modellparameter (z.B. eine Steigung)
 
-  * `\(H_0: \beta_j=0\)`
+  * `\(H_0: b_j=0\)`
   * Geeignet für Zusammenhangshypothesen 
   * keine Steigung = kein Zusammenhang (UV kann AV nicht systematisch vorhersagen)
 
@@ -620,12 +620,12 @@ summary(model)
   * `\(H_1: a\neq0\)`
 
 2. Hypothesentest Steigung (TV):
-  * `\(H_0: \beta_1=0\)`
-  * `\(H_1: \beta_1\neq0\)`
+  * `\(H_0: b_1=0\)`
+  * `\(H_1: b_1\neq0\)`
 
 3. Hypothesentest Steigung (Emotionsregulation):
-  * `\(H_0: \beta_2=0\)`
-  * `\(H_1: \beta_2\neq0\)`
+  * `\(H_0: b_2=0\)`
+  * `\(H_1: b_2\neq0\)`
 ]
 
 **Unser Beispiel:** Es soll überprüft werden, ob TV-Sehen bzw. Emotionsregulation linear mit Aggression zusammenhängt, wenn der jeweils andere Prädiktor konstant gehalten wird.
@@ -671,9 +671,9 @@ summary(model)
 .pull-right[
 `\(t_a = \frac{a}{SE(a)} = \frac{86.24}{6.70}=12.86\)` 
 
-`\(t_{\beta_1} = \frac{\beta_1}{SE(\beta_1)}= \frac{0.11}{0.69} = 0.16\)` 
+`\(t_{b_1} = \frac{b_1}{SE(b_1)}= \frac{0.11}{0.69} = 0.16\)` 
 
-`\(t_{\beta_2} = \frac{\beta_2}{SE(\beta_2)}= \frac{-0.53}{0.10} = -5.30\)` 
+`\(t_{b_2} = \frac{b_2}{SE(b_2)}= \frac{-0.53}{0.10} = -5.30\)` 
 
 * Unter der Geltung der `\(H_0\)` folgen diese Teststatistiken jeweils einer t-Verteilung mit `\(df=n-3\)`
 
@@ -748,8 +748,8 @@ class: top, left
 
 Omnibustest des Gesamtmodells kann folgende Hypothese prüfen:
 
-* `\(H_0: \beta_1 = \beta_2 = 0\)`
-* `\(H_1: \beta_j \neq 0\)`
+* `\(H_0: b_1 = b_2 = 0\)`
+* `\(H_1: b_j \neq 0\)`
 
 `\(\rightarrow\)` Mithilfe des Omnibus-Tests kann überprüft werden, ob bei zumindest einer der UVs der lineare Zusammenhang mit der AV ungleich 0 ist (bei Konstanthaltung der jeweils anderen UV).
 
@@ -817,7 +817,7 @@ Dieser Wert findet sich im unteren Bereich des R Outputs:
 
 mit `\(df_{Zähler}=2\)` und `\(df_{Nenner}=47\)`
 
-* `\(p=0.00001083&lt;.05\)`
+* `\(p=0.00001083 &lt; .05\)`
 
 * Das Gesamtmodell mit den Prädiktoren erklärt signifikant mehr Varianz, als das Modell ohne Prädiktoren.
 ]
@@ -975,7 +975,7 @@ Was passiert?
 * Weiterer Prädiktor wird an Modell "drangehängt"
 
 * Er erhält ebenfalls einen Steigungsparameter, dieser erhält einen Signifikanztest
-  * Mit weiterem Punkt Ausgrenzungserfahrung nimmt Aggression um `\(\beta_3=0.27\)` Punkte zu
+  * Mit weiterem Punkt Ausgrenzungserfahrung nimmt Aggression um `\(b_3=0.27\)` Punkte zu
   * Ausgrenzungserfahrung kann Aggression signifikant vorhersagen `\((p=0.00191)\)`
 
 * Y-Achsenabschnitt ist nun der Wert der AV, wenn alle 3 Prädiktoren = 0 sind.

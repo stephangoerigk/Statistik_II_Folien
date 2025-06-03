@@ -568,7 +568,7 @@ class: top, left
 
   * Zähler- und Nennereinheiten werden an der Streuung von $Y$ und $X$ relativiert
 
-$$b_{yx}=\frac{\frac{\text{Anzahl Einheiten auf Y}}{\sigma_y}}{\frac{\text{pro 1 Einheit X}}{\sigma_x}}=b \cdot \frac{\frac{1}{\sigma_y}}{\frac{1}{\sigma_x}}= b \cdot \frac{\sigma_y}{\sigma_x}$$
+$$\beta_{yx}=\frac{\frac{\text{Anzahl Einheiten auf Y}}{\sigma_y}}{\frac{\text{pro 1 Einheit X}}{\sigma_x}}=b \cdot \frac{\frac{1}{\sigma_y}}{\frac{1}{\sigma_x}}= b \cdot \frac{\sigma_y}{\sigma_x}$$
 
 **Interpretation:**
 
@@ -935,7 +935,7 @@ Beispiel: Vorhersage Leistung im Verkehrstest (AV) aus IQ (UV):
 
 3. KI für Steigungsparameter berechnen (Hypothesentest)
 
-4. Entscheidungsregel: KI enthält die 0 nicht $(\beta \neq0)$
+4. Entscheidungsregel: KI enthält die 0 nicht $(b \neq0)$
 ]
 
 .pull-right[
@@ -1088,9 +1088,9 @@ $$0.12 \pm 2.10 \cdot \frac{1.44}{`r round(sd(df$IQ),2)` \cdot \sqrt{20}}= 0.12 
 * untere Grenze: $0.12 - 0.07 = 0.05$
 * obere Grenze: $0.12 + 0.07 = 0.19$
 
-$\beta_{yx}=0.12,$ $KI_{95\%}[0.05 - 0.19]$
+$b_{yx}=0.12,$ $KI_{95\%}[0.05 - 0.19]$
 
-$\rightarrow$ Da das KI den Wert 0 nicht umschließt, ist $\beta_{yx}$ signifikant.
+$\rightarrow$ Da das KI den Wert 0 nicht umschließt, ist $b_{yx}$ signifikant.
 
 ]
 
@@ -1287,7 +1287,7 @@ class: top, left
 
 **Statistischer Bericht: (ausführlich)**
 
-Es wurde eine lineare Regression mit dem Prädiktor IQ und dem Kriterium Testleistung durchgeführt. Die Analyse ergab, dass IQ ein signifikanter Prädiktor für die Testleistung ist, $β$ = 0.12, $t$(18) = 3.83, $p$ = .001. Das Modell erklärte etwa 44.9% der Varianz der Testleistung, $R^2$ = .42, $F$(1,18) = 14.69, $p$ = .001.
+Es wurde eine lineare Regression mit dem Prädiktor IQ und dem Kriterium Testleistung durchgeführt. Die Analyse ergab, dass IQ ein signifikanter Prädiktor für die Testleistung ist, $b$ = 0.12, $t$(18) = 3.83, $p$ = .001. Das Modell erklärte etwa 44.9% der Varianz der Testleistung, $R^2$ = .42, $F$(1,18) = 14.69, $p$ = .001.
 
 Eine Prüfung der Normalverteilung der standardisierten Residuen mittels Shapiro-Wilk-Test ergab keinen Hinweis auf eine signifikante Abweichung von der Normalverteilung, $W$ = 0.98, $p$ = .92. Die visuelle Inspektion des Residualplots („Residuals vs. Fitted“) zeigt ebenfalls keine systematische Verletzung der Homoskedastizität.
 
@@ -1302,7 +1302,7 @@ class: top, left
 
 Wenn Sie in Ihrer Klausur eine Regression händisch berechnen und auf signifikanz prüfen, könnte Ihr Antwortsatz so aussehen: 
 
->Es wurde eine lineare Regression mit dem Prädiktor IQ und dem Kriterium Testleistung durchgeführt. Die Analyse ergab, dass IQ ein signifikanter Prädiktor für die Testleistung ist, $β$ = 0.12, $t$(18) = 3.83, $p$ = .001. Das Modell erklärte etwa 44.9% der Varianz der Testleistung.
+>Es wurde eine lineare Regression mit dem Prädiktor IQ und dem Kriterium Testleistung durchgeführt. Die Analyse ergab, dass IQ ein signifikanter Prädiktor für die Testleistung ist, $b$ = 0.12, $t$(18) = 3.83, $p$ = .001. Das Modell erklärte etwa 44.9% der Varianz der Testleistung.
 **Inhaltliche Interpretation der Modellparameter**
 
 >Bei einem IQ von 0 liegt die erwartete Testleistung bei -7.83. Wenn der IQ um eine Einheit zunimmt, steigt die erwartete Testleistung um 0.12 Einheiten.
