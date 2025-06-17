@@ -32,6 +32,7 @@ library(xaringanthemer)
 library(xaringanExtra)
 library(sjPlot)
 library(sjmisc)
+library(afex)
 options(scipen = 999)
 
 style_duo_accent(
@@ -65,7 +66,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 8: ANOVA mit Messwiederholung
-##### `r format(as.Date(data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum), "%d.%m.%Y")[8]` | Prof. Dr. Stephan Goerigk
+##### `r data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum[8]` | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
@@ -747,6 +748,121 @@ class: top, left
 knitr::include_graphics("bilder/gpower_rm.png")
 ```
 ]
+
+
+---
+class: top, left
+### Anova mit Messwiederholung
+
+#### Berichten der Ergebnisse nach APA
+```{r include=FALSE}
+set.seed(123)
+n = 20
+t0 = round(rnorm(n, 30, 5))
+t1 = round(rnorm(n, 25, 5))
+t2 = round(rnorm(n, 8, 5))
+id = 1:n
+df = data.frame(id = id, t0 = t0, t1 = t1, t2 = t2)
+
+df_long = as.data.frame(pivot_longer(data = df, 
+                               cols = c("t0", "t1", "t2"), 
+                               names_to = "Messzeitpunkt", 
+                               values_to = "PAS_Score"))
+
+
+model = aov_ez(dv = "PAS_Score", within = c("Messzeitpunkt"), id = "id", data = df_long)
+
+
+
+```
+<small>
+<small>
+.code60[
+.pull-left[
+**Paniksymptome** gemessen durch PAS (Panik- und Agoraphobie-Skala) <br>
+Im Rahmen einer Expositionstherapie mit drei Messzeitpunkten <br> </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+
+effectsize::eta_squared(model = model, partial = T)
+```
+]
+]
+
+.pull-right[
+**Statistischer Bericht: (In Ihrer Klausur)**
+
+Wenn Sie in Ihrer Klausur den Output einer rmANOVA berichten sollen, könnte dies so aussehen: 
+
+.content-box-gray[
+Im Rahmen einer Expositionstherapie wurde die Entwicklung von Paniksymptomen über drei Messzeitpunkte hinweg mittels einer Varianzanalyse mit Messwiederholung untersucht. 
+Der Faktor Zeit zeigte einen signifikanten Einfluss auf die Symtomschwere $F$(2, 38) = 116.08, $p$ < .001, $\eta^2_p$ = 0.86. Damit konnten 86 % der Varianz durch den Messwiederholungsfaktor aufgeklärt werden - dies entspricht einem starken Effekt. Der Mauchly-Test war nicht signifikant ($p$ = .670), was auf eine erfüllte Sphärizitätsannahme hinweist.
+]
+
+]
+
+---
+class: top, left
+### Anova mit Messwiederholung
+
+#### Berichten der Ergebnisse nach APA
+<small>
+<small>
+.code60[
+.pull-left[
+**Paniksymptome** gemessen durch PAS (Panik- und Agoraphobie-Skala) <br>
+Im Rahmen einer Expositionstherapie mit drei Messzeitpunkten <br> </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+
+effectsize::eta_squared(model = model, partial = T)
+```
+]
+]
+
+.pull-right[
+**Inhaltlich bedeutet dies:**
+
+.content-box-gray[
+Es traten signifikante Unterschiede in der Ausprägung der Paniksymptome zwischen mindestens zwei Messzeitpunkten auf.
+]
+
+]
+
+---
+class: top, left
+### Anova mit Messwiederholung
+.code60[
+.pull-left[
+#### Post-hoc Vergleich 
+
+<small>
+<small>
+
+**Paniksymptome** gemessen durch PAS (Panik- und Agoraphobie-Skala) <br>
+Im Rahmen einer Expositionstherapie mit drei Messzeitpunkten <br> </small>
+
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  emmeans::emmeans(model, pairwise ~ Messzeitpunkt, adjust = "tukey")
+})
+```
+]
+]
+
+.pull-right[
+**Ergebnisse des Post-hoc Tests**
+
+.content-box-gray[
+Ein Post-hoc Test mit Tukey-Korrektur zeigte signifikante Mittelwertsunterschiede zwischen allen drei Messzeitpunkten. Der Unterschied zwischen t0 und t1 betrug 6.10 Punkte, $t$(19) = 4.07, $p$ = .002; zwischen t1 und t2 lag der Unterschied bei 16.1 Punkten, $t$(19) = 11.80, $p$ < .001. Dies deutet darauf hin, dass die Symptomverbesserung vor allem in der späteren Phase der Therapie stattfand
+]
+
+]
+
 
 ---
 class: top, left
