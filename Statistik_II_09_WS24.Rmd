@@ -65,7 +65,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 9: Mixed Designs
-##### `r format(as.Date(data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum), "%d.%m.%Y")[9]` | Prof. Dr. Stephan Goerigk
+##### `r data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum[9]` | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
@@ -883,6 +883,184 @@ knitr::include_graphics("bilder/gpower_mixed.png")
 
 * Sphärizitätskorrektur (i.d.R. nicht apriori geplant bzw. mann hofft auf Sphärizität)
 ]
+
+---
+class: top, left
+### Mixed Design
+
+#### Berichten der Ergebnisse nach APA
+```{r include=FALSE}
+set.seed(124)
+n = 45
+
+t0 = round(rnorm(n, 35, 5))
+t1 = round(rnorm(n, 30, 5))
+t2 = round(rnorm(n, 19, 5))
+id = 1:45
+df = data.frame(id, t0, t1, t2)
+
+Messzeitpunkt = rep(c("t0", "t1", "t2"), each = n)
+df_long1 = data.frame(id = rep(id,3), Messzeitpunkt, BDI_II = c(t0, t1, t2))
+df_long1$Gruppe = "PDD_Therapy"
+
+t0 = round(rnorm(n, 35, 5))
+t1 = round(rnorm(n, 32, 5))
+t2 = round(rnorm(n, 25, 5))
+id = 46:90
+df = data.frame(id, t0, t1, t2)
+
+Messzeitpunkt = rep(c("t0", "t1", "t2"), each = n)
+df_long2 = data.frame(id = rep(id,3), Messzeitpunkt, BDI_II = c(t0, t1, t2))
+df_long2$Gruppe = "TAU"
+
+df_long = rbind(df_long1, df_long2)
+
+
+
+model = aov_ez(dv = "BDI_II", within = c("Messzeitpunkt"), between = "Gruppe", id = "id", data = df_long)
+summary(model)
+
+
+```
+<small>
+<small>
+.code60[
+
+.pull-left[
+**Studiendesign**
+
+Im Rahmen einer randomisiert-kontrollierten Studie (RCT) soll die Wirksamkeit eines neu entwickelten Therapieverfahrens (**"PDD_Therapie"**) für Patient*innen mit chronischer Depression (PDD = Persistent Depressive Disorder) untersucht werden.
+
+* Insgesamt wurden N = 90 stationär behandelte Personen mit chronischer Depression in die Studie eingeschlossen.
+* Die Teilnehmenden wurden **randomisiert** einer von zwei Behandlungsgruppen zugewiesen:
+* Die Gruppe **PDD_Therapy** (n = 45) erhielt die neu entwickelte psychotherapeutische Intervention.
+* Die Gruppe **TAU** (Treatment as Usual, n = 45) erhielt eine etablierte kognitive Verhaltenstherapie (KVT).
+* **Forschungsfrage:** Führt PDD_Therapy im Vergleich zu TAU zu einer stärkeren Reduktion depressiver Symptome im Therapieverlauf?
+* Variablen:
+  * **Abhängige Variable**: Depressivität, erfasst mit dem Beck Depression Inventory-II (BDI-II; Wertebereich: 0–63).
+  * **Unabhängige Variablen**: 
+  * Gruppe (2 Stufen: PDD_Therapy, TAU)
+  * Messzeitpunkt (3 Zeitpunkte: vor Beginn, nach 3 Wochen und nach 6 Wochen Psychotherapie)
+
+]
+</small>
+</small>
+]
+
+.pull-right[
+```{r echo=F}
+df_long[df_long$id < 3 | df_long$id == 46 | df_long$id == 47,] %>%
+  kbl() %>%
+  kable_classic(full_width = T, position = "left", font_size = 15)
+```
+
+Tabellarische Darstellung je für $n=2$ Personen in jeder Gruppe (Platzgründe)
+]
+
+
+---
+class: top, left
+### Mixed Design
+
+#### Berichten der Ergebnisse nach APA
+<small>
+<small>
+.code60[
+.pull-left[
+**Depressivität** gemessen durch BDI-II (Beck Depression Inventory-II) <br>
+**Gruppe**: TAU (treatment as usual); PDD_Therapy
+**Messzeitpunkte**: 3 MZP <br> </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+
+#effectsize::eta_squared(model = model, partial = T)
+```
+]
+]
+
+.pull-right[**Statistischer Bericht: (In Ihrer Klausur)**
+<small>
+Wenn Sie in Ihrer Klausur den Output eines mixed Designs berichten sollen, könnte dies so aussehen: </small>
+.content-box-gray[
+Im Rahmen eines RCTs wurde die Wirksamkeit einer neu entwickelten Therapie für chronisch depressive Patient*innen (PDD_Therapy) untersucht.
+
+Es zeigte sich ein signifikanter **Haupteffekt der Gruppe**, $F$(1, 88) = 20.66, $p$ < .001. 
+Auch der **Faktor Messzeitpunkt** hatte unabhängig von der Gruppenzugehörigkeit einen signifikanten Einfluss auf die Depressivität (BDI-II), Huynh-Feldt korrigiert: $F$(2, 176) = 160.86, $p$ < .001.
+Darüber hinaus wurde eine signifikante **Interaktion zwischen Gruppe und Messzeitpunkt** gefunden, Huynh-Feldt $F$(2, 176) = 15.86, $p$ < .001.
+
+Aufgrund signifikanter Ergebnisse in den Mauchly-Tests ($p$s < .05) wurde bei Effekten mit Messwiederholung die **Huynh-Feldt-Korrektur** angewendet.
+]
+]
+
+---
+class: top, left
+### Mixed Design
+
+#### Berichten der Ergebnisse nach APA
+<small>
+<small>
+.code60[
+.pull-left[
+**Depressivität** gemessen durch BDI-II (Beck Depression Inventory-II) <br>
+**Gruppe**: TAU (treatment as usual); PDD_Therapy
+**Messzeitpunkte**: 3 MZP <br> </small>
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  summary(model)
+})
+
+#effectsize::eta_squared(model = model, partial = T)
+```
+]
+]
+
+.pull-right[
+**Inhaltlich bedeutet dies:**
+
+.content-box-gray[
+Es zeigten sich signifikante Mittelwertsunterschiede zwischen den beiden Therapiegruppen, über alle Messzeitpunkte hinweg betrachtet.
+Zudem traten signifikante Mittelwertsunterschiede zwischen den Messzeitpunkten auf, unabhängig von der Gruppenzugehörigkeit.
+Der **Symptomverlauf** unterschied sich zudem **zwischen den Gruppen**, d.h. die Entwicklung der Depressionswerte verlief in den beiden Interventionsbedingungen unterschiedlich über die Zeit hinweg.
+
+]
+
+]
+
+---
+class: top, left
+### Mixed Design
+.code60[
+.pull-left[
+#### Post-hoc Vergleich 
+
+<small>
+<small>
+**Depressivität** gemessen durch BDI-II (Beck Depression Inventory-II) <br>
+**Gruppe**: TAU (treatment as usual); PDD_Therapy
+**Messzeitpunkte**: 3 MZP <br> </small>
+
+```{r echo=FALSE}
+with(options(scipen = 0), {
+  emmeans::emmeans(model, pairwise ~ Gruppe:Messzeitpunkt, adjust = "tukey")
+})
+```
+]
+]
+
+.pull-right[
+**Ergebnisse des Post-hoc Tests**
+
+.content-box-gray[
+Ein **Post-hoc-Test mit Tukey-Korrektur** zeigte, dass in beiden Therapiegruppen eine signifikante Reduktion der Depressivität zwischen t0 und t2 auftrat.
+In der TAU-Gruppe betrug der mittlere Rückgang 8.53 Punkte, $t$(88) = 8.53, $p$ < .001. In der PDD_Therapie-Gruppe fiel der Rückgang mit 15.93 Punkten deutlich stärker aus, $t$(88) = 16.03, $p$ < .001. 
+
+Zwischen den Gruppen zeigten sich zu t0 und t1 keine signifikanten Unterschiede ($p$s > .05). Zum Zeitpunkt t2 unterschieden sich die Gruppen jedoch signifikant, $t$(88) = -7.02, $p$ < .001, zugunsten der **PDD_Therapie-Gruppe**, was auf deren höhere Wirksamkeit im Vergleich zur etablierten KVT hinweist.
+]
+
+]
+
 ---
 class: top, left
 ### Take-aways
