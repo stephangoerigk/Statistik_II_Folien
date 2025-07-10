@@ -29,7 +29,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 10: Verfahren für Nominaldaten - `\(\chi-\)`Test
-##### 08.01.2025 | Prof. Dr. Stephan Goerigk
+##### 10.07.2025 | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
@@ -174,7 +174,7 @@ class: top, left
 **Absolute Häufigkeiten (n):**
 .code80[
 
-```r
+``` r
 table(data$Behandlungserfolg)
 ```
 
@@ -187,7 +187,7 @@ table(data$Behandlungserfolg)
 **Relative Häufigkeiten (%):**
 
 
-```r
+``` r
 prop.table(table(data$Behandlungserfolg))
 ```
 
@@ -269,7 +269,7 @@ class: top, left
 **Absolute Häufigkeiten (n):**
 .code80[
 
-```r
+``` r
 table(data$Behandlungserfolg, data$Behandlung)
 ```
 
@@ -283,7 +283,7 @@ table(data$Behandlungserfolg, data$Behandlung)
 **Relative Häufigkeiten (%):**
 
 
-```r
+``` r
 prop.table(table(data$Behandlungserfolg, data$Behandlung))
 ```
 
@@ -806,7 +806,7 @@ class: top, left
 #### Eindimensionaler `\(\chi^2\)`-Test in R
 
 
-```r
+``` r
 # Stichprobendaten erstellen (1 Vektor und keine Tabelle, da eindimensional)
 
 x = c(rep("Männer", 223), rep("Frauen", 101))
@@ -820,7 +820,7 @@ table(x)
 ```
 
 
-```r
+``` r
 chisq.test(table(x), p = c(0.25, 0.75))
 ```
 
@@ -977,7 +977,7 @@ class: top, left
 Berechnung der Randhäufigkeiten:
 .code60[
 
-```r
+``` r
 addmargins(table(data$Behandlungserfolg, data$Behandlung), FUN = sum)
 ```
 
@@ -1067,7 +1067,7 @@ class: top, left
 Berechnung der Randhäufigkeiten:
 .code60[
 
-```r
+``` r
 addmargins(table(data$Behandlungserfolg, data$Behandlung), FUN = sum)
 ```
 
@@ -1304,7 +1304,7 @@ Unser Ergebnis (händisch):
 
 .code80[
 
-```r
+``` r
 chisq.test(table(data$Behandlungserfolg, data$Behandlung), correct = FALSE)
 ```
 
@@ -1319,7 +1319,7 @@ chisq.test(table(data$Behandlungserfolg, data$Behandlung), correct = FALSE)
 R führt standardmäßig für 2x2 Kreuztabellen die so genannte Yates-Kontinuitätskorrektur durch (Ergebnis etwas genauer):
 
 
-```r
+``` r
 chisq.test(table(data$Behandlungserfolg, data$Behandlung))
 ```
 
@@ -1486,7 +1486,7 @@ class: top, left
 ]
 .pull-right[
 
-```r
+``` r
 table(data$Behandlungserfolg, data$Behandlung)
 ```
 
@@ -1555,11 +1555,11 @@ class: top, left
 <style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
 <script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
 <script>var slideshow = remark.create({
-"slideNumberFormat": "%current%",
-"highlightStyle": "github",
-"highlightLines": true,
-"countIncrementalSlides": false,
-"ratio": "16:9"
+  "slideNumberFormat": "%current%",
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
 });
 if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
   window.dispatchEvent(new Event('resize'));

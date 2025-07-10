@@ -65,7 +65,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 11: Verfahren für Nominaldaten (2)
-##### `r format(as.Date(data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum), "%d.%m.%Y")[11]` | Prof. Dr. Stephan Goerigk
+##### 17.07.2025 | Prof. Dr. Stephan Goerigk
 
 
 ---
