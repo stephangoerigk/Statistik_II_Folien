@@ -568,7 +568,7 @@ class: top, left
 
   * Zähler- und Nennereinheiten werden an der Streuung von $Y$ und $X$ relativiert
 
-$$\beta_{yx}=\frac{\frac{\text{Anzahl Einheiten auf Y}}{\sigma_y}}{\frac{\text{pro 1 Einheit X}}{\sigma_x}}=b \cdot \frac{\frac{1}{\sigma_y}}{\frac{1}{\sigma_x}}= b \cdot \frac{\sigma_y}{\sigma_x}$$
+$$\beta_{yx}=\frac{\frac{\text{Anzahl Einheiten auf Y}}{\sigma_y}}{\frac{\text{pro 1 Einheit X}}{\sigma_x}}=b \cdot \frac{\frac{1}{\sigma_y}}{\frac{1}{\sigma_x}}= b \cdot \frac{\sigma_x}{\sigma_y}$$
 
 **Interpretation:**
 
