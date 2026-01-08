@@ -29,7 +29,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 9: Mixed Designs
-##### 17.07.2025 | Prof. Dr. Stephan Goerigk
+##### Wintersemester 2025 | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
@@ -781,13 +781,13 @@ emmeans(model, pairwise ~ Time | Gruppe)$emmeans
 ##  Time emmean    SE df lower.CL upper.CL
 ##  t0     10.4 0.949  8     8.21     12.6
 ##  t1     11.2 0.975  8     8.95     13.4
-##  t2     12.8 1.245  8     9.93     15.7
+##  t2     12.8 1.240  8     9.93     15.7
 ## 
 ## Gruppe = Gruppe2:
 ##  Time emmean    SE df lower.CL upper.CL
 ##  t0      9.8 0.949  8     7.61     12.0
 ##  t1     14.6 0.975  8    12.35     16.8
-##  t2     18.6 1.245  8    15.73     21.5
+##  t2     18.6 1.240  8    15.73     21.5
 ## 
 ## Confidence level used: 0.95
 ```
@@ -811,13 +811,13 @@ emmeans(model, pairwise ~ Time | Gruppe)$contrasts
 ## Gruppe = Gruppe1:
 ##  contrast estimate    SE df t.ratio p.value
 ##  t0 - t1      -0.8 0.768  8  -1.042  0.5735
-##  t0 - t2      -2.4 1.378  8  -1.741  0.2490
+##  t0 - t2      -2.4 1.380  8  -1.741  0.2490
 ##  t1 - t2      -1.6 0.883  8  -1.812  0.2264
 ## 
 ## Gruppe = Gruppe2:
 ##  contrast estimate    SE df t.ratio p.value
 ##  t0 - t1      -4.8 0.768  8  -6.249  0.0006
-##  t0 - t2      -8.8 1.378  8  -6.384  0.0005
+##  t0 - t2      -8.8 1.380  8  -6.384  0.0005
 ##  t1 - t2      -4.0 0.883  8  -4.529  0.0048
 ## 
 ## P value adjustment: tukey method for comparing a family of 3 estimates
@@ -1272,12 +1272,12 @@ class: top, left
 ##  TAU t0 - TAU t1                    3.200 0.837 88   3.822  0.0033
 ##  TAU t0 - PDD_Therapy t2           15.556 0.961 88  16.182  &lt;.0001
 ##  TAU t0 - TAU t2                    8.533 0.994 88   8.583  &lt;.0001
-##  PDD_Therapy t1 - TAU t1           -1.067 1.025 88  -1.040  0.9030
-##  PDD_Therapy t1 - PDD_Therapy t2   11.289 1.105 88  10.214  &lt;.0001
-##  PDD_Therapy t1 - TAU t2            4.267 1.028 88   4.149  0.0011
-##  TAU t1 - PDD_Therapy t2           12.356 1.028 88  12.014  &lt;.0001
-##  TAU t1 - TAU t2                    5.333 1.105 88   4.826  0.0001
-##  PDD_Therapy t2 - TAU t2           -7.022 1.031 88  -6.808  &lt;.0001
+##  PDD_Therapy t1 - TAU t1           -1.067 1.030 88  -1.040  0.9030
+##  PDD_Therapy t1 - PDD_Therapy t2   11.289 1.110 88  10.214  &lt;.0001
+##  PDD_Therapy t1 - TAU t2            4.267 1.030 88   4.149  0.0011
+##  TAU t1 - PDD_Therapy t2           12.356 1.030 88  12.014  &lt;.0001
+##  TAU t1 - TAU t2                    5.333 1.110 88   4.826  0.0001
+##  PDD_Therapy t2 - TAU t2           -7.022 1.030 88  -6.808  &lt;.0001
 ## 
 ## P value adjustment: tukey method for comparing a family of 6 estimates
 ```

@@ -65,7 +65,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 9: Mixed Designs
-##### `r data.frame(readxl::read_excel("Modul Quantitative Methoden II_Termine.xlsx"))$Datum[9]` | Prof. Dr. Stephan Goerigk
+##### Wintersemester 2025 | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
