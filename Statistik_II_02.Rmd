@@ -1,9 +1,9 @@
 ---
 title: "Einheit 2"
-subtitle: "⚔<br/>with xaringan"
+subtitle: "Einfaktorielle Varianzanalyse (2)"
 author: "Prof. Dr. Stephan Goerigk"
-institute: "RStudio, PBC"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+institute: "Charlotte Fresenius Universität"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     css: [xaringan-themer.css, "hygge", style.css]
@@ -236,6 +236,8 @@ class: top, left
 
 ##### Effektstärke
 
+<small>
+
 $$\omega^2=\frac{f^2}{1+f^2}= \frac{0.26}{1+0.26}=0.2063$$
 * Der Anteil der Effektvarianz des Faktors Gruppe beträgt 20.63%
 
@@ -243,7 +245,8 @@ $$\omega^2=\frac{f^2}{1+f^2}= \frac{0.26}{1+0.26}=0.2063$$
 
 * Dies entspricht einem großen Effekt.
 
-**Cut-offs:**
+.pull-left[
+**Cut-offs $\omega^2$:**
 
 ```{r echo=F}
 df <- data.frame(Effektstärke = c("Kleiner Effekt", "Mittlerer Effekt", "Großer Effekt"),
@@ -254,6 +257,21 @@ names(df) = c("Effektstärke", "Omega-Quadrat")
 kable(df[,]) %>%
   kable_styling(font_size = 18)
 ```
+]
+
+.pull-right[
+**Cut-offs Cohen's $f$:**
+
+```{r echo=F}
+df_f <- data.frame(Effektstärke = c("Kleiner Effekt", "Mittlerer Effekt", "Großer Effekt"),
+                   f = c("0.10", "0.25", "0.40"))
+
+names(df_f) = c("Effektstärke", "Cohen's f")
+
+kable(df_f[,]) %>%
+  kable_styling(font_size = 18)
+```
+]
 
 ---
 class: top, left
@@ -308,9 +326,9 @@ $$\eta^2=\frac{0.2797}{1+0.2797}=0.2185$$
 **Cut-offs:**
 ```{r echo=F}
 df <- data.frame(Effektstärke = c("Kleiner Effekt", "Mittlerer Effekt", "Großer Effekt"),
-                 OmegaQuadrat = c("0.01", "0.06", "0.14"))
+                 EtaQuadrat = c("0.01", "0.06", "0.14"))
 
-names(df) = c("Effektstärke", "Omega-Quadrat")
+names(df) = c("Effektstärke", "Eta-Quadrat")
 
 kable(df[,]) %>%
   kable_styling(font_size = 18)
@@ -369,7 +387,7 @@ class: top, left
 
   * Varianz zwischen hängt proportional von der Anzahl der Personen in einer Bedingung ab 
 
-  * Die größer $N$, desto größer die Varianz zwischen (steht im Zähler des F-Bruchs)
+  * Je größer $N$, desto größer die Varianz zwischen (steht im Zähler des F-Bruchs)
 
   * größere Varianz zwischen $\rightarrow$ größerer F-Wert $\rightarrow$ signifikanteres Ergebnis
 
@@ -424,7 +442,7 @@ class: top, left
 pwr::pwr.anova.test(k=3, f= 0.2, sig.level = 0.05, power = 0.9)
 ```
 
-* Bei Annahme eines Signifikanzniveaus von $\alpha=0.05$ wären für eine ANOVA mit 3 Gruppen und einer großen Effektstärke (0.20) wären für eine Teststärke $(1-\beta)$ von 90% lediglich N=106 Personen zum Nachweisen eines signifikanten Effekts notwendig gewesen.
+* Bei Annahme eines Signifikanzniveaus von $\alpha=0.05$, einer ANOVA mit 3 Gruppen und einer kleinen bis mittleren Effektstärke von $f=0.20$ wären für eine Teststärke $(1-\beta)$ von 90% lediglich $N=106$ Personen notwendig.
 
 ---
 class: top, left
@@ -448,13 +466,13 @@ class: top, left
 
 * $H_0$ der ANOVA: Alle Mittelwerte sind gleich. (Soll verworfen werden)
 
-* Signifikantes Ergebnis führt zur Ablehnung der $H_0$ und zur vorübergehende Annahme der $H_1$
+* Signifikantes Ergebnis führt zur Ablehnung der $H_0$ und zur vorläufigen Annahme der $H_1$
 
   * ABER: Alternativhypothese ist vollkommen unspezifisch
   * $H_1$ macht keine Aussage darüber, welche der Gruppen sich voneinander unterscheiden
   * $H_1$ umfasst alle Möglichkeiten, welche nicht der $H_0$ entsprechen
-  
-* Signifikante ANOVA: Es ist lediglich gesichtert, dass Gruppe mit kleinstem Mittelwert sich signifikant von Gruppe mit größtem Mittelwert unterscheidet.
+
+* Signifikante ANOVA: Es ist lediglich gesichert, dass die Gruppe mit dem kleinsten Mittelwert sich signifikant von der Gruppe mit dem größten Mittelwert unterscheidet.
 
 * ABER: Global formulierte $H_1$ erlaubt viele Kombinationen (bei 3 Gruppen bereits 18 Möglichkeiten)
 
@@ -546,7 +564,7 @@ class: top, left
 
 **Bestimmung der kleinsten noch signifikanten Differenz (Krit. Wert)**
 
-* krtische q-Werte stehen in eigener Tabelle
+* Kritische q-Werte stehen in einer eigenen Tabelle
 
 * Die Werte in der Tabelle sind abhängig von:
 
@@ -791,7 +809,7 @@ class: top, left
 
 Eine einfaktorielle ANOVA wurde durchgeführt, um die Symptomverbesserung zwischen verschiedenen Medikamentgruppen (Medikament 1, Medikament 2 und Placebo) zu vergleichen. 
 
-Vor der Analyse wurden die Voraussetzungen überprüft. Die Annahme der Varianzhomogenität konnte nach Prüfung mit dem Levene Test bestätigt werden ( $p$ = .748). Auch die Normalverteilungsannahme, welche mit Shapiro Wilk Tests überprüft wurde, war gegebn (Medikament 1: $p$ = .962; Medikament 2: $p$ = .281; Placebo: $p$ = .928). 
+Vor der Analyse wurden die Voraussetzungen überprüft. Die Annahme der Varianzhomogenität konnte nach Prüfung mit dem Levene Test bestätigt werden ( $p$ = .748). Auch die Normalverteilungsannahme, welche mit Shapiro Wilk Tests überprüft wurde, war gegeben (Medikament 1: $p$ = .962; Medikament 2: $p$ = .281; Placebo: $p$ = .928). 
 
 Die ANOVA ergab einen signifikanten Unterschied in der Symptomverbesserung zwischen den Gruppen, $F$(2, 147) = 20.56, $p$ < .001, $ω^2$ = .21.
 

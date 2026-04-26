@@ -1,9 +1,9 @@
 ---
 title: "Einheit 3"
-subtitle: "⚔<br/>with xaringan"
+subtitle: "Einfache lineare Regression (1)"
 author: "Prof. Dr. Stephan Goerigk"
-institute: "RStudio, PBC"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+institute: "Charlotte Fresenius Universität"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     css: [xaringan-themer.css, "hygge", style.css]
@@ -27,7 +27,6 @@ library(kableExtra)
 library(ggplot2)
 library(plotly)
 library(htmlwidgets)
-library(plotly)
 library(MASS)
 library(ggpubr)
 library(xaringanthemer)
@@ -123,7 +122,7 @@ class: top, left
 
 * ungerichtet: es könnte $X$ auf $Y$ wirken, $Y$ aber auch auf $X$, oder die beiden könnten einfach parallel auftreten 
 
-*  Um solche Zusammenhänge zu messen, gibt es sogenannte Assoziationsmaße z.B. Varianz oder Korrelation.
+*  Um solche Zusammenhänge zu messen, gibt es sogenannte Assoziationsmaße z.B. Kovarianz oder Korrelation.
 
 **Gerichtete Zusammenhänge**
 
@@ -437,7 +436,7 @@ layout(legend = list(x = 100, y = 0.5))
 
 Formel für das Residuum:
 
-$$\varepsilon_i=\hat{y}_i - y_i$$
+$$\varepsilon_i=y_i - \hat{y}_i$$
 ]
 
 
@@ -794,7 +793,7 @@ $$ \hat{y}=`r round(mean(sampledata$Y, na.rm = T) - cov(sampledata$X, sampledata
 
 **Nochmal zurück zu unserer Interpretation:**
   
-- a ist also der Wert wo $X=0$ ist. Also hat jemand mit 0 auf der UV einen AV Wert von 29.
+- a ist also der Wert wo $X=0$ ist. Also hat jemand mit 0 auf der UV einen AV Wert von `r round(coef(model)[["(Intercept)"]], 0)`.
 
 - Wenn wir nun um 1 Einheit $X$ nach rechts gehen (in welcher Einheit die UV auch immmer gemessen wird), nimmt $\hat{y}$ um b zu.
 ]
@@ -993,7 +992,7 @@ class: top, left
 
 Das Verhältnis aufgeklärter zu gesamter Streuung nennt sich Bestimmtheitsmaß $(R^2)$
 
-$$R^2=\frac{\text{erklärte Varianz}}{\text{gesamte Streuung}}=\frac{\sum\limits _{i=1}^{n}(\hat{y}_i-\bar{y}_i)^2}{\sum\limits _{i=1}^{n}(y_i-\bar{y}_i)^2}=(\frac{s_{XY}}{s_X \cdot s_Y})^2$$
+$$R^2=\frac{\text{erklärte Varianz}}{\text{gesamte Streuung}}=\frac{\sum\limits _{i=1}^{n}(\hat{y}_i-\bar{y})^2}{\sum\limits _{i=1}^{n}(y_i-\bar{y})^2}=(\frac{s_{XY}}{s_X \cdot s_Y})^2$$
 <br>
 
 .center[
@@ -1023,9 +1022,9 @@ knitr::kable((t(sampledata[,2:3])),
 
 $$ R^2=(\frac{s_{xy}}{s_x\cdot s_y})^2 $$
 
-$$ R^2=(\frac{`r round(cov(sampledata$X, sampledata$Y), 2)`}{`r round(sd(sampledata$X), 2)`\cdot `r round(sd(sampledata$Y), 2)`})^2 = `r round(cov(sampledata$X, sampledata$Y) / (sd(sampledata$X) * sd(sampledata$Y)), 2)`$$
+$$ R^2=(\frac{`r round(cov(sampledata$X, sampledata$Y), 2)`}{`r round(sd(sampledata$X), 2)`\cdot `r round(sd(sampledata$Y), 2)`})^2 = `r round((cov(sampledata$X, sampledata$Y) / (sd(sampledata$X) * sd(sampledata$Y)))^2, 2)`$$
 
-Es können `r round(cov(sampledata$X, sampledata$Y) / (sd(sampledata$X) * sd(sampledata$Y)), 2) * 100`% der Streuung um den Mittelwert von Y durch die Gerade erklärt werden.
+Es können `r round((cov(sampledata$X, sampledata$Y) / (sd(sampledata$X) * sd(sampledata$Y)))^2, 2) * 100`% der Streuung um den Mittelwert von Y durch die Gerade erklärt werden.
 
 ---
 class: top, left
@@ -1098,7 +1097,7 @@ class: top, left
 
 * **Y-Achsenabschnitt** ist der Startwert (wenn X = 0) und **Steigung** ist die Veränderung in der AV bei Zunahme der UV um 1 Einheit.
 
-* Das **Bestimmtheitsmaß** $(R^2)$ gibt an, wie viel Prozent (%) der Gesamtvarianz der AV durch die UV (also durch die das Regressionsmodell) aufgeklärt werden.
+* Das **Bestimmtheitsmaß** $(R^2)$ gibt an, wie viel Prozent (%) der Gesamtvarianz der AV durch die UV (also durch das Regressionsmodell) aufgeklärt werden.
 ]
 
 ]
