@@ -4,6 +4,7 @@
     <title>Einheit 6</title>
     <meta charset="utf-8" />
     <meta name="author" content="Prof. Dr. Stephan Goerigk" />
+    <meta name="date" content="2026-04-26" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/hygge.css" rel="stylesheet" />
     <script src="libs/jquery/jquery-3.6.0.min.js"></script>
@@ -46,7 +47,7 @@ class: top, left
 
 **Abgrenzung zur mehrfaktoriellen ANOVA:**
 
-* Bei der ANOVA sind UVs immer kategorial (Mittelwertesvergleiche zw. Gruppen/Kategorien)
+* Bei der ANOVA sind UVs immer kategorial (Mittelwertsvergleiche zw. Gruppen/Kategorien)
 
 * Im Regressionsmodell können kategoriale und stetige UVs verwendet und auch kombiniert werden
 
@@ -135,7 +136,7 @@ class: top, left
 
 * Einfache lineare Regression: 2-dimensionales Koordinatensystem mit X-Achse und Y-Achse
 
-* Mutiple Regression (2 UVs): 3-dimensionales Koordinatensystem mit X-Achse, Y-Achse und Z-Achse
+* Multiple Regression (2 UVs): 3-dimensionales Koordinatensystem mit X-Achse, Y-Achse und Z-Achse
 
 `\(\rightarrow\)` Es wird ein 3D-Streudiagramm dargestellt
 
@@ -160,7 +161,7 @@ class: top, left
 
   * Gerade definiert durch 1 Y-Achsenabschnitt + 1 Steigungsparameter
 
-* Mutiple Regression (2 UVs): Modellfunktion dargestellt durch Regressionsebene
+* Multiple Regression (2 UVs): Modellfunktion dargestellt durch Regressionsebene
 
   * Ebene definiert durch 1 Y-Achsenabschnitt + 2 Steigungsparameter
 
@@ -244,7 +245,7 @@ class: top, left
 
 Die Konfidenzintervalle für `\(b_1\)` und `\(b_2\)` lassen sich wie folgt berechnen:
 
-`$$b \pm t_{1-\frac{\alpha}{2} \cdot SE(B_j)}$$`
+`$$b \pm t_{1-\frac{\alpha}{2}} \cdot SE(B_j)$$`
 
 * Die Freiheitsgerade für den t-Wert errechnen sich als `\(df=n-3\)`
 
@@ -451,7 +452,7 @@ class: top, left
 
 Die Schätzfunktion für die unbekannte Fehlervarianz lässt sich darstellen als
 
-`$$\hat{\sigma}^2 = \frac{1}{n-3}\sum\limits _{i=1}^{n}(Y_i-(A + B_1 \cdot X_{i2}))^2$$`
+`$$\hat{\sigma}^2 = \frac{1}{n-3}\sum\limits _{i=1}^{n}(Y_i-(A + B_1 \cdot X_{i1} + B_2 \cdot X_{i2}))^2$$`
 
 * Nach Umstellen und ziehen der Wurzel erhält man den Standardschätzfehler (wie in der einfachen Regression):
 
@@ -831,7 +832,7 @@ class: top, left
 
 * Der Omnibus-Test ermöglicht uns auch den Vergleich von 2 Modellen miteinander
 
-* Voraussetzung ist, dass das eine Modell (komplex) das andere Modell (einfach) enhält (geschachtelte Modelle; engl.: "*nested models*").
+* Voraussetzung ist, dass das eine Modell (komplex) das andere Modell (einfach) enthält (geschachtelte Modelle; engl.: "*nested models*").
 
 * Dies z.B. der Fall, wenn wir zu einem bestehenden Modell einen Prädiktor hinzunehmen
 
@@ -1113,9 +1114,9 @@ class: top, left
 
 `$$\hat{Y}_i= 86.24294 + 0.11254 \cdot 5 + -0.52752 \cdot 50 = 60.43$$`
 
-* Laut unserem Modell mit 2 Prädiktoren, sollte Person 1 einen Aggressionswert von 60.29 Punkten haben.
+* Laut unserem Modell mit 2 Prädiktoren, sollte Person 1 einen Aggressionswert von 60.43 Punkten haben.
 
-* Da der tatsächlich beobachtete Wert 53 ist, beträgt der Modellfehler `\(60.29-53=7.29\)` Punkte.
+* Da der tatsächlich beobachtete Wert 53 ist, beträgt der Modellfehler `\(60.43-53=7.43\)` Punkte.
 
 ]
 
@@ -1420,7 +1421,7 @@ class: top, left
 
 3) Die Werte der einzelnen Versuchspersonen müssen unabhängig voneinander sein
 
-4) Die Zusammenhänge müssen theroretisch linear sein (sonst andere Regressionsmodelle nutzen).
+4) Die Zusammenhänge müssen theoretisch linear sein (sonst andere Regressionsmodelle nutzen).
 
 5) Streuungen der Wertepaare müssen über ganzen Wertebereich von `\(X\)` und `\(Z\)` homogen sein (Homoskedastizität).
 
