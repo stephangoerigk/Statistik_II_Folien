@@ -1,9 +1,9 @@
 ---
 title: "Einheit 1"
-subtitle: "⚔<br/>with xaringan"
-author: "Dr. Stephan Goerigk"
-institute: "RStudio, PBC"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+subtitle: "Einfaktorielle Varianzanalyse (1)"
+author: "Prof. Dr. Stephan Goerigk"
+institute: "Charlotte Fresenius Universität"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     css: [xaringan-themer.css, "hygge"]
@@ -359,7 +359,7 @@ class: top, left
 
 **Verringerung der Teststärke $(\lambda)$**
 
-* Beim Rechnnen mehrerer t-Tests $\rightarrow$ es gehen immer nur Teile der Gesamtstichprobe in die Analyse ein
+* Beim Rechnen mehrerer t-Tests $\rightarrow$ es gehen immer nur Teile der Gesamtstichprobe in die Analyse ein
 
 * z.B. 3 Tests: Jeder Test mit $\frac{2}{3}$ der Gesamtstichprobe (bei gleich großen Gruppen)
 
@@ -437,7 +437,7 @@ $$\hat{\sigma}_x^2=\frac{\sum\limits _{i=1}^{n}(x_{i}-\bar{x})^2}{n-1}$$
 * Zur allgemeineren Verwendung der Formel ändern wir die Schreibweise etwas:
 
   * QS = Quadratsumme
-  * df = Freiheitsgerade der Verteilung
+  * df = Freiheitsgrade der Verteilung
 
 $$QS_x=\sum\limits _{i=1}^{n}(x_{i}-\bar{x})^2$$
 $$df_x=n-1$$
@@ -562,7 +562,7 @@ class: top, left
 
 .pull-right[
 **Unsystematische Einflüsse:**
-* Wirken auf die Meswerte, sind aber nicht von Studie intendiert
+* Wirken auf die Messwerte, sind aber nicht von Studie intendiert
 
 * Unterschiede zwischen Personen, unabhängig von Manipulation
 
@@ -658,6 +658,106 @@ class: top, left
 
 #### Prinzip der Varianzanalyse
 
+**Schätzung der Residualvarianz – Grafisch:**
+
+<svg width="100%" viewBox="0 0 900 310" style="display:block; margin-top:6px;">
+  <defs>
+    <marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 Z" fill="#EE0071"/>
+    </marker>
+  </defs>
+
+  <!-- Spaltenköpfe -->
+  <rect x="30"  y="0" width="240" height="26" fill="#621C37" rx="3"/>
+  <rect x="330" y="0" width="240" height="26" fill="#621C37" rx="3"/>
+  <rect x="630" y="0" width="240" height="26" fill="#621C37" rx="3"/>
+  <text x="150" y="18" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="inherit">Placebo</text>
+  <text x="450" y="18" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="inherit">Medikament 1</text>
+  <text x="750" y="18" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="inherit">Medikament 2</text>
+
+  <!-- Y-Achsen -->
+  <line x1="80"  y1="33" x2="80"  y2="238" stroke="#888" stroke-width="1.2"/>
+  <line x1="380" y1="33" x2="380" y2="238" stroke="#888" stroke-width="1.2"/>
+  <line x1="680" y1="33" x2="680" y2="238" stroke="#888" stroke-width="1.2"/>
+
+  <!-- Skala: y=238 → Wert 5, y=33 → Wert 14; 1 Einheit = (238-33)/9 ≈ 22.8px -->
+  <!-- Wert 6 → y=215, 7 → y=192, 8 → y=170, 10 → y=124, 11 → y=101, 12 → y=79, 13 → y=56 -->
+
+  <!-- Ticks und Labels -->
+  <line x1="77" y1="215" x2="83" y2="215" stroke="#888" stroke-width="1"/>
+  <text x="72" y="219" text-anchor="end" font-size="10" fill="#888" font-family="inherit">6</text>
+  <line x1="77" y1="192" x2="83" y2="192" stroke="#888" stroke-width="1"/>
+  <text x="72" y="196" text-anchor="end" font-size="10" fill="#888" font-family="inherit">7</text>
+  <line x1="77" y1="170" x2="83" y2="170" stroke="#888" stroke-width="1"/>
+  <text x="72" y="174" text-anchor="end" font-size="10" fill="#888" font-family="inherit">8</text>
+
+  <line x1="377" y1="124" x2="383" y2="124" stroke="#888" stroke-width="1"/>
+  <text x="372" y="128" text-anchor="end" font-size="10" fill="#888" font-family="inherit">10</text>
+  <line x1="377" y1="101" x2="383" y2="101" stroke="#888" stroke-width="1"/>
+  <text x="372" y="105" text-anchor="end" font-size="10" fill="#888" font-family="inherit">11</text>
+  <line x1="377" y1="79"  x2="383" y2="79"  stroke="#888" stroke-width="1"/>
+  <text x="372" y="83"  text-anchor="end" font-size="10" fill="#888" font-family="inherit">12</text>
+
+  <line x1="677" y1="101" x2="683" y2="101" stroke="#888" stroke-width="1"/>
+  <text x="672" y="105" text-anchor="end" font-size="10" fill="#888" font-family="inherit">11</text>
+  <line x1="677" y1="79"  x2="683" y2="79"  stroke="#888" stroke-width="1"/>
+  <text x="672" y="83"  text-anchor="end" font-size="10" fill="#888" font-family="inherit">12</text>
+  <line x1="677" y1="56"  x2="683" y2="56"  stroke="#888" stroke-width="1"/>
+  <text x="672" y="60"  text-anchor="end" font-size="10" fill="#888" font-family="inherit">13</text>
+
+  <!-- Gruppenmittelwert-Linien: Placebo x̄=7 → y=192, Med1 x̄=11 → y=101, Med2 x̄=12 → y=79 -->
+  <line x1="85"  y1="192" x2="265" y2="192" stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <line x1="385" y1="101" x2="565" y2="101" stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <line x1="685" y1="79"  x2="865" y2="79"  stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <text x="270" y="189" font-size="11" fill="#621C37" font-weight="600" font-family="inherit">x̄ = 7</text>
+  <text x="570" y="98"  font-size="11" fill="#621C37" font-weight="600" font-family="inherit">x̄ = 11</text>
+  <text x="870" y="76"  font-size="11" fill="#621C37" font-weight="600" font-family="inherit">x̄ = 12</text>
+
+  <!-- PLACEBO: Werte 6, 7, 7, 8 bei x = 115, 150, 185, 220 -->
+  <!-- Abweichungspfeile -->
+  <line x1="115" y1="215" x2="115" y2="198" stroke="#EE0071" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="220" y1="170" x2="220" y2="186" stroke="#EE0071" stroke-width="1.8" marker-end="url(#arr)"/>
+  <!-- Punkte -->
+  <circle cx="115" cy="215" r="6" fill="#621C37"/>
+  <circle cx="150" cy="192" r="6" fill="#621C37"/>
+  <circle cx="185" cy="192" r="6" fill="#621C37"/>
+  <circle cx="220" cy="170" r="6" fill="#621C37"/>
+
+  <!-- MED1: Werte 10, 11, 11, 12 bei x = 415, 450, 485, 520 -->
+  <line x1="415" y1="124" x2="415" y2="107" stroke="#EE0071" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="520" y1="79"  x2="520" y2="95"  stroke="#EE0071" stroke-width="1.8" marker-end="url(#arr)"/>
+  <circle cx="415" cy="124" r="6" fill="#621C37"/>
+  <circle cx="450" cy="101" r="6" fill="#621C37"/>
+  <circle cx="485" cy="101" r="6" fill="#621C37"/>
+  <circle cx="520" cy="79"  r="6" fill="#621C37"/>
+
+  <!-- MED2: Werte 11, 12, 12, 13 bei x = 715, 750, 785, 820 -->
+  <line x1="715" y1="101" x2="715" y2="85"  stroke="#EE0071" stroke-width="1.8" marker-end="url(#arr)"/>
+  <line x1="820" y1="56"  x2="820" y2="73"  stroke="#EE0071" stroke-width="1.8" marker-end="url(#arr)"/>
+  <circle cx="715" cy="101" r="6" fill="#621C37"/>
+  <circle cx="750" cy="79"  r="6" fill="#621C37"/>
+  <circle cx="785" cy="79"  r="6" fill="#621C37"/>
+  <circle cx="820" cy="56"  r="6" fill="#621C37"/>
+
+  <!-- Legende -->
+  <line x1="30" y1="266" x2="65" y2="266" stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <text x="70" y="270" font-size="11" fill="#444" font-family="inherit">Gruppenmittelwert (x̄ᵢ)</text>
+  <line x1="280" y1="259" x2="280" y2="272" stroke="#EE0071" stroke-width="1.8" marker-end="url(#arr)"/>
+  <text x="288" y="270" font-size="11" fill="#444" font-family="inherit">Abweichung vom Gruppenmittelwert (geht in σ²Res ein)</text>
+  <circle cx="680" cy="266" r="6" fill="#621C37"/>
+  <text x="690" y="270" font-size="11" fill="#444" font-family="inherit">Messwert (xₘᵢ)</text>
+
+  <!-- Hinweisbox -->
+  <rect x="30" y="282" width="840" height="22" fill="#fdeef5" rx="3"/>
+  <text x="450" y="297" text-anchor="middle" font-size="11" fill="#621C37" font-family="inherit">Abweichungen werden nur innerhalb jeder Gruppe berechnet — Unterschiede zwischen den Gruppen spielen keine Rolle.</text>
+</svg>
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Prinzip der Varianzanalyse
+
 **Schätzung der Residualvarianz:**
 
 * Bei der Berechnung der Residualvarianz spielen Unterschiede zwischen den Gruppenmittelwerten (durchschnittliche Symptomverbesserung der Gruppen) keine Rolle
@@ -666,7 +766,7 @@ Grund:
 
 * Jeder Messwert wird mit dem eigenen Gruppenmittelwert verglichen
 
-* Die Gruppen werden unabhängig betrachtet und der Durschnitt aus ihren Varianzen gebildet 
+* Die Gruppen werden unabhängig betrachtet und der Durchschnitt aus ihren Varianzen gebildet
 
 * Denn: Varianz innerhalb soll nur unsystematische Einflüsse erfassen
 
@@ -731,7 +831,120 @@ $$\hat{\sigma}_{zwischen}^2= \frac{n \cdot \sum\limits _{i=1}^{p}(\bar{A}_i-\bar
 
 * Die **Varianz zwischen** den Gruppen $(\hat{\sigma}_{zwischen}^2=28)$ ist deutlich größer als die zuvor berechnete Residualvarianz $(\hat{\sigma}_{innerhalb}^2=0.67)$.
 
-* Frage (s.h. Hypothese): Ist dieser Unterschied statistisch signifikant?
+* Frage: Ist dieser Unterschied statistisch signifikant?
+
+---
+class: top, left
+### Einfaktorielle Varianzanalyse (ANOVA)
+
+#### Prinzip der Varianzanalyse
+
+**Schätzung der systematischen Varianz – Grafisch:**
+
+<svg width="100%" viewBox="0 0 900 310" style="display:block; margin-top:6px;">
+  <defs>
+    <marker id="arr3" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L6,3 Z" fill="#EE0071"/>
+    </marker>
+  </defs>
+
+  <!-- Spaltenköpfe -->
+  <rect x="30"  y="0" width="240" height="26" fill="#621C37" rx="3"/>
+  <rect x="330" y="0" width="240" height="26" fill="#621C37" rx="3"/>
+  <rect x="630" y="0" width="240" height="26" fill="#621C37" rx="3"/>
+  <text x="150" y="18" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="inherit">Placebo</text>
+  <text x="450" y="18" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="inherit">Medikament 1</text>
+  <text x="750" y="18" text-anchor="middle" fill="white" font-size="13" font-weight="700" font-family="inherit">Medikament 2</text>
+
+  <!-- Y-Achsen -->
+  <line x1="80"  y1="33" x2="80"  y2="238" stroke="#888" stroke-width="1.2"/>
+  <line x1="380" y1="33" x2="380" y2="238" stroke="#888" stroke-width="1.2"/>
+  <line x1="680" y1="33" x2="680" y2="238" stroke="#888" stroke-width="1.2"/>
+
+  <!-- Skala: y=238 → Wert 5, y=33 → Wert 14; 1 Einheit ≈ 22.8px -->
+  <!-- Wert 6→215, 7→192, 8→170, 10→124, 11→101, 12→79, 13→56 -->
+
+  <!-- Ticks und Labels -->
+  <line x1="77" y1="215" x2="83" y2="215" stroke="#888" stroke-width="1"/>
+  <text x="72" y="219" text-anchor="end" font-size="10" fill="#888" font-family="inherit">6</text>
+  <line x1="77" y1="192" x2="83" y2="192" stroke="#888" stroke-width="1"/>
+  <text x="72" y="196" text-anchor="end" font-size="10" fill="#888" font-family="inherit">7</text>
+  <line x1="77" y1="170" x2="83" y2="170" stroke="#888" stroke-width="1"/>
+  <text x="72" y="174" text-anchor="end" font-size="10" fill="#888" font-family="inherit">8</text>
+  <line x1="77" y1="124" x2="83" y2="124" stroke="#444" stroke-width="1.2"/>
+  <text x="72" y="128" text-anchor="end" font-size="10" fill="#444" font-weight="600" font-family="inherit">10</text>
+
+  <line x1="377" y1="124" x2="383" y2="124" stroke="#444" stroke-width="1.2"/>
+  <text x="372" y="128" text-anchor="end" font-size="10" fill="#444" font-weight="600" font-family="inherit">10</text>
+  <line x1="377" y1="101" x2="383" y2="101" stroke="#888" stroke-width="1"/>
+  <text x="372" y="105" text-anchor="end" font-size="10" fill="#888" font-family="inherit">11</text>
+  <line x1="377" y1="79"  x2="383" y2="79"  stroke="#888" stroke-width="1"/>
+  <text x="372" y="83"  text-anchor="end" font-size="10" fill="#888" font-family="inherit">12</text>
+
+  <line x1="677" y1="124" x2="683" y2="124" stroke="#444" stroke-width="1.2"/>
+  <text x="672" y="128" text-anchor="end" font-size="10" fill="#444" font-weight="600" font-family="inherit">10</text>
+  <line x1="677" y1="101" x2="683" y2="101" stroke="#888" stroke-width="1"/>
+  <text x="672" y="105" text-anchor="end" font-size="10" fill="#888" font-family="inherit">11</text>
+  <line x1="677" y1="79"  x2="683" y2="79"  stroke="#888" stroke-width="1"/>
+  <text x="672" y="83"  text-anchor="end" font-size="10" fill="#888" font-family="inherit">12</text>
+  <line x1="677" y1="56"  x2="683" y2="56"  stroke="#888" stroke-width="1"/>
+  <text x="672" y="60"  text-anchor="end" font-size="10" fill="#888" font-family="inherit">13</text>
+
+  <!-- Gesamtmittelwert Ḡ=10 → y=124, solide Linie in jedem Panel -->
+  <line x1="85"  y1="124" x2="265" y2="124" stroke="#444" stroke-width="2.5"/>
+  <line x1="385" y1="124" x2="565" y2="124" stroke="#444" stroke-width="2.5"/>
+  <line x1="685" y1="124" x2="865" y2="124" stroke="#444" stroke-width="2.5"/>
+  <text x="270" y="121" font-size="11" fill="#444" font-weight="600" font-family="inherit">Ḡ = 10</text>
+  <text x="570" y="121" font-size="11" fill="#444" font-weight="600" font-family="inherit">Ḡ = 10</text>
+  <text x="870" y="121" font-size="11" fill="#444" font-weight="600" font-family="inherit">Ḡ = 10</text>
+
+  <!-- Gruppenmittelwert-Linien: x̄Placebo=7→y=192, x̄Med1=11→y=101, x̄Med2=12→y=79 -->
+  <line x1="85"  y1="192" x2="265" y2="192" stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <line x1="385" y1="101" x2="565" y2="101" stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <line x1="685" y1="79"  x2="865" y2="79"  stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <text x="270" y="189" font-size="11" fill="#621C37" font-weight="600" font-family="inherit">x̄ = 7</text>
+  <text x="570" y="98"  font-size="11" fill="#621C37" font-weight="600" font-family="inherit">x̄ = 11</text>
+  <text x="870" y="76"  font-size="11" fill="#621C37" font-weight="600" font-family="inherit">x̄ = 12</text>
+
+  <!-- Abweichungspfeile: Gruppenmittelwert → Gesamtmittelwert (zentriert im Panel) -->
+  <!-- Placebo: x̄=7 (y=192) liegt unter Ḡ=10 (y=124) → Pfeil aufwärts -->
+  <line x1="175" y1="189" x2="175" y2="130" stroke="#EE0071" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <!-- Med1: x̄=11 (y=101) liegt über Ḡ=10 (y=124) → Pfeil abwärts -->
+  <line x1="475" y1="104" x2="475" y2="118" stroke="#EE0071" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <!-- Med2: x̄=12 (y=79) liegt über Ḡ=10 (y=124) → Pfeil abwärts -->
+  <line x1="775" y1="82"  x2="775" y2="118" stroke="#EE0071" stroke-width="2.5" marker-end="url(#arr3)"/>
+
+  <!-- Datenpunkte -->
+  <!-- Placebo: 6→y=215, 7→y=192, 7→y=192, 8→y=170 -->
+  <circle cx="115" cy="215" r="6" fill="#621C37"/>
+  <circle cx="150" cy="192" r="6" fill="#621C37"/>
+  <circle cx="185" cy="192" r="6" fill="#621C37"/>
+  <circle cx="220" cy="170" r="6" fill="#621C37"/>
+  <!-- Med1: 10→y=124, 11→y=101, 11→y=101, 12→y=79 -->
+  <circle cx="415" cy="124" r="6" fill="#621C37"/>
+  <circle cx="450" cy="101" r="6" fill="#621C37"/>
+  <circle cx="485" cy="101" r="6" fill="#621C37"/>
+  <circle cx="520" cy="79"  r="6" fill="#621C37"/>
+  <!-- Med2: 11→y=101, 12→y=79, 12→y=79, 13→y=56 -->
+  <circle cx="715" cy="101" r="6" fill="#621C37"/>
+  <circle cx="750" cy="79"  r="6" fill="#621C37"/>
+  <circle cx="785" cy="79"  r="6" fill="#621C37"/>
+  <circle cx="820" cy="56"  r="6" fill="#621C37"/>
+
+  <!-- Legende -->
+  <line x1="30" y1="266" x2="65" y2="266" stroke="#444" stroke-width="2.5"/>
+  <text x="70" y="270" font-size="11" fill="#444" font-family="inherit">Gesamtmittelwert (Ḡ)</text>
+  <line x1="265" y1="266" x2="300" y2="266" stroke="#621C37" stroke-width="2" stroke-dasharray="6 3"/>
+  <text x="305" y="270" font-size="11" fill="#444" font-family="inherit">Gruppenmittelwert (x̄ᵢ)</text>
+  <line x1="510" y1="259" x2="510" y2="272" stroke="#EE0071" stroke-width="2.5" marker-end="url(#arr3)"/>
+  <text x="518" y="270" font-size="11" fill="#444" font-family="inherit">Abweichung x̄ᵢ von Ḡ (geht in σ²zwischen ein)</text>
+  <circle cx="840" cy="266" r="6" fill="#621C37"/>
+  <text x="850" y="270" font-size="11" fill="#444" font-family="inherit">xₘᵢ</text>
+
+  <!-- Hinweisbox -->
+  <rect x="30" y="282" width="840" height="22" fill="#fdeef5" rx="3"/>
+  <text x="450" y="297" text-anchor="middle" font-size="11" fill="#621C37" font-family="inherit">Die Abweichungen der Gruppenmittelwerte vom Gesamtmittelwert — nicht der Einzelwerte — gehen in σ²zwischen ein.</text>
+</svg>
 
 ---
 class: top, left
@@ -761,16 +974,22 @@ class: top, left
 
 **Signifikanztestung der ANOVA - Der F-Quotient:**
 
+<small>
+
 * F-Wert ist die Teststatistik der ANOVA (wie t-Wert beim t-Test)
 
 Mögliche Werte und deren Interpretation:
 
+* $F=0$
+
+  * Die systematische Varianz ist 0 (alle Gruppenmittelwerte gleich)
+  * Kein Unterschied zwischen den Gruppen erkennbar
+
 * $F=1$
 
-  * Der F-Wert ist gleich 0 wenn die systematische Varianz 0 ist (alle Mittelwerte gleich).
-  * Der F-Wert ist gleich 1 wenn die systematische Varianz gleich der unsystematischen Varianz ist.
+  * Die systematische Varianz entspricht der unsystematischen Varianz
   * Es wird lediglich die Residualvarianz durch sich selbst geteilt
-  * Grupppenmittelwerte unterscheiden sich höchstens durch unsystematische Einflüsse
+  * Gruppenmittelwerte unterscheiden sich höchstens durch unsystematische Einflüsse
 
 * $F>1$
   * Es gibt einen systematischen Einfluss
@@ -991,7 +1210,7 @@ class: top, left
 
 * Signifikanztestung über **F-Test**, der systematische und unsystematische Varianz ins Verhältnis zueinander setzt (F-Quotient).
 
-* **Signifikante ANOVA** zeigt einen Unterschied zwischen Mittwelwerten an, jedoch nicht, zwischen welchen Gruppen dieser genau besteht.
+* **Signifikante ANOVA** zeigt einen Unterschied zwischen Mittelwerten an, jedoch nicht, zwischen welchen Gruppen dieser genau besteht.
 
 * ANOVA alleine kann **keine gerichteten Hypothesen** prüfen.
 ]
