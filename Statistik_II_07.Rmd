@@ -1,9 +1,9 @@
 ---
 title: "Einheit 7"
-subtitle: "⚔<br/>with xaringan"
+subtitle: "Regressionsmodelle mit Interaktionen"
 author: "Prof. Dr. Stephan Goerigk"
-institute: "RStudio, PBC"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+institute: "Charlotte Fresenius Universität"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     css: [xaringan-themer.css, "hygge", style.css]
@@ -27,7 +27,6 @@ library(kableExtra)
 library(ggplot2)
 library(plotly)
 library(htmlwidgets)
-library(plotly)
 library(MASS)
 library(ggpubr)
 library(xaringanthemer)
@@ -83,11 +82,11 @@ class: top, left
 
 2. Interaktionseffekt
 
-  * Wechselwirkung zwei UVs/Pädiktoren (Interaktion) auf die AV
+  * Wechselwirkung zwei UVs/Prädiktoren (Interaktion) auf die AV
 
 **Abgrenzung zur mehrfaktoriellen ANOVA:**
 
-* Bei der ANOVA sind UVs immer kategorial (Mittelwertesvergleiche zw. Gruppen/Kategorien)
+* Bei der ANOVA sind UVs immer kategorial (Mittelwertsvergleiche zw. Gruppen/Kategorien)
 
 * Im Regressionsmodell können kategoriale und stetige UVs verwendet und auch kombiniert werden
 
@@ -396,7 +395,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**Achtung: Unterschiedliche Steigungsparameter für selben Pädiktor (Erfahrung) nach Hinzunahme weiterer Prädiktoren**
+**Achtung: Unterschiedliche Steigungsparameter für selben Prädiktor (Erfahrung) nach Hinzunahme weiterer Prädiktoren**
 
 .pull-left[
 .code60[
@@ -422,7 +421,7 @@ class: top, left
 
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
-**Achtung: Unterschiedliche Steigungsparameter für selben Pädiktor (Erfahrung) nach Hinzunahme weiterer Prädiktoren**
+**Achtung: Unterschiedliche Steigungsparameter für selben Prädiktor (Erfahrung) nach Hinzunahme weiterer Prädiktoren**
 
 * Steigungsparameter unterscheiden sich marginal:
 
@@ -668,7 +667,7 @@ class: top, left
 
 **2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
-Die einzelnen Steigungen un deren KIs lassen sich jedoch auch automatisch anzeigen:
+Die einzelnen Steigungen und deren KIs lassen sich jedoch auch automatisch anzeigen:
 
 ```{r echo=FALSE}
 model = lm(Therapieerfolg ~ Erfahrung * Konfrontativ, data = df)
@@ -701,7 +700,7 @@ anova(model)
 .pull-right[
 <small>
 
-Für jeden Modellfaktor stellt sich die Frage: "*Erklärt das Modell mit diesem Faktor signifikant mehr Varinaz als ohne den Faktor?*"
+Für jeden Modellfaktor stellt sich die Frage: "*Erklärt das Modell mit diesem Faktor signifikant mehr Varianz als ohne den Faktor?*"
 
 * Alle 3 Effekte (2 Haupeffekt + 1 Interaktion signifikant)
 
@@ -889,7 +888,7 @@ knitr::include_graphics("bilder/Moderation.png")
 * UV: IQ
 * Moderator: Erfahrung
 
-**Moderation:** *Beeinflusst die Erfahrung den Effekt der Empathiefähigkeit auf den Therapieerfolg?* (Beispielserklärung: Erfahrenere Therapeut:innen können Intelligenz besser einsetzen / geringe Intelligenz kompensieren.) 
+**Moderation:** *Beeinflusst die Erfahrung den Effekt des IQ auf den Therapieerfolg?* (Beispielserklärung: Erfahrenere Therapeut:innen können Intelligenz besser einsetzen / geringe Intelligenz kompensieren.)
 ]
 
 ---
@@ -989,7 +988,7 @@ $$IQ_izentriert = IQ_i- \bar{IQ}$$
 
 * $\bar{IQ}=100$ ist der neue Nullpunkt der Variable
 
-$\rightarrow$ Die neue 0 ist als "durchschnittlich intelliergent" interpretierbar
+$\rightarrow$ Die neue 0 ist als "durchschnittlich intelligent" interpretierbar
 ]
 
 .pull-right[
@@ -1021,7 +1020,7 @@ summary(model)
 ]
 
 .pull-right[
-Modell mit **zentiertem IQ** als Prädiktor:
+Modell mit **zentriertem IQ** als Prädiktor:
 
 Interpretation der Koeffizienten:
 
@@ -1305,7 +1304,7 @@ emtrends(model, pairwise ~ Erfahrung, var = "Konfrontativ")
 .pull-right[
 * $b_{Konfrontativ|Erfahrung=hoch}$ unterscheidet sich signifikant von $(b_{Konfrontativ|Erfahrung=niedrig}$ $(p < .001)$ und $b_{Konfrontativ|Erfahrung=mittel}$ $(p = .012)$
 
-* $b_{Konfrontativ|Erfahrung=neidrig}$ und $b_{Konfrontativ|Erfahrung=mittel}$ unterscheiden sich nicht signifikant $(p = .065)$
+* $b_{Konfrontativ|Erfahrung=niedrig}$ und $b_{Konfrontativ|Erfahrung=mittel}$ unterscheiden sich nicht signifikant $(p = .065)$
 
 * P-Werte sind Tukey-korrigiert, um Typ-I Fehler zu kontrollieren
 ]
@@ -1356,7 +1355,7 @@ with(options(scipen = 0), {
 Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
 
 .content-box-gray[
-Eine multiple Regression mit Interkation mit den Prädiktoren Kindheitstrauma sowie Resilienz und dem Kriterium Depressivität wurde durchgeführt. 
+Eine multiple Regression mit Interaktion mit den Prädiktoren Kindheitstrauma sowie Resilienz und dem Kriterium Depressivität wurde durchgeführt. 
 Der Prädiktor Kindheitstrauma sagt unter Konstanthaltung von Resilienz Depressivität signifikant vorher, $b$ = 0.13, $t$(296) = 2.75, $p$ = .006. 
 Auch der Prädiktor Resilienz ist bei Konstanthaltung von Kindheitstrauma signifikant mit Depressivität assoziiert, $b$ = -0.10, $t$(296) = -2.33, $p$ = .020. 
 Es zeigt sich ein signifikanter Moderationseffekt, $b$ = -0.06, $t$(296) = -25.73, $p$ < .001. 
@@ -1444,7 +1443,7 @@ with(options(scipen = 0), {
 Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
 
 .content-box-gray[
-Eine multiple lineare Regression mit Interkation wurde durchgeführt, um die Effekte von Schlafqualität und Therapiegruppe (Warteliste vs. Psychotherapie) auf Depressivität zu untersuchen. 
+Eine multiple lineare Regression mit Interaktion wurde durchgeführt, um die Effekte von Schlafqualität und Therapiegruppe (Warteliste vs. Psychotherapie) auf Depressivität zu untersuchen. 
 Der Prädiktor Schlafqualität sagte innerhalb der Wartelistengruppe die Depressivität signifikant vorher, $b$ = -2.27, $t$(196) = -10.34, $p$ < .001. 
 Auch der Prädiktor Gruppenzugehörigkeit erwies sich als signifikant, $b$ = -5.13, $t$(196) = -3.27, $p$ = .001. 
 Es zeigt sich ein signifikanter Moderationseffekt, $b$ = -1.64, $t$(196) = -5.43, $p$ < .001. 
@@ -1532,7 +1531,7 @@ with(options(scipen = 0), {
 Wenn Sie in Ihrer Klausur den Output einer multiplen Regression mit Interaktion berichten sollen, könnte dies so aussehen: 
 
 .content-box-gray[
-Eine multiple lineare Regression mit Interkation wurde durchgeführt, um die Effekte von Lernstratien (A vs. B) und Motivation (niedrig vs. hoch) auf das Testergebnis zu untersuchen. 
+Eine multiple lineare Regression mit Interaktion wurde durchgeführt, um die Effekte von Lernstrategien (A vs. B) und Motivation (niedrig vs. hoch) auf das Testergebnis zu untersuchen. 
 Sowohl der Prädiktor Lernstrategie, $b$ = 9.41, $t$(146) = 6.24, $p$ < .001., als auch der Prädiktor Motivation, $b$ = 5.53, $t$(146) = 3.59, $p$ < .001, konnten das Testergebnis signifikant vorhersagen. 
 Es zeigt sich ein signifikanter Moderationseffekt, $b$ = 5.85, $t$(146) = 2.77, $p$ = .006. 
 Das Gesamtmodell erklärte einen signifikanten Anteil der Varianz im Testergebnis, $F$(3, 146) = 796.8, $p$ < .001, $R^2$ = .92. 
