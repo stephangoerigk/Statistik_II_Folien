@@ -1,9 +1,9 @@
 ---
 title: "Einheit 8"
-subtitle: "⚔<br/>with xaringan"
+subtitle: "ANOVA mit Messwiederholung"
 author: "Prof. Dr. Stephan Goerigk"
-institute: "RStudio, PBC"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+institute: "Charlotte Fresenius Universität"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     css: [xaringan-themer.css, "hygge", style.css]
@@ -27,7 +27,6 @@ library(kableExtra)
 library(ggplot2)
 library(plotly)
 library(htmlwidgets)
-library(plotly)
 library(MASS)
 library(ggpubr)
 library(xaringanthemer)
@@ -214,7 +213,7 @@ $\rightarrow$ Personenfaktor kann nicht systematisch von Forscher:innen variiert
 class: top, left
 ### ANOVA mit Messwiederholung
 
-#### Anwendungsbespiel händisch (kleiner Datensatz)
+#### Anwendungsbeispiel händisch (kleiner Datensatz)
 
 .pull-left[
 * Datensatz für $N=5$ Patient:innen nach Schlaganfall
@@ -292,7 +291,7 @@ class: top, left
 
 $$x_{im(erwartet)} = \bar{G} + (\bar{A_i} - \bar{G}) + (\bar{P_m} - \bar{G})= \bar{A_i} + \bar{P_m} - \bar{G}$$
 
-$x_{im(erwartet)}=$ Erwarteter Wert der Person $m$ in der Messwiedeholung $i$ des Messwiederholungsfaktors $A$.
+$x_{im(erwartet)}=$ Erwarteter Wert der Person $m$ in der Messwiederholung $i$ des Messwiederholungsfaktors $A$.
 
 ---
 class: top, left
@@ -390,7 +389,7 @@ class: top, left
 
 **Signifikanzprüfung:**
 
-* Püfung, ob sich die Messzeitpunkte signifikant unterscheiden
+* Prüfung, ob sich die Messzeitpunkte signifikant unterscheiden
 
 * F-Bruch (emp. F-Wert) wird gebildet aus geschätzter systematischer Varianz für Messwiederholungsfaktor (A) und der geschätzten Residualvarianz 
 
@@ -435,7 +434,7 @@ class: top, left
 ### ANOVA mit Messwiederholung
 
 .pull-left[
-#### Anwendungsbespiel R (größerer Datensatz)
+#### Anwendungsbeispiel R (größerer Datensatz)
 
 * Datensatz für $N=15$ Patient:innen nach Schlaganfall
 
@@ -473,7 +472,7 @@ class: top, left
 ### ANOVA mit Messwiederholung
 
 .pull-left[
-#### Anwendungsbespiel R (größerer Datensatz)
+#### Anwendungsbeispiel R (größerer Datensatz)
 
 **Wide vs. Long-Format:**
 
@@ -502,7 +501,7 @@ class: top, left
 ### ANOVA mit Messwiederholung
 
 .pull-left[
-#### Anwendungsbespiel R (größerer Datensatz)
+#### Anwendungsbeispiel R (größerer Datensatz)
 
 **Wide vs. Long-Format:**
 
@@ -532,7 +531,7 @@ df_long[df_long$id <6,] %>%
 class: top, left
 ### ANOVA mit Messwiederholung
 
-#### Anwendungsbespiel R (größerer Datensatz)
+#### Anwendungsbeispiel R (größerer Datensatz)
 
 Wide und  Long-Format lassen sich automatisch ineinander überführen:
 
@@ -562,7 +561,7 @@ head(df_wide_to_long, 15)
 class: top, left
 ### ANOVA mit Messwiederholung
 
-#### Anwendungsbespiel R (größerer Datensatz)
+#### Anwendungsbeispiel R (größerer Datensatz)
 
 .code60[
 ```{r message=FALSE, warning=FALSE}
@@ -576,7 +575,7 @@ summary(model)
 class: top, left
 ### ANOVA mit Messwiederholung
 
-#### Anwendungsbespiel R (größerer Datensatz)
+#### Anwendungsbeispiel R (größerer Datensatz)
 
 ```{r message=FALSE, warning=FALSE}
 library(emmeans)
@@ -754,7 +753,7 @@ knitr::include_graphics("bilder/gpower_rm.png")
 
 ---
 class: top, left
-### Anova mit Messwiederholung
+### ANOVA mit Messwiederholung
 
 #### Berichten der Ergebnisse nach APA
 ```{r include=FALSE}
@@ -800,14 +799,14 @@ Wenn Sie in Ihrer Klausur den Output einer rmANOVA berichten sollen, könnte die
 
 .content-box-gray[
 Im Rahmen einer Expositionstherapie wurde die Entwicklung von Paniksymptomen über drei Messzeitpunkte hinweg mittels einer Varianzanalyse mit Messwiederholung untersucht. 
-Der Faktor Zeit zeigte einen signifikanten Einfluss auf die Symtomschwere $F$(2, 38) = 116.08, $p$ < .001, $\eta^2_p$ = 0.86. Damit konnten 86 % der Varianz durch den Messwiederholungsfaktor aufgeklärt werden - dies entspricht einem starken Effekt. Der Mauchly-Test war nicht signifikant ($p$ = .670), was auf eine erfüllte Sphärizitätsannahme hinweist.
+Der Faktor Zeit zeigte einen signifikanten Einfluss auf die Symptomschwere $F$(2, 38) = 116.08, $p$ < .001, $\eta^2_p$ = 0.86. Damit konnten 86 % der Varianz durch den Messwiederholungsfaktor aufgeklärt werden - dies entspricht einem starken Effekt. Der Mauchly-Test war nicht signifikant ($p$ = .670), was auf eine erfüllte Sphärizitätsannahme hinweist.
 ]
 
 ]
 
 ---
 class: top, left
-### Anova mit Messwiederholung
+### ANOVA mit Messwiederholung
 
 #### Berichten der Ergebnisse nach APA
 <small>
@@ -837,7 +836,7 @@ Es traten signifikante Unterschiede in der Ausprägung der Paniksymptome zwische
 
 ---
 class: top, left
-### Anova mit Messwiederholung
+### ANOVA mit Messwiederholung
 .code60[
 .pull-left[
 #### Post-hoc Vergleich 
@@ -879,11 +878,11 @@ class: top, left
 
 * ANOVA mit Messwiederholung kann zusätzlich zur **Effektvarianz** auch **Personenvarianz** aufklären (höhere Teststärke).
 
-* Als zusätzliche Voraussetzung wird die **Spärizität** geprüft.
+* Als zusätzliche Voraussetzung wird die **Sphärizität** geprüft.
 
-* Bei Verletzungen der Spärizitätsannahme können **Korrekturverfahren** angewendet werden, die Überschätzung des Effekts verhindern.
+* Bei Verletzungen der Sphärizitätsannahme können **Korrekturverfahren** angewendet werden, die Überschätzung des Effekts verhindern.
 
-* Wenn Spärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
+* Wenn Sphärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
 ]
 ]
 
