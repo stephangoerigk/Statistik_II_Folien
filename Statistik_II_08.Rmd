@@ -731,8 +731,6 @@ class: top, left
 
 $$f^2_{s(abhängig)}=\frac{F\cdot df_{A}}{df_{A\text{ x }Vpn}}$$
 
-$$f^2_{s(abhängig)}=\frac{F\cdot df_{A}}{df_{A\text{ x }Vpn}}$$
-
 $$\eta^2_p=\frac{QS_{A}}{QS_{A} + QS_{A\text{ x }Vpn}}=\frac{f^2_{s}}{1+ f^2_{s}}$$
 * $\eta^2_p$ gibt Anteil der Varianz an, der durch Messwiederholung auf Stichprobenebene aufgeklärt wird
 
