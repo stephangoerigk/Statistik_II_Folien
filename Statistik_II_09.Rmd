@@ -610,7 +610,7 @@ $$\hat{\sigma}^2_{Zeit \text{ x } Gruppe}= \frac{QS_{Zeit \text{ x } Gruppe}}{df
 
 Die Quadratsumme entspricht der Differenz der beobachteten Zellmittelwerte und der erwarteten Zellmittelwerte
 
-$$\hat{\sigma}^2_{Zeit \text{ x } Gruppe}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}n \cdot [\bar{GruppeZeit}_{ij} - (\bar{Gruppe_{i}} + \bar{Zeit_{j}}+ \bar{G})]^2}{(p-1) \cdot (q-1)}$$
+$$\hat{\sigma}^2_{Zeit \text{ x } Gruppe}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}n \cdot [\bar{GruppeZeit}_{ij} - (\bar{Gruppe_{i}} + \bar{Zeit_{j}} - \bar{G})]^2}{(p-1) \cdot (q-1)}$$
 
 Laut Haupteffekten von Gruppe und Zeit erwartete Zellmittelwerte:
 
@@ -631,7 +631,7 @@ $\rightarrow$ Zähler und Nenner unterscheiden sich nur durch interessierenden E
 
 * Bislang konnte für Haupt- und Interaktionseffekte dieselbe Prüfvarianz im Nenner verwendet werden $(\hat{\sigma}^2_{Res})$
 
-* Problem im mixed Desgin: 
+* Problem im mixed Design: 
 
   * Erwartungswerte für Faktoren ohne Messwiederholung enthalten $\sigma^2_{Vpn}$
   * Erwartungswerte für Faktoren mit Messwiederholung enthalten $\sigma^2_{Zeit \text{ x } Vpn}$
@@ -882,7 +882,7 @@ knitr::include_graphics("bilder/gpower_mixed.png")
 
 * Durchschnittliche angenommene Korrelation zwischen Messzeitpunkten
 
-* Sphärizitätskorrektur (i.d.R. nicht apriori geplant bzw. mann hofft auf Sphärizität)
+* Sphärizitätskorrektur (i.d.R. nicht apriori geplant bzw. man hofft auf Sphärizität)
 ]
 
 ---
@@ -1073,13 +1073,13 @@ class: top, left
 
 * Interaktionseffekt sagt aus, ob es **Gruppenunterschiede hinsichtlich der Veränderung** gab (Unterschied in Unterschieden).
 
-* Es werden Variabilität Zwischen-Personen **(between-subject)** und Innerhalb-Personen **(within-subject)** unterscheiden
+* Es werden Variabilität Zwischen-Personen **(between-subject)** und Innerhalb-Personen **(within-subject)** unterschieden
 
 * Zum Prüfen der Effekte müssen separate **Prüfvarianzen** berechnet werden.
 
-* Als Voraussetzung wird die **Spärizität** geprüft und ggf. korrigiert.
+* Als Voraussetzung wird die **Sphärizität** geprüft und ggf. korrigiert.
 
-* Wenn Spärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
+* Wenn Sphärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
 ]
 ]
 

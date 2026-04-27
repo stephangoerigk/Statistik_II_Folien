@@ -4,6 +4,7 @@
     <title>Einheit 9</title>
     <meta charset="utf-8" />
     <meta name="author" content="Prof. Dr. Stephan Goerigk" />
+    <meta name="date" content="2026-04-27" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/hygge.css" rel="stylesheet" />
     <script src="libs/jquery/jquery-3.6.0.min.js"></script>
@@ -124,7 +125,7 @@ In der angewandten Statistik sind 2 Arten von Modellen zur Auswertung von Mixed 
 class: top, left
 ### Mixed Designs
 
-#### Anwendungsbespiel 
+#### Anwendungsbeispiel 
 
 
 
@@ -482,7 +483,7 @@ Variation zwischen Personen:
 * Eigenschaften/Effekt der Gruppe (Gruppenzugehörigkeit)
 
 Variation Messwiederholung:
-* aufgrund in der Zwischenzeit erfolgter Intervention (oder einfach augrund des Vergehens von Zeit)
+* aufgrund in der Zwischenzeit erfolgter Intervention (oder einfach aufgrund des Vergehens von Zeit)
 * unterschiedliche Reaktion auf in der Zwischenzeit erfolgter Intervention (oder einfach Vergehen von Zeit) innerhalb der Gruppen
 
 Variation der Messwerte:
@@ -560,7 +561,7 @@ Berechnung:
 
 `$$\hat{\sigma}^2_{Zeit}= \frac{QS_{Zeit}}{df_{Zeit}}$$`
 
-Die Quadratsumme `\((QS)\)` entspricht der quadrierten Abweichung der Mittelwerte `\((\bar{Zeit_{j}})\)` vom Gesamtmittelwert `\((\bar{G})\)` multipliziert mit der Zellgröße `\(n\)` und der Anzahl der Stufen der Gruppennvariable:
+Die Quadratsumme `\((QS)\)` entspricht der quadrierten Abweichung der Mittelwerte `\((\bar{Zeit_{j}})\)` vom Gesamtmittelwert `\((\bar{G})\)` multipliziert mit der Zellgröße `\(n\)` und der Anzahl der Stufen der Gruppenvariable:
 
 `$$\hat{\sigma}^2_{Zeit}= \frac{\sum\limits _{j=1}^{q}n \cdot p \cdot (\bar{Zeit_{j}} - \bar{G})^2}{q-1}$$`
 
@@ -578,7 +579,7 @@ Berechnung:
 
 Die Quadratsumme entspricht der Differenz der beobachteten Zellmittelwerte und der erwarteten Zellmittelwerte
 
-`$$\hat{\sigma}^2_{Zeit \text{ x } Gruppe}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}n \cdot [\bar{GruppeZeit}_{ij} - (\bar{Gruppe_{i}} + \bar{Zeit_{j}}+ \bar{G})]^2}{(p-1) \cdot (q-1)}$$`
+`$$\hat{\sigma}^2_{Zeit \text{ x } Gruppe}= \frac{\sum\limits _{i=1}^{p}\sum\limits _{j=1}^{q}n \cdot [\bar{GruppeZeit}_{ij} - (\bar{Gruppe_{i}} + \bar{Zeit_{j}} - \bar{G})]^2}{(p-1) \cdot (q-1)}$$`
 
 Laut Haupteffekten von Gruppe und Zeit erwartete Zellmittelwerte:
 
@@ -599,7 +600,7 @@ class: top, left
 
 * Bislang konnte für Haupt- und Interaktionseffekte dieselbe Prüfvarianz im Nenner verwendet werden `\((\hat{\sigma}^2_{Res})\)`
 
-* Problem im mixed Desgin: 
+* Problem im mixed Design: 
 
   * Erwartungswerte für Faktoren ohne Messwiederholung enthalten `\(\sigma^2_{Vpn}\)`
   * Erwartungswerte für Faktoren mit Messwiederholung enthalten `\(\sigma^2_{Zeit \text{ x } Vpn}\)`
@@ -701,7 +702,7 @@ In R (folgt auf nächster Folie):
 class: top, left
 ### Mixed Designs
 
-#### Anwendungsbespiel R 
+#### Anwendungsbeispiel R 
 
 .pull-left[
 
@@ -766,7 +767,7 @@ summary(model)
 class: top, left
 ### Mixed Designs
 
-#### Anwendungsbespiel R 
+#### Anwendungsbeispiel R 
 
 
 
@@ -975,7 +976,7 @@ class: top, left
 
 * Durchschnittliche angenommene Korrelation zwischen Messzeitpunkten
 
-* Sphärizitätskorrektur (i.d.R. nicht apriori geplant bzw. mann hofft auf Sphärizität)
+* Sphärizitätskorrektur (i.d.R. nicht apriori geplant bzw. man hofft auf Sphärizität)
 ]
 
 ---
@@ -1308,13 +1309,13 @@ class: top, left
 
 * Interaktionseffekt sagt aus, ob es **Gruppenunterschiede hinsichtlich der Veränderung** gab (Unterschied in Unterschieden).
 
-* Es werden Variabilität Zwischen-Personen **(between-subject)** und Innerhalb-Personen **(within-subject)** unterscheiden
+* Es werden Variabilität Zwischen-Personen **(between-subject)** und Innerhalb-Personen **(within-subject)** unterschieden
 
 * Zum Prüfen der Effekte müssen separate **Prüfvarianzen** berechnet werden.
 
-* Als Voraussetzung wird die **Spärizität** geprüft und ggf. korrigiert.
+* Als Voraussetzung wird die **Sphärizität** geprüft und ggf. korrigiert.
 
-* Wenn Spärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
+* Wenn Sphärizität erfüllt ist, können Post-Hoc Vergleiche mittels **Tukey-Test** geprüft werden.
 ]
 ]
 
