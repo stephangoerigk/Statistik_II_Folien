@@ -4,6 +4,7 @@
     <title>Einheit 10</title>
     <meta charset="utf-8" />
     <meta name="author" content="Prof. Dr. Stephan Goerigk" />
+    <meta name="date" content="2026-04-27" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/hygge.css" rel="stylesheet" />
     <script src="libs/jquery/jquery-3.6.0.min.js"></script>
@@ -129,7 +130,7 @@ class: top, left
 
 * ABER: Alle bislang kennengelernten statistischen Tests beinhalten **intervallskalierte AVs**
 
-* Was können wir tun, wenn wie eine **nominalskalierte AV** haben?
+* Was können wir tun, wenn wir eine **nominalskalierte AV** haben?
 
 Zunächst: nominalskalierte Variablen mit 2 Merkmalsausprägungen (dichotom aka. binär):
 
@@ -641,7 +642,7 @@ class: top, left
 
 **Berechnung**
 
-* Was wird benötigt: beobachtete und erwartete absolute Häufigkeiten für alle Merkmalstufen
+* Was wird benötigt: beobachtete und erwartete absolute Häufigkeiten für alle Merkmalsstufen
 
 * `\(\chi^2\)`-Wert gibt Abweichung der beobachteten von den erwarteten Häufigkeit an
 
@@ -849,7 +850,7 @@ class: top, left
 
 * VORSICHT: Signifikanzniveau `\((\alpha)\)` wird dann verdoppelt (z.B. wenn `\(\alpha=.05\)` wird in der Tabelle `\(\alpha=.10\)` angenommen)
 
-* Folge: `\(\chi^2_{krit}\)` verringert sich, Test wir eher signifkant (Teststärke nimmt zu)
+* Folge: `\(\chi^2_{krit}\)` verringert sich, Test wir eher signifikant (Teststärke nimmt zu)
 
 ---
 class: top, left
@@ -857,7 +858,7 @@ class: top, left
 
 #### Eindimensionaler `\(\chi^2\)`-Test 
 
-**Effekstärke:**
+**Effektstärke:**
 
 .pull-left[
 
@@ -949,7 +950,7 @@ class: top, left
 
   * `\(H_0:\)` Merkmale sind stochastisch unabhängig.
   
-  * `\(H_1:\)` Es besteht irgendeine Art von Zusammenhang zwischen den Steufen des einen Merkmals und den Stufen des anderen Merkmals
+  * `\(H_1:\)` Es besteht irgendeine Art von Zusammenhang zwischen den Stufen des einen Merkmals und den Stufen des anderen Merkmals
 
 ---
 class: top, left
@@ -1092,7 +1093,7 @@ addmargins(table(data$Behandlungserfolg, data$Behandlung), FUN = sum)
 .pull-right[
 **Beispiel - Therapieerfolg in größerer Stichprobe `\((N=100):\)`**
 
-* 45 Patient:innen hatten einen Therapieerfolg: `\(p_{ja}=\frac{49}{100}=0.49\)`
+* 49 Patient:innen hatten einen Therapieerfolg: `\(p_{ja}=\frac{49}{100}=0.49\)`
 
 * Gegenwahrscheinlichkeit: `\(p_{nein}=1-0.49=0.51\)`
 
@@ -1111,7 +1112,7 @@ class: top, left
 * Was bedeutet Stochastische Unabhängigkeit?
   
   * Merkmale beeinflussen einander nicht
-  * Ranghäufigkeiten müssen sich in jeder einzelnen Stufe des Merkmals widerspiegeln
+  * Randhäufigkeiten müssen sich in jeder einzelnen Stufe des Merkmals widerspiegeln
   * Ändert sich Verhältnis ist `\(H_0\)` verletzt
 
 **Berechnung erwarteter Häufigkeiten unter Annahme der `\(H_0:\)`**
@@ -1260,7 +1261,7 @@ class: top, left
 
 &lt;small&gt;
 
-`$$\chi^2_{emp} = \sum\limits _{i=1}^{k}\sum\limits _{j=1}^{l}\frac{(f_{bij} - f_{eij})^2}{f_{eij}} = \frac{(36 - 24.5)^2}{24.5} + \frac{(13 - 25.5)^2}{24.5} +\frac{(14 - 25.5)^2}{24.5} + \frac{(37 - 25.5)^2}{25.5}=21.17$$`
+`$$\chi^2_{emp} = \sum\limits _{i=1}^{k}\sum\limits _{j=1}^{l}\frac{(f_{bij} - f_{eij})^2}{f_{eij}} = \frac{(36 - 24.5)^2}{24.5} + \frac{(13 - 25.5)^2}{25.5} +\frac{(14 - 24.5)^2}{24.5} + \frac{(37 - 25.5)^2}{25.5}=21.17$$`
 mit:
 
 `$$df = (2-1) \cdot (2-1)=1$$`
@@ -1339,7 +1340,7 @@ class: top, left
 
 #### Zweidimensionaler `\(\chi^2\)`-Test
 
-**Effekstärke `\(w^2:\)`**
+**Effektstärke `\(w^2:\)`**
 
 * Auch hier lässt sich `\(w^2\)` verwenden
 
@@ -1355,7 +1356,7 @@ class: top, left
 
 #### Zweidimensionaler `\(\chi^2\)`-Test
 
-**Effekstärke Cramers Phi-Koeffizient (Cramers Index, CI)**
+**Effektstärke Cramers Phi-Koeffizient (Cramers Index, CI)**
 
 * Empirisches Effektstärkemaß, baut auf `\(w^2\)` auf
 
@@ -1376,7 +1377,7 @@ class: top, left
 
 .pull-left[
 
-**Effekstärke Cramers Phi-Koeffizient (Cramers Index, CI)**
+**Effektstärke Cramers Phi-Koeffizient (Cramers Index, CI)**
 
 `$$CI = \sqrt\frac{\chi^2}{N \cdot (R - 1)} = \sqrt\frac{21.17}{100 \cdot (2 - 1)}=0.46$$`
 ]
@@ -1509,7 +1510,7 @@ class: top, left
 
 #### Der Vierfelder `\(\chi^2\)`-Test
 
-**Effekstärke Phi-Koeffizient**
+**Effektstärke Phi-Koeffizient**
 
 * Effektstärke `\(\phi\)` entspricht Korrelation von 2 dichotomen Variablen
 
@@ -1537,7 +1538,7 @@ class: top, left
 
 * Prinzip: Vergleich von **beobachteten vs. theoretisch erwarteten** Häufigkeiten.
 
-* Für `\(\chi^2\)`-Tests existieren theoreitsch **unendlich viele `\(H_0\)` ** Möglichkeiten (häufig: Gleichverteilungsannahme)
+* Für `\(\chi^2\)`-Tests existieren theoretisch **unendlich viele `\(H_0\)` ** Möglichkeiten (häufig: Gleichverteilungsannahme)
 
 * **Eindimensionaler `\(\chi^2\)`-Test** prüft, ob sich Verteilung der Kategorien einer nominalskalierten Variable unterscheiden.
 

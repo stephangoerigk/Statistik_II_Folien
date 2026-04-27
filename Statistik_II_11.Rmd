@@ -1,9 +1,9 @@
 ---
 title: "Einheit 11"
-subtitle: "⚔<br/>with xaringan"
+subtitle: "Verfahren für Nominaldaten (2)"
 author: "Prof. Dr. Stephan Goerigk"
-institute: "RStudio, PBC"
-date: "2016/12/12 (updated: `r Sys.Date()`)"
+institute: "Charlotte Fresenius Universität"
+date: "`r Sys.Date()`"
 output:
   xaringan::moon_reader:
     css: [xaringan-themer.css, "hygge", style.css]
@@ -27,7 +27,6 @@ library(kableExtra)
 library(ggplot2)
 library(plotly)
 library(htmlwidgets)
-library(plotly)
 library(MASS)
 library(ggpubr)
 library(xaringanthemer)
@@ -301,7 +300,7 @@ $$P(Y_i = 1|x_i) = \frac{e^{a + \beta \cdot x_i}}{1+e^{a + \beta \cdot x_i}}$$
 
 * Mit Anwendung der logistischen Funktion auf die lineare Regression lässt sich die Gerade "biegen"
 
-* Sie ist nun auf den Wertebereiche zwischen 0 und 1 begrenzt
+* Sie ist nun auf den Wertebereich zwischen 0 und 1 begrenzt
 
 * Am Wendepunkt der Kurve ist $P(Y_i = 1|x_i) = 0.5$
 
@@ -361,7 +360,7 @@ $$\frac{P(Y_i = 1|x_i)}{P(Y_i = 0|x_i)}$$
 
 >* Falls das Ereignis $Y_i = 1$ wahrscheinlicher ist als das Ereignis $Y_i= 0$  $\rightarrow$ Odds > 1
 
->* Falls das Ereignis $Y_i = 1$ wahrscheinlicher ist als das Ereignis $Y_i= 0$  $\rightarrow$ Odds < 1
+>* Falls das Ereignis $Y_i = 0$ wahrscheinlicher ist als das Ereignis $Y_i= 1$  $\rightarrow$ Odds < 1
 
 >* Sind beide Ereignisse gleich wahrscheinlich $\rightarrow$ Odds = 1
 
@@ -390,7 +389,7 @@ class: top, left
 
 #### Logistische Regression
 
-**Ermittlung der Odds für Y-Achsenabschnitt $(\beta)$**
+**Ermittlung der Odds für Y-Achsenabschnitt $(a)$**
 
 Wenn $x_i=0$ gilt für die Odds
 
@@ -690,7 +689,7 @@ summary(model)
 .pull-right[
 * Zentrierung (grand mean): Von jedem Wert der UV wird der Durchschnitt der UV abgezogen
 
-* Empathie (zentriert) = 0 ist nun der Durschnittswert der Stichprobe (nur $a$ ändert sich, $\beta$ bleibt unverändert)
+* Empathie (zentriert) = 0 ist nun der Durchschnittswert der Stichprobe (nur $a$ ändert sich, $\beta$ bleibt unverändert)
 
 **Umwandlung Log-Odds in Odds mittels Exponierung (z.B. $e^\beta$):**
 
@@ -751,7 +750,7 @@ class: top, left
 .pull-left[
 #### Multiple logistische Regression
 
-**Zurück zum Beispiel Beispiel:**
+**Zurück zum Beispiel:**
 <small>
 
 * $AV:$ Erfolg einer Gesprächstherapie (dummy-codiert)
@@ -849,7 +848,7 @@ class: top, left
 .full-width[.content-box-gray[
 * Die **logistische Regression** ist ein statistisches Modell zur Vorhersage von binären oder kategorialen Ergebnissen (z.B. Ja/Nein, Erfolg/Misserfolg oder Krank/gesund).
 
-* Mithilfe der **logsitischen Funktion** (aka. sigmoide Funktion) wird Wertebereich zwischen 0 und 1 begrenzt (Wahrscheinlichkeiten).
+* Mithilfe der **logistischen Funktion** (aka. sigmoide Funktion) wird Wertebereich zwischen 0 und 1 begrenzt (Wahrscheinlichkeiten).
 
 * Modellparameter werden in **Log-Odds** angegeben (linear skaliert). Diese können durch Exponierung in besser interpretierbare **Odds** umgewandelt werden.
 
