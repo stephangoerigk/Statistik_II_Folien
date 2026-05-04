@@ -1927,15 +1927,21 @@ X_{i2} + b_3 \cdot (X_{i1} \cdot X_{i2}) + \epsilon_i\]</span></p>
 benötigen wir die Standardfehler von <span class="math inline">\(b_1\)</span> und <span class="math inline">\(b_2\)</span>:</p>
 <p><span class="math display">\[SE(b_1) = \sqrt{\widehat{Var}(b_1)} =
 \sqrt{\dfrac{1}{1 - r^2_{x_1 x_2}} \cdot
-\dfrac{\hat{\sigma}^2}{\sum_{i=1}^{n}(x_{i1} -
-\bar{x}_1)^2}}\]</span></p>
+\dfrac{{\sigma}^2}{\sum_{i=1}^{n}(x_{i1} - \bar{x}_1)^2}}\]</span></p>
 <p><span class="math display">\[SE(b_2) = \sqrt{\widehat{Var}(b_2)} =
 \sqrt{\dfrac{1}{1 - r^2_{x_1 x_2}} \cdot
-\dfrac{\hat{\sigma}^2}{\sum_{i=1}^{n}(x_{i2} -
-\bar{x}_2)^2}}\]</span></p>
+\dfrac{{\sigma}^2}{\sum_{i=1}^{n}(x_{i2} - \bar{x}_2)^2}}\]</span></p>
 <p>mit <span class="math inline">\(r^2_{x_1 x_2}\)</span> = quadrierte
-Korrelation zwischen den beiden Prädiktoren und <span class="math inline">\(\hat{\sigma}^2\)</span> = Schätzer der
-Residualvarianz.</p>
+Korrelation zwischen den beiden Prädiktoren und <span class="math inline">\({\sigma}^2\)</span> wird durch Stichprobenvarianz
+<span class="math inline">\(s^2\)</span> geschätzt</p>
+</div>
+<div id="hypothesentests-für-einzelne-modellparameter" class="section level3">
+<h3>Hypothesentests für einzelne Modellparameter</h3>
+<p><span class="math display">\[t_a = \dfrac{a}{SE(a)} \qquad t_{b_1} =
+\dfrac{b_1}{SE(b_1)} \qquad t_{b_2} = \dfrac{b_2}{SE(b_2)}\]</span></p>
+<p>Unter <span class="math inline">\(H_0\)</span> folgen diese
+Teststatistiken jeweils einer t-Verteilung mit <span class="math inline">\(df = n - 3\)</span>. Der kritische Bereich ist
+beidseitig.</p>
 </div>
 <div id="konfidenzintervall-der-modellparameter" class="section level3">
 <h3>Konfidenzintervall der Modellparameter</h3>
@@ -1943,6 +1949,17 @@ Residualvarianz.</p>
 \cdot SE_{b_j}; \quad df = N - k - 1\]</span></p>
 <p>(mit <span class="math inline">\(k\)</span> = Anzahl Prädiktoren; bei
 zwei Prädiktoren: <span class="math inline">\(df = N - 3\)</span>)</p>
+</div>
+<div id="schätzung-der-fehlervarianz-und-standardschätzfehler" class="section level3">
+<h3>Schätzung der Fehlervarianz und Standardschätzfehler</h3>
+<p>Die Schätzfunktion für die unbekannte Fehlervarianz <span class="math inline">\(\sigma^2\)</span>:</p>
+<p><span class="math display">\[\hat{\sigma}^2 = \dfrac{1}{n - 3}
+\sum_{i=1}^{n} \left( Y_i - (a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2})
+\right)^2 = \dfrac{\sum_{i=1}^{n} e_i^2}{n - 3}\]</span></p>
+<p>Nach Ziehen der Wurzel erhält man den Standardschätzfehler (analog
+zur einfachen Regression):</p>
+<p><span class="math display">\[s = \sqrt{\dfrac{\sum_{i=1}^{n} e_i^2}{n
+- 3}}\]</span></p>
 </div>
 <div id="omnibustest-des-gesamtmodells" class="section level3">
 <h3>Omnibustest des Gesamtmodells</h3>
@@ -3298,8 +3315,8 @@ Zweite Dezimalstelle des z-Wertes
 0{,}9357\)</span>. Die Flächenanteile für negative <span class="math inline">\(z\)</span>-Werte ergeben sich nach <span class="math inline">\(P(-z) = 1 - P(z)\)</span>.</p>
 <div style="page-break-after: always;"></div>
 </div>
-<div id="tabelle-c-t-verteilung" class="section level2">
-<h2>Tabelle C: t-Verteilung</h2>
+<div id="tabelle-b-t-verteilung" class="section level2">
+<h2>Tabelle B: t-Verteilung</h2>
 <table class="table table-striped table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Verteilungsfunktion der t-Verteilungen und zweiseitige
@@ -5077,8 +5094,8 @@ z
 <p><em>Hinweis:</em> Die Flächenanteile für negative <span class="math inline">\(t\)</span>-Werte ergeben sich nach <span class="math inline">\(P(-t_{df}) = 1 - P(t_{df})\)</span>.</p>
 <div style="page-break-after: always;"></div>
 </div>
-<div id="tabelle-d-f-verteilung" class="section level2">
-<h2>Tabelle D: F-Verteilung</h2>
+<div id="tabelle-c-f-verteilung" class="section level2">
+<h2>Tabelle C: F-Verteilung</h2>
 <table class="table table-striped table-condensed" style="font-size: 8px; width: auto !important; margin-left: auto; margin-right: auto;">
 <caption style="font-size: initial !important;">
 Verteilungsfunktion der F-Verteilungen (Nenner-df 1 bis 20, Zähler-df 1
@@ -14574,8 +14591,8 @@ Fläche
 </table>
 <div style="page-break-after: always;"></div>
 </div>
-<div id="tabelle-b-chi2-verteilung" class="section level2">
-<h2>Tabelle B: <span class="math inline">\(\chi^2\)</span>-Verteilung</h2>
+<div id="tabelle-d-chi2-verteilung" class="section level2">
+<h2>Tabelle D: <span class="math inline">\(\chi^2\)</span>-Verteilung</h2>
 <table class="table table-striped table-condensed" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
 Verteilungsfunktion der <span class="math inline">\(\chi^2\)</span>-Verteilungen (rechtsseitige
