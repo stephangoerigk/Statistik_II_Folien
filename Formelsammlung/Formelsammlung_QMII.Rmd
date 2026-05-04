@@ -1,0 +1,579 @@
+---
+title: "Formelsammlung"
+author: "Charlotte Fresenius Hochschule"
+date: "`r Sys.Date()`"
+output:
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    latex_engine: xelatex
+  word_document:
+    toc: true
+    toc_depth: '2'
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: 2
+    number_sections: false
+    theme: flatly
+    mathjax: default
+subtitle: Quantitative Methoden II (B.Sc. Psychologie)
+geometry:
+  - a4paper
+  - margin=1in
+header-includes: \usepackage{graphicx}
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  message = FALSE,
+  warning = FALSE
+)
+
+library(knitr)
+library(kableExtra)
+
+# Helper: deutsches Komma + feste Nachkommastellen
+fmt_de <- function(x, digits = 4) {
+  format(round(x, digits), decimal.mark = ",", nsmall = digits, trim = TRUE)
+}
+```
+
+---
+
+\newpage
+
+## 1. Einfaktorielle Varianzanalyse (ANOVA)
+
+Bezeichnungen: $p$ = Anzahl Gruppen, $n$ = Anzahl Beobachtungen pro Gruppe, $N = p \cdot n$ = Gesamtstichprobe.
+
+### Quadratsummen- und Varianzzerlegung
+
+$$QS_{Gesamt} = QS_{zwischen} + QS_{innerhalb}$$
+
+$$\sigma^2_{Gesamt} = \sigma^2_{sys} + \sigma^2_{Res}$$
+
+### Varianz (Gesamt)
+
+$$\hat{\sigma}^2_{Gesamt} = \frac{QS_{Gesamt}}{df_{Gesamt}} = \frac{\sum_{i=1}^{p} \sum_{m=1}^{n} (x_{mi} - \bar{G})^2}{N - 1}$$
+
+$$QS_{Gesamt} = \sum_{i=1}^{p} \sum_{m=1}^{n} (x_{mi} - \bar{G})^2 \qquad df_{Gesamt} = N - 1$$
+
+### Varianz (innerhalb)
+
+$$\hat{\sigma}^2_{innerhalb} = \hat{\sigma}^2_{Res} = \frac{QS_{innerhalb}}{df_{innerhalb}} = \frac{\sum_{i=1}^{p} \sum_{m=1}^{n} (x_{mi} - \bar{A}_i)^2}{p \cdot (n - 1)}$$
+
+$$QS_{innerhalb} = \sum_{i=1}^{p} \sum_{m=1}^{n} (x_{mi} - \bar{A}_i)^2 \qquad df_{innerhalb} = p \cdot (n - 1)$$
+
+### Varianz (zwischen)
+
+$$\hat{\sigma}^2_{zwischen} = \frac{QS_{zwischen}}{df_{zwischen}} = \frac{n \cdot \sum_{i=1}^{p} (\bar{A}_i - \bar{G})^2}{p - 1}$$
+
+$$QS_{zwischen} = n \cdot \sum_{i=1}^{p} (\bar{A}_i - \bar{G})^2 \qquad df_{zwischen} = p - 1$$
+
+### Empirischer F-Wert
+
+$$F_{(df_{zwischen};\, df_{innerhalb})} = \frac{\hat{\sigma}^2_{zwischen}}{\hat{\sigma}^2_{innerhalb}}$$
+
+### Effektstärken
+
+**Stichprobeneffekt** ($\eta^2$, $f^2_s$):
+
+$$\eta^2 = \frac{QS_{zwischen}}{QS_{zwischen} + QS_{innerhalb}} \qquad \eta^2 = \frac{f^2_s}{1 + f^2_s}$$
+
+$$f^2_s = \frac{F_{(df_{zwischen};\, df_{innerhalb})} \cdot df_{zwischen}}{df_{innerhalb}}$$
+
+**Populationseffekt** ($\Omega^2$, $f^2$):
+
+$$\Omega^2 = \frac{\sigma^2_{sys}}{\sigma^2_{Gesamt}} \qquad \omega^2 = \frac{f^2}{1 + f^2}$$
+
+$$f^2 = \frac{(F_{(df_{zwischen};\, df_{innerhalb})} - 1) \cdot df_{zwischen}}{N}$$
+
+### Stichprobenumfangsplanung
+
+$$\Phi^2 = \frac{\Omega^2}{1 - \Omega^2} \qquad N = \frac{\lambda_{(df_{Zähler};\, 1-\beta;\, \alpha)}}{\Phi^2}$$
+
+### Tukey HSD (Post-hoc-Vergleiche)
+
+$$q_{r;\, df_{innerhalb}} = \frac{\bar{x}_2 - \bar{x}_1}{\sqrt{\dfrac{\hat{\sigma}^2_{innerhalb}}{n}}}$$
+
+$$HSD = q_{r;\, df_{innerhalb}} \cdot \sqrt{\dfrac{\hat{\sigma}^2_{innerhalb}}{n}}$$
+
+---
+
+## 2. Einfache lineare Regression
+
+### Regressionsgleichung
+
+$$\hat{y} = a + b \cdot x$$
+
+**Y-Achsenabschnitt:**
+
+$$a = \bar{y} - b \cdot \bar{x}$$
+
+**Y-Steigungsparameter:**
+
+$$b = \frac{\widehat{cov}(x,y)}{\hat{\sigma}^2_x} = r_{xy} \cdot \frac{\hat{\sigma}_y}{\hat{\sigma}_x}$$
+
+Bei dichotom nominalskaliertem Prädiktor:
+
+$$b = \bar{y}_1 - \bar{y}_0$$
+$$a = \bar{y}_0$$
+
+
+### Determinationskoeffizient
+
+$$R^2 = \frac{\text{erklärte Varianz}}{\text{Gesamtvarianz}} = \frac{\sum_{i=1}^{n}(\hat{y}_i - \bar{y})^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2} = r_{xy}^2$$
+
+### Standardschätzfehler (Residualstreuung)
+
+Für die Berechnung des Standardfehlers der Steigung ($b_{yx}$) ermitteln wir den Standardschätzfehler:
+
+$$\hat{\sigma}_{(y|x)} = \sqrt{\dfrac{n \cdot s_y^2 - n \cdot b^2 \cdot s_x^2}{n - 2}}$$
+
+### Standardfehler des Steigungsparameters
+
+$$s_b = \frac{\hat{\sigma}_{(y|x)}}{s_x \cdot \sqrt{n}}$$
+
+### Signifikanzprüfung der Steigung
+
+$$t = \frac{b}{s_b}; \quad df = N - 2$$
+
+### Konfidenzintervalle
+
+**KI für den Steigungsparameter:**
+
+$$b \pm t_{1 - \frac{\alpha}{2}, n-2} \cdot s_b$$
+
+**KI für einen einzelnen vorhergesagten Wert:**
+
+$$\hat{y}_j \pm t_{1 - \frac{\alpha}{2};\, n-2} \cdot \hat{\sigma}_{(y|x)} \cdot \sqrt{\dfrac{1}{n} + \dfrac{(x_j - \bar{x})^2}{n \cdot s^2_x}}$$
+
+---
+
+## 3. Mehrfaktorielle Varianzanalyse (zweifaktoriell)
+
+Bezeichnungen: $p$ = Stufen von $UV_1$, $q$ = Stufen von $UV_2$, $n$ = Beobachtungen pro Zelle, $N = p \cdot q \cdot n$.
+
+### Varianzzerlegung
+
+$$\sigma^2_{sys} = \sigma^2_{UV_1} + \sigma^2_{UV_2} + \sigma^2_{UV_1 \times UV_2}$$
+
+### Quadratsummen
+
+$$QS_{UV_1} = n \cdot q \cdot \sum_{i=1}^{p} (\bar{UV}_{1i} - \bar{G})^2$$
+
+$$QS_{UV_2} = n \cdot p \cdot \sum_{j=1}^{q} (\bar{UV}_{2j} - \bar{G})^2$$
+
+$$QS_{UV_1 \times UV_2} = n \cdot \sum_{i=1}^{p} \sum_{j=1}^{q} \left[ \overline{UV_1 UV_2}_{ij} - (\overline{UV_1}_i + \overline{UV_2}_j - \bar{G}) \right]^2$$
+
+$$QS_{Res} = \sum_{i=1}^{p} \sum_{j=1}^{q}  QS_{ij}$$
+
+### Freiheitsgrade
+
+$$df_{UV_1} = p - 1 \qquad df_{UV_2} = q - 1$$
+
+$$df_{UV_1 \times UV_2} = (p - 1) \cdot (q - 1) \qquad df_{Res} = p \cdot q \cdot (n - 1)$$
+
+### Varianzschätzer
+
+$$\hat{\sigma}^2_{UV_1} = \frac{QS_{UV_1}}{df_{UV_1}} \qquad \hat{\sigma}^2_{UV_2} = \frac{QS_{UV_2}}{df_{UV_2}}$$
+
+$$\hat{\sigma}^2_{UV_1 \times UV_2} = \frac{QS_{UV_1 \times UV_2}}{df_{UV_1 \times UV_2}} \qquad \hat{\sigma}^2_{Res} = \frac{QS_{Res}}{df_{Res}}$$
+
+### Signifikanztests der Effekte
+
+**Haupteffekt $UV_1$:**
+
+$$F_{UV_1\,(df_{UV_1};\, df_{Res})} = \frac{\hat{\sigma}^2_{UV_1}}{\hat{\sigma}^2_{Res}}$$
+
+**Haupteffekt $UV_2$:**
+
+$$F_{UV_2\,(df_{UV_2};\, df_{Res})} = \frac{\hat{\sigma}^2_{UV_2}}{\hat{\sigma}^2_{Res}}$$
+
+**Interaktion $UV_1 \times UV_2$:**
+
+$$F_{UV_1 \times UV_2\,(df_{UV_1 \times UV_2};\, df_{Res})} = \frac{\hat{\sigma}^2_{UV_1 \times UV_2}}{\hat{\sigma}^2_{Res}}$$
+
+---
+
+## 4. Multiple lineare Regression
+
+### Regressionsgleichung (zwei Prädiktoren)
+
+$$Y_i = a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2} + \epsilon_i \qquad \text{mit } \epsilon_i \sim N(0, \sigma^2)$$
+
+**Mit Interaktionsterm:**
+
+$$Y_i = a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2} + b_3 \cdot (X_{i1} \cdot X_{i2}) + \epsilon_i$$
+
+### Standardfehler der Modellparameter
+
+Für die Berechnung der Konfidenzintervalle und Hypothesentests benötigen wir die Standardfehler von $b_1$ und $b_2$:
+
+$$SE(b_1) = \sqrt{\widehat{Var}(b_1)} = \sqrt{\dfrac{1}{1 - r^2_{x_1 x_2}} \cdot \dfrac{{\sigma}^2}{\sum_{i=1}^{n}(x_{i1} - \bar{x}_1)^2}}$$
+
+$$SE(b_2) = \sqrt{\widehat{Var}(b_2)} = \sqrt{\dfrac{1}{1 - r^2_{x_1 x_2}} \cdot \dfrac{{\sigma}^2}{\sum_{i=1}^{n}(x_{i2} - \bar{x}_2)^2}}$$
+
+mit $r^2_{x_1 x_2}$ = quadrierte Korrelation zwischen den beiden Prädiktoren und ${\sigma}^2$ wird durch Stichprobenvarianz $s^2$ geschätzt
+
+### Hypothesentests für einzelne Modellparameter
+
+$$t_a = \dfrac{a}{SE(a)} \qquad t_{b_1} = \dfrac{b_1}{SE(b_1)} \qquad t_{b_2} = \dfrac{b_2}{SE(b_2)}$$
+
+Unter $H_0$ folgen diese Teststatistiken jeweils einer t-Verteilung mit $df = n - 3$. Der kritische Bereich ist beidseitig.
+
+
+### Konfidenzintervall der Modellparameter
+
+$$b_j \pm t_{1 - \frac{\alpha}{2};\, df} \cdot SE_{b_j}; \quad df = N - k - 1$$
+
+(mit $k$ = Anzahl Prädiktoren; bei zwei Prädiktoren: $df = N - 3$)
+
+### Schätzung der Fehlervarianz und Standardschätzfehler
+
+Die Schätzfunktion für die unbekannte Fehlervarianz $\sigma^2$:
+
+$$\hat{\sigma}^2 = \dfrac{1}{n - 3} \sum_{i=1}^{n} \left( Y_i - (a + b_1 \cdot X_{i1} + b_2 \cdot X_{i2}) \right)^2 = \dfrac{\sum_{i=1}^{n} e_i^2}{n - 3}$$
+
+Nach Ziehen der Wurzel erhält man den Standardschätzfehler (analog zur einfachen Regression):
+
+$$s = \sqrt{\dfrac{\sum_{i=1}^{n} e_i^2}{n - 3}}$$
+
+### Omnibustest des Gesamtmodells
+
+$$F = \dfrac{\dfrac{1}{k} \sum_{i=1}^{n}(\hat{Y}_i - \bar{Y})^2}{\dfrac{1}{N - k - 1} \sum_{i=1}^{n}(Y_i - \hat{Y}_i)^2} = \dfrac{QS_{Regression}/k}{QS_{Residual}/(N - k - 1)}$$
+
+mit $df_{Zähler} = k$ und $df_{Nenner} = N - k - 1$.
+
+---
+
+## 5. Varianzanalyse mit Messwiederholung
+
+Bezeichnungen: $p$ = Stufen des Messwiederholungsfaktors $A$, $n$ = Anzahl Versuchspersonen.
+
+### Varianzzerlegung
+
+$$\sigma^2_{Gesamt} = \sigma^2_{Vpn} + \sigma^2_{A} + \sigma^2_{Res}$$
+
+### Systematische Varianz
+
+$$\hat{\sigma}^2_A = \frac{QS_A}{df_A} = \frac{n \cdot \sum_{i=1}^{p}(\bar{A}_i - \bar{G})^2}{p - 1}$$
+
+$$df_A = p - 1$$
+
+### Residualvarianz (Prüfvarianz)
+
+$$\hat{\sigma}^2_{A \times Vpn} = \frac{QS_{A \times Vpn}}{df_{A \times Vpn}} = \frac{\sum_{i=1}^{p} \sum_{m=1}^{n} [x_{im} - (\bar{A}_i + \bar{P}_m - \bar{G})]^2}{(p - 1) \cdot (n - 1)}$$
+
+$$df_{A \times Vpn} = (p - 1) \cdot (n - 1)$$
+
+### Signifikanzprüfung
+
+$$F_{A\,(df_A;\, df_{A \times Vpn})} = \frac{\hat{\sigma}^2_A}{\hat{\sigma}^2_{A \times Vpn}}$$
+
+### Effektstärke
+
+$$f^2_{s\,(abhängig)} = \frac{F \cdot df_A}{df_{A \times Vpn}}$$
+
+$$\eta^2_p = \frac{QS_A}{QS_A + QS_{A \times Vpn}} = \frac{f^2_s}{1 + f^2_s}$$
+
+---
+
+## 6. Mixed ANOVA (Split-Plot-Design)
+
+Bezeichnungen: $p$ = Anzahl Gruppen (Zwischensubjektfaktor), $q$ = Anzahl Messzeitpunkte (Innersubjektfaktor), $n$ = Anzahl Vpn pro Gruppe.
+
+### Modellgleichung
+
+$$Y = Zeit + Gruppe + Zeit \cdot Gruppe + \varepsilon$$
+
+### Varianzzerlegung
+
+$$\sigma^2_{Gesamt} = \sigma^2_{Vpn} + \sigma^2_{Zeit} + \sigma^2_{Gruppe} + \sigma^2_{Zeit \times Gruppe} + \sigma^2_{Res}$$
+
+### Systematische Varianzen
+
+$$\hat{\sigma}^2_{Gruppe} = \frac{QS_{Gruppe}}{df_{Gruppe}} = \frac{n \cdot q \cdot \sum_{i=1}^{p}(\overline{Gruppe}_i - \bar{G})^2}{p - 1}$$
+
+$$\hat{\sigma}^2_{Zeit} = \frac{QS_{Zeit}}{df_{Zeit}} = \frac{n \cdot p \cdot \sum_{j=1}^{q}(\overline{Zeit}_j - \bar{G})^2}{q - 1}$$
+
+$$\hat{\sigma}^2_{Zeit \times Gruppe} = \frac{QS_{Zeit \times Gruppe}}{df_{Zeit \times Gruppe}} = \frac{n \cdot \sum_{i=1}^{p} \sum_{j=1}^{q}[\overline{GruppeZeit}_{ij} - (\overline{Gruppe}_i + \overline{Zeit}_j - \bar{G})]^2}{(p - 1) \cdot (q - 1)}$$
+
+### Prüfvarianzen
+
+**Prüfvarianz für Zwischensubjekteffekt (Gruppe):**
+
+$$\hat{\sigma}^2_{Prüf(Gruppe)} = \hat{\sigma}^2_{Vpn} = \frac{QS_{Vpn}}{df_{Vpn}} = \frac{q \cdot \sum_{i=1}^{p} \sum_{m=1}^{n}(\overline{GruppeVpn}_{im} - \overline{Gruppe}_i)^2}{p \cdot (n - 1)}$$
+
+**Prüfvarianz für Innersubjekteffekte (Zeit, Zeit × Gruppe):**
+
+$$\hat{\sigma}^2_{Prüf(Zeit)} = \hat{\sigma}^2_{Zeit \times Vpn} = \frac{QS_{Zeit \times Vpn}}{df_{Zeit \times Vpn}}$$
+
+### Freiheitsgrade
+
+$$df_{Gruppe} = p - 1 \qquad df_{Zeit} = q - 1 \qquad df_{Zeit \times Gruppe} = (p - 1)(q - 1)$$
+
+$$df_{Vpn} = p \cdot (n - 1) \qquad df_{Zeit \times Vpn} = p \cdot (q - 1) \cdot (n - 1)$$
+
+### Signifikanztests der Effekte
+
+**Zwischensubjekteffekt (Gruppe):**
+
+$$F_{Gruppe\,(df_{Gruppe};\, df_{Vpn})} = \frac{\hat{\sigma}^2_{Gruppe}}{\hat{\sigma}^2_{Vpn}}$$
+
+**Innersubjekteffekt (Zeit):**
+
+$$F_{Zeit\,(df_{Zeit};\, df_{Zeit \times Vpn})} = \frac{\hat{\sigma}^2_{Zeit}}{\hat{\sigma}^2_{Zeit \times Vpn}}$$
+
+**Interaktion (Zeit × Gruppe):**
+
+$$F_{Zeit \times Gruppe\,(df_{Zeit \times Gruppe};\, df_{Zeit \times Vpn})} = \frac{\hat{\sigma}^2_{Zeit \times Gruppe}}{\hat{\sigma}^2_{Zeit \times Vpn}}$$
+
+---
+
+## 7. $\chi^2$-Verfahren für Nominaldaten
+
+### Voraussetzungen
+
+**Eindimensional:**
+
+- $df = 1$: $f_{e_i} \geq 10$
+- $df > 1$: $f_{e_i} > 5$
+
+**Zweidimensional:**
+
+- $df = 1$: $f_{e_i} > 5$
+- $1 < df < 5$: $f_{e_i} \geq 2$
+- $5 \leq df$: $f_{e_i} \geq 1$ und in höchstens 20 % aller Zellen $f_{e_i} \leq 5$
+
+### Eindimensionaler $\chi^2$-Test
+
+**Erwartete Häufigkeiten unter Gleichverteilungsannahme** ($k$ Stufen, $N$ Beobachtungen):
+
+$$f_{e_1} = f_{e_2} = \dots = f_{e_k} = \frac{N}{k}$$
+
+**Erwartete Häufigkeiten unter theoretisch begründeter Verteilung:**
+
+$$f_{e_i} = N \cdot p_i$$
+
+**$\chi^2$-Wert:**
+
+$$\chi^2 = \sum_{i=1}^{k} \frac{(f_{b_i} - f_{e_i})^2}{f_{e_i}} \quad \text{mit } df = k - 1$$
+
+**Effektstärke:**
+
+$$\hat{w}^2 = \frac{\chi^2}{N}$$
+
+### Zweidimensionaler $\chi^2$-Test (Kontingenztafeln, $k \times l$)
+
+**Randhäufigkeiten:**
+
+$$p_i = \frac{n_i}{N}, \quad p_j = \frac{n_j}{N}$$
+
+**Erwartete Häufigkeiten unter $H_0$ (stochastische Unabhängigkeit):**
+
+$$f_{e_{ij}} = \frac{n_i \cdot n_j}{N} = \frac{\text{Zeilensumme} \cdot \text{Spaltensumme}}{N}$$
+
+**$\chi^2$-Wert:**
+
+$$\chi^2 = \sum_{i=1}^{k} \sum_{j=1}^{l} \frac{(f_{b_{ij}} - f_{e_{ij}})^2}{f_{e_{ij}}} \quad \text{mit } df = (k-1) \cdot (l-1)$$
+
+**Effektstärke (Cramérs Index):**
+
+$$CI = \sqrt{\frac{\chi^2}{N \cdot (R - 1)}} \quad \text{mit } R = \min(k; l)$$
+
+### 4-Felder-$\chi^2$-Test
+
+$$\chi^2_{emp} = \frac{N \cdot (a \cdot d - b \cdot c)^2}{(a + b) \cdot (c + d) \cdot (a + c) \cdot (b + d)} \quad \text{mit } df = 1$$
+
+|       | $B_1$   | $B_2$   | $\sum$  |
+|-------|---------|---------|---------|
+| $A_1$ | $a$     | $b$     | $(a+b)$ |
+| $A_2$ | $c$     | $d$     | $(c+d)$ |
+| $\sum$| $(a+c)$ | $(b+d)$ | $N$     |
+
+**Effektstärke (Phi-Koeffizient):**
+
+$$\phi = \frac{a \cdot d - b \cdot c}{\sqrt{(a+b) \cdot (c+d) \cdot (a+c) \cdot (b+d)}}$$
+
+---
+
+\newpage
+
+## Tabelle A: Standardnormalverteilung
+
+```{r tab-z, echo=FALSE}
+z_rows <- seq(0, 3.0, by = 0.1)
+z_cols <- seq(0, 0.09, by = 0.01)
+
+z_tab <- outer(z_rows, z_cols, function(r, c) pnorm(r + c))
+z_tab_chr <- fmt_de(z_tab, 4)
+dim(z_tab_chr) <- dim(z_tab)
+
+rownames(z_tab_chr) <- fmt_de(z_rows, 2)
+colnames(z_tab_chr) <- fmt_de(z_cols, 2)
+
+kbl(z_tab_chr,
+    align = "c",
+    booktabs = TRUE,
+    caption = "Verteilungsfunktion der Standardnormalverteilung",
+    linesep = "") |>
+  kable_styling(latex_options = c("hold_position", "scale_down"),
+                bootstrap_options = c("striped", "condensed"),
+                full_width = FALSE) |>
+  add_header_above(c("z-Wert" = 1, "Zweite Dezimalstelle des z-Wertes" = 10))
+```
+
+*Beispiel:* $P(z \leq 1{,}52) = 0{,}9357$. Die Flächenanteile für negative $z$-Werte ergeben sich nach $P(-z) = 1 - P(z)$.
+
+\newpage
+
+## Tabelle C: t-Verteilung
+
+```{r tab-t, echo=FALSE}
+t_df    <- c(1:30, 40, 60, 120, Inf)
+t_quant <- c(0.55, 0.60, 0.65, 0.70, 0.75, 0.80, 0.85,
+             0.90, 0.95, 0.975, 0.990, 0.995, 0.9995)
+
+# t-Werte (Inf-Zeile = z-Werte)
+t_tab <- sapply(t_quant, function(p) qt(p, t_df))
+t_tab[is.infinite(t_df), ] <- qnorm(t_quant)
+
+# Kritische r-Werte für zweiseitige Korrelations-Tests
+r_crit <- function(alpha, df) {
+  if (is.infinite(df)) return(NA_real_)
+  tc <- qt(1 - alpha / 2, df)
+  tc / sqrt(tc^2 + df)
+}
+r_05 <- sapply(t_df, function(d) r_crit(0.05, d))
+r_01 <- sapply(t_df, function(d) r_crit(0.01, d))
+
+t_full <- cbind(t_tab, r_05, r_01)
+t_chr  <- fmt_de(t_full, 3)
+dim(t_chr) <- dim(t_full)
+t_chr[is.na(t_full)] <- ""
+
+rownames(t_chr) <- ifelse(is.infinite(t_df), "z", as.character(t_df))
+colnames(t_chr) <- c(fmt_de(t_quant, 3), "$r_{0{,}05}$", "$r_{0{,}01}$")
+
+kbl(t_chr,
+    align = "c",
+    booktabs = TRUE,
+    escape = FALSE,
+    caption = "Verteilungsfunktion der t-Verteilungen und zweiseitige Signifikanzgrenzen für Produkt-Moment-Korrelationen",
+    linesep = "") |>
+  kable_styling(latex_options = c("hold_position", "scale_down"),
+                bootstrap_options = c("striped", "condensed"),
+                full_width = FALSE) |>
+  add_header_above(c("df" = 1, "Fläche" = 13, "Korrelation" = 2))
+```
+
+*Hinweis:* Die Flächenanteile für negative $t$-Werte ergeben sich nach $P(-t_{df}) = 1 - P(t_{df})$.
+
+\newpage
+
+## Tabelle D: F-Verteilung
+
+```{r tab-f-setup, include=FALSE}
+# Nenner-df gemäß Original-Formelsammlung (mit Sprüngen ab 20)
+nenner_df_full <- c(1:20, 22, 24, 26, 28, 30, 40, 60, 120, 200, Inf)
+flachen        <- c(0.90, 0.95, 0.99)
+zahler_links   <- 1:12
+zahler_rechts  <- c(15, 20, 25, 30, 40, 50, 60, 100, 120, 200, 500, Inf)
+
+# Aufteilung der Nenner-df auf zwei Bereiche (analog zum Original)
+nenner_A <- c(1:20)
+nenner_B <- c(21:30, 40, 60, 120, 200, Inf)
+
+build_f <- function(zahler, nenner, alphas) {
+  out <- list()
+  for (nd in nenner) {
+    for (a in alphas) {
+      row <- sapply(zahler, function(zd) {
+        zd_use <- if (is.infinite(zd)) 1e6 else zd
+        nd_use <- if (is.infinite(nd)) 1e6 else nd
+        qf(a, zd_use, nd_use)
+      })
+      out[[length(out) + 1]] <- c(
+        Nenner = ifelse(is.infinite(nd), "∞", as.character(nd)),
+        Fläche = fmt_de(a, 2),
+        fmt_de(row, 2)
+      )
+    }
+  }
+  do.call(rbind, out)
+}
+
+render_f <- function(zahler, nenner, alphas, caption) {
+  ftab <- build_f(zahler, nenner, alphas)
+  colnames(ftab) <- c("Nenner-df", "Fläche",
+                      ifelse(is.infinite(zahler), "∞", as.character(zahler)))
+  kbl(ftab,
+      align = "c",
+      booktabs = TRUE,
+      caption = caption,
+      escape = FALSE,
+      linesep = "",
+      row.names = FALSE) |>
+    kable_styling(latex_options = c("HOLD_position", "scale_down"),
+                  bootstrap_options = c("striped", "condensed"),
+                  full_width = FALSE,
+                  font_size = 8) |>
+    add_header_above(c(" " = 2, "Zähler-df" = length(zahler)))
+}
+```
+
+```{r tab-f1, echo=FALSE}
+render_f(zahler_links, nenner_A, flachen,
+         "Verteilungsfunktion der F-Verteilungen (Nenner-df 1 bis 20, Zähler-df 1 bis 12)")
+```
+
+\newpage
+
+```{r tab-f2, echo=FALSE}
+render_f(zahler_rechts, nenner_A, flachen,
+         "Verteilungsfunktion der F-Verteilungen (Nenner-df 1 bis 20, Zähler-df 15 bis $\\infty$)")
+```
+
+\newpage
+
+```{r tab-f3, echo=FALSE}
+render_f(zahler_links, nenner_B, flachen,
+         "Verteilungsfunktion der F-Verteilungen (Nenner-df 21 bis $\\infty$, Zähler-df 1 bis 12)")
+```
+
+\newpage
+
+```{r tab-f4, echo=FALSE}
+render_f(zahler_rechts, nenner_B, flachen,
+         "Verteilungsfunktion der F-Verteilungen (Nenner-df 21 bis $\\infty$, Zähler-df 15 bis $\\infty$)")
+```
+
+\newpage
+
+## Tabelle B: $\chi^2$-Verteilung
+
+```{r tab-chi, echo=FALSE}
+chi_df    <- c(1:30, 40, 50, 60, 70, 80, 90, 100)
+chi_quant <- c(0.90, 0.95, 0.975, 0.99, 0.995, 0.999)
+
+chi_tab <- sapply(chi_quant, function(p) qchisq(p, chi_df))
+chi_chr <- fmt_de(chi_tab, 3)
+dim(chi_chr) <- dim(chi_tab)
+
+rownames(chi_chr) <- as.character(chi_df)
+colnames(chi_chr) <- fmt_de(chi_quant, 3)
+
+kbl(chi_chr,
+    align = "c",
+    booktabs = TRUE,
+    caption = "Verteilungsfunktion der $\\chi^2$-Verteilungen (rechtsseitige Quantile)",
+    escape = FALSE,
+    linesep = "") |>
+  kable_styling(latex_options = c("hold_position"),
+                bootstrap_options = c("striped", "condensed"),
+                full_width = FALSE) |>
+  add_header_above(c("df" = 1, "Fläche (links der Grenze)" = 6))
+```
