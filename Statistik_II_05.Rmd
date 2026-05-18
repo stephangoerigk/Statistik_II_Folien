@@ -137,6 +137,18 @@ class: top, left
 class: top, left
 ### Mehrfaktorielle ANOVA
 
+#### Struktur eines zweifaktoriellen Designs
+
+.center[
+```{r eval = TRUE, echo = F, out.width = "90%"}
+knitr::include_graphics("bilder/faktoriell_design.svg")
+```
+]
+
+---
+class: top, left
+### Mehrfaktorielle ANOVA
+
 #### Vorgehen
 
 * Mehrfaktorielle ANOVA ist in der Vorgehensweise analog zur Einfaktoriellen ANOVA

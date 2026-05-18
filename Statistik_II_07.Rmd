@@ -438,12 +438,12 @@ class: top, left
 ---
 class: top, left
 ### Regressionsmodelle mit Interaktionen
-
+.pull-left[
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
 **2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
-.pull-left[
+
 Mögliche Forschungsfragen im Modell:
 
 <small>
@@ -459,8 +459,8 @@ $\rightarrow$ Die dritte Frage stellt eine sog. Moderationshypothese dar (rechts
 
 .pull-right[
 .center[
-```{r eval = TRUE, echo = F, out.width = "950px"}
-knitr::include_graphics("bilder/Moderation.png")
+```{r eval = TRUE, echo = F, out.width = "550px"}
+knitr::include_graphics("bilder/moderation_pfad.svg")
 ```
 ]
 
@@ -468,7 +468,7 @@ knitr::include_graphics("bilder/Moderation.png")
 * UV: Konfrontationsbereitschaft
 * Moderator: Erfahrung
 
-**Moderation:** *Beeinflusst die Erfahrung den Effekt der Konfrontationsbereitschaft auf den Therapieerfolg?* (Beispielserklärung: Erfahrenere Therapeut:innen können besser konfrontieren.) 
+**Moderation:** *Beeinflusst die Erfahrung den Effekt der Konfrontationsbereitschaft auf den Therapieerfolg?* (Beispielserklärung: Erfahrenere Therapeut:innen können besser konfrontieren.)
 ]
 
 ---
@@ -712,12 +712,12 @@ $\rightarrow$ Haupteffekt Konfrontationsbereitschaft deutlich größerer p-Wert,
 ---
 class: top, left
 ### Regressionsmodelle mit Interaktionen
-
+.pull-left[
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
 **2. Multiples Regressionsmodell mit Interaktion (diskret x diskret) :**
 
-.pull-left[
+
 Mögliche Forschungsfragen im Modell:
 
 <small>
@@ -733,8 +733,8 @@ $\rightarrow$ Die dritte Frage stellt eine sog. Moderationshypothese dar (rechts
 
 .pull-right[
 .center[
-```{r eval = TRUE, echo = F, out.width = "950px"}
-knitr::include_graphics("bilder/Moderation.png")
+```{r eval = TRUE, echo = F, out.width = "550px"}
+knitr::include_graphics("bilder/moderation_pfad.svg")
 ```
 ]
 
@@ -858,12 +858,12 @@ ggplot(df, aes(x = Empathie, y = Therapieerfolg, colour = Erfahrung)) +
 ---
 class: top, left
 ### Regressionsmodelle mit Interaktionen
-
+.pull-left[
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
 **2. Multiples Regressionsmodell mit Interaktion (diskret x stetig) :**
 
-.pull-left[
+
 Mögliche Forschungsfragen im Modell:
 
 <small>
@@ -879,8 +879,8 @@ $\rightarrow$ Die dritte Frage stellt eine sog. Moderationshypothese dar (rechts
 
 .pull-right[
 .center[
-```{r eval = TRUE, echo = F, out.width = "950px"}
-knitr::include_graphics("bilder/Moderation.png")
+```{r eval = TRUE, echo = F, out.width = "550px"}
+knitr::include_graphics("bilder/moderation_pfad.svg")
 ```
 ]
 
@@ -1066,12 +1066,12 @@ plot_model(model, type = "pred", terms = c("Erfahrung", "IQ_cent [-15, 0, 15]"))
 ---
 class: top, left
 ### Regressionsmodelle mit Interaktionen
-
+.pull-left[
 #### Beispiel: Faktoren für Erfolg einer Therapie
 
 **2. Multiples Regressionsmodell mit Interaktion (stetig x stetig) :**
 
-.pull-left[
+
 Mögliche Forschungsfragen im Modell:
 
 <small>
@@ -1083,8 +1083,8 @@ $\rightarrow$ Diese  Frage stellt eine sog. Moderationshypothese dar (rechts dar
 
 .pull-right[
 .center[
-```{r eval = TRUE, echo = F, out.width = "950px"}
-knitr::include_graphics("bilder/Moderation.png")
+```{r eval = TRUE, echo = F, out.width = "550px"}
+knitr::include_graphics("bilder/moderation_pfad.svg")
 ```
 ]
 

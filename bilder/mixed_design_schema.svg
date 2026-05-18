@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 920 312" font-family="Arial, sans-serif">
+  <rect width="920" height="312" fill="white"/>
+
+  <!-- Title -->
+  <text x="460" y="24" text-anchor="middle" font-size="17" font-weight="bold" fill="#621C37">Mixed Design: Between × Within</text>
+
+  <!-- ── Within-Subject header (right side only) ── -->
+  <rect x="206" y="34" width="700" height="32" rx="6" fill="#EE0071"/>
+  <text x="556" y="55" text-anchor="middle" font-size="13" font-weight="bold" fill="white">Within-Subject-Faktor (Messwiederholung)</text>
+
+  <!-- ── Time-point column headers ── -->
+  <rect x="206" y="70" width="228" height="36" rx="4" fill="#EE0071" opacity="0.8"/>
+  <text x="320" y="93" text-anchor="middle" font-size="13" font-weight="bold" fill="white">t₁ (Prä)</text>
+
+  <rect x="438" y="70" width="228" height="36" rx="4" fill="#EE0071" opacity="0.8"/>
+  <text x="552" y="93" text-anchor="middle" font-size="13" font-weight="bold" fill="white">t₂ (Post)</text>
+
+  <rect x="670" y="70" width="236" height="36" rx="4" fill="#EE0071" opacity="0.8"/>
+  <text x="788" y="93" text-anchor="middle" font-size="13" font-weight="bold" fill="white">t₃ (Follow-up)</text>
+
+  <!-- ══ LEFT COLUMN: one continuous block y=34–272 ══ -->
+  <rect x="14" y="34" width="188" height="238" rx="6" fill="#621C37"/>
+
+  <!-- "Between-Subject-Faktor" label at top of left column -->
+  <text x="108" y="56" text-anchor="middle" font-size="12" font-weight="bold" fill="white">Between-Subject-Faktor</text>
+  <!-- subtle separator between header area and group rows -->
+  <line x1="14" y1="108" x2="202" y2="108" stroke="white" stroke-width="1" opacity="0.25"/>
+  <!-- subtle separator between Gruppe 1 and Gruppe 2 -->
+  <line x1="14" y1="190" x2="202" y2="190" stroke="white" stroke-width="1" opacity="0.25"/>
+  <!-- slight darkening for Gruppe 2 area -->
+  <rect x="14" y="190" width="188" height="82" rx="0" fill="black" opacity="0.12"/>
+
+  <!-- Gruppe 1 text -->
+  <text x="108" y="137" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Gruppe 1</text>
+  <text x="108" y="156" text-anchor="middle" font-size="12" fill="#fdeef5">(z.B. Therapie)</text>
+  <text x="108" y="174" text-anchor="middle" font-size="12" fill="#fdeef5">n = 20</text>
+
+  <!-- Gruppe 2 text -->
+  <text x="108" y="219" text-anchor="middle" font-size="14" font-weight="bold" fill="white">Gruppe 2</text>
+  <text x="108" y="238" text-anchor="middle" font-size="12" fill="#fdeef5">(z.B. Kontrolle)</text>
+  <text x="108" y="256" text-anchor="middle" font-size="12" fill="#fdeef5">n = 20</text>
+
+  <!-- ── Data cells Gruppe 1 (y=110–188, height=78) ── -->
+  <rect x="206" y="110" width="228" height="78" rx="4" fill="#fdeef5" stroke="#621C37" stroke-width="1.2"/>
+  <text x="320" y="143" text-anchor="middle" font-size="12" fill="#333">VP₁ … VP₂₀</text>
+  <text x="320" y="163" text-anchor="middle" font-size="12" fill="#666">Messung bei t₁</text>
+
+  <rect x="438" y="110" width="228" height="78" rx="4" fill="#fdeef5" stroke="#621C37" stroke-width="1.2"/>
+  <text x="552" y="143" text-anchor="middle" font-size="12" fill="#333">VP₁ … VP₂₀</text>
+  <text x="552" y="163" text-anchor="middle" font-size="12" fill="#666">Messung bei t₂</text>
+
+  <rect x="670" y="110" width="236" height="78" rx="4" fill="#fdeef5" stroke="#621C37" stroke-width="1.2"/>
+  <text x="788" y="143" text-anchor="middle" font-size="12" fill="#333">VP₁ … VP₂₀</text>
+  <text x="788" y="163" text-anchor="middle" font-size="12" fill="#666">Messung bei t₃</text>
+
+  <!-- ── Data cells Gruppe 2 (y=192–270, height=80) ── -->
+  <rect x="206" y="192" width="228" height="80" rx="4" fill="#fdeef5" stroke="#621C37" stroke-width="1.2" opacity="0.85"/>
+  <text x="320" y="226" text-anchor="middle" font-size="12" fill="#333">VP₂₁ … VP₄₀</text>
+  <text x="320" y="246" text-anchor="middle" font-size="12" fill="#666">Messung bei t₁</text>
+
+  <rect x="438" y="192" width="228" height="80" rx="4" fill="#fdeef5" stroke="#621C37" stroke-width="1.2" opacity="0.85"/>
+  <text x="552" y="226" text-anchor="middle" font-size="12" fill="#333">VP₂₁ … VP₄₀</text>
+  <text x="552" y="246" text-anchor="middle" font-size="12" fill="#666">Messung bei t₂</text>
+
+  <rect x="670" y="192" width="236" height="80" rx="4" fill="#fdeef5" stroke="#621C37" stroke-width="1.2" opacity="0.85"/>
+  <text x="788" y="226" text-anchor="middle" font-size="12" fill="#333">VP₂₁ … VP₄₀</text>
+  <text x="788" y="246" text-anchor="middle" font-size="12" fill="#666">Messung bei t₃</text>
+
+  <!-- ── Legend box ── -->
+  <rect x="14" y="280" width="892" height="26" rx="7" fill="#f4f4f4" stroke="#ccc" stroke-width="1"/>
+  <text x="106" y="297" text-anchor="middle" font-size="12" font-weight="bold" fill="#621C37">Varianzquellen:</text>
+
+  <rect x="166" y="284" width="14" height="14" rx="2" fill="#621C37"/>
+  <text x="185" y="296" font-size="12" fill="#333">Between (Gruppe)</text>
+
+  <rect x="338" y="284" width="14" height="14" rx="2" fill="#EE0071"/>
+  <text x="357" y="296" font-size="12" fill="#333">Within (Zeit)</text>
+
+  <rect x="490" y="284" width="14" height="14" rx="2" fill="white" stroke="#EE0071" stroke-width="1.5"/>
+  <text x="510" y="296" font-size="12" fill="#333">Interaktion (Gruppe × Zeit)</text>
+
+  <rect x="720" y="284" width="14" height="14" rx="2" fill="#aaa"/>
+  <text x="739" y="296" font-size="12" fill="#333">Fehler (Residual)</text>
+</svg>

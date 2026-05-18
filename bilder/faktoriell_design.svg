@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 345" font-family="Arial, sans-serif">
+  <rect width="900" height="345" fill="white"/>
+
+  <defs>
+    <marker id="dbl-start" markerWidth="9" markerHeight="7" refX="1" refY="3.5" orient="auto-start-reverse">
+      <polygon points="0 3.5,9 0,9 7" fill="#EE0071"/>
+    </marker>
+    <marker id="dbl-end" markerWidth="9" markerHeight="7" refX="8" refY="3.5" orient="auto">
+      <polygon points="0 0,9 3.5,0 7" fill="#EE0071"/>
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="450" y="26" text-anchor="middle" font-size="17" font-weight="bold" fill="#621C37">Zweifaktorielles Design (2 × 2)</text>
+
+  <!-- Faktor B label (plain text, no background – consistent with Faktor A) -->
+  <text x="436" y="50" text-anchor="middle" font-size="13" font-weight="bold" fill="#621C37">Faktor B (UV₂)</text>
+
+  <!-- Column headers B1, B2 -->
+  <rect x="234" y="56" width="196" height="40" rx="6" fill="#621C37"/>
+  <text x="332" y="81" text-anchor="middle" font-size="15" font-weight="bold" fill="white">B₁</text>
+
+  <rect x="438" y="56" width="196" height="40" rx="6" fill="#621C37"/>
+  <text x="536" y="81" text-anchor="middle" font-size="15" font-weight="bold" fill="white">B₂</text>
+
+  <!-- Faktor A label (plain rotated text, no background – consistent with Faktor B) -->
+  <text x="70" y="207" text-anchor="middle" font-size="13" font-weight="bold" fill="#621C37"
+        transform="rotate(-90,70,207)">Faktor A (UV₁)</text>
+
+  <!-- Row headers A1, A2 -->
+  <rect x="90" y="100" width="138" height="100" rx="6" fill="#621C37"/>
+  <text x="159" y="155" text-anchor="middle" font-size="15" font-weight="bold" fill="white">A₁</text>
+
+  <rect x="90" y="208" width="138" height="100" rx="6" fill="#621C37"/>
+  <text x="159" y="263" text-anchor="middle" font-size="15" font-weight="bold" fill="white">A₂</text>
+
+  <!-- Data cells -->
+  <!-- A1B1 -->
+  <rect x="234" y="100" width="196" height="100" rx="5" fill="#fdeef5" stroke="#621C37" stroke-width="1.5"/>
+  <text x="332" y="143" text-anchor="middle" font-size="13" font-weight="bold" fill="#621C37">μ<tspan dy="5" font-size="10">A₁B₁</tspan></text>
+  <text x="332" y="172" text-anchor="middle" font-size="12" fill="#666">Gruppe 1</text>
+
+  <!-- A1B2 -->
+  <rect x="438" y="100" width="196" height="100" rx="5" fill="#fdeef5" stroke="#621C37" stroke-width="1.5"/>
+  <text x="536" y="143" text-anchor="middle" font-size="13" font-weight="bold" fill="#621C37">μ<tspan dy="5" font-size="10">A₁B₂</tspan></text>
+  <text x="536" y="172" text-anchor="middle" font-size="12" fill="#666">Gruppe 2</text>
+
+  <!-- A2B1 -->
+  <rect x="234" y="208" width="196" height="100" rx="5" fill="#fdeef5" stroke="#621C37" stroke-width="1.5"/>
+  <text x="332" y="251" text-anchor="middle" font-size="13" font-weight="bold" fill="#621C37">μ<tspan dy="5" font-size="10">A₂B₁</tspan></text>
+  <text x="332" y="280" text-anchor="middle" font-size="12" fill="#666">Gruppe 3</text>
+
+  <!-- A2B2 -->
+  <rect x="438" y="208" width="196" height="100" rx="5" fill="#fdeef5" stroke="#621C37" stroke-width="1.5"/>
+  <text x="536" y="251" text-anchor="middle" font-size="13" font-weight="bold" fill="#621C37">μ<tspan dy="5" font-size="10">A₂B₂</tspan></text>
+  <text x="536" y="280" text-anchor="middle" font-size="12" fill="#666">Gruppe 4</text>
+
+  <!-- Interaction dashed border -->
+  <rect x="230" y="96" width="408" height="216" rx="7"
+        fill="none" stroke="#EE0071" stroke-width="1.8" stroke-dasharray="7,5" opacity="0.55"/>
+
+  <!-- Haupteffekt A arrow (right, vertical) -->
+  <line x1="672" y1="104" x2="672" y2="304"
+        stroke="#EE0071" stroke-width="2.5"
+        marker-end="url(#dbl-end)"/>
+  <text x="690" y="200" text-anchor="start" font-size="13" font-weight="bold" fill="#EE0071">Haupteffekt A</text>
+  <text x="690" y="217" text-anchor="start" font-size="11" fill="#EE0071">(Zeilenmittelwerte)</text>
+
+  <!-- Haupteffekt B arrow (bottom, horizontal) -->
+  <line x1="238" y1="328" x2="630" y2="328"
+        stroke="#EE0071" stroke-width="2.5"
+        marker-end="url(#dbl-end)"/>
+  <text x="434" y="344" text-anchor="middle" font-size="13" font-weight="bold" fill="#EE0071">Haupteffekt B  (Spaltenmittelwerte)</text>
+
+  <!-- A×B label -->
+  <text x="644" y="112" text-anchor="start" font-size="12" fill="#EE0071" font-weight="bold" opacity="0.8">A×B</text>
+</svg>

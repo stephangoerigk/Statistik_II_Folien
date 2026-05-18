@@ -96,6 +96,18 @@ knitr::include_graphics("bilder/withpretest.png")
 class: top, left
 ### Mixed Designs
 
+#### Struktur des Mixed Designs
+
+.center[
+```{r eval = TRUE, echo = F, out.width = "100%"}
+knitr::include_graphics("bilder/mixed_design_schema.svg")
+```
+]
+
+---
+class: top, left
+### Mixed Designs
+
 .pull-left[
 #### Kurzvorstellung
 <small>
@@ -142,6 +154,8 @@ ggplot(df_long, aes(x = Time, y = Score, colour = Gruppe)) +
    stat_summary(size = 1.5) +
      stat_summary(geom = "line", aes(group = Gruppe)) +
     labs(x = "Zeit", y = "AV") +
+  scale_colour_manual(values = c("Gruppe1" = "#621C37",
+                               "Gruppe2" = "#EE0071")) +
     ggtitle("Mixed Design") +
   theme_classic() +
   theme(text = element_text(size = 25), axis.text.y = element_blank(), axis.ticks.y = element_blank())
@@ -193,6 +207,8 @@ p2 = ggplot(df_long, aes(x = Time, y = Score, colour = Gruppe)) +
    stat_summary(size = 1.5) +
      stat_summary(geom = "line", aes(group = Gruppe)) +
     labs(x = "Zeit", y = "AV") +
+  scale_colour_manual(values = c("Gruppe1" = "#621C37",
+                               "Gruppe2" = "#EE0071")) +
     ggtitle("Mixed Design") +
   theme_classic() +
   theme(text = element_text(size = 25), axis.text.y = element_blank(), axis.ticks.y = element_blank())
@@ -224,6 +240,8 @@ p1 = ggplot(df_long, aes(x = Time, y = Score, colour = Gruppe)) +
    stat_summary(size = 1.5) +
      stat_summary(geom = "line", aes(group = Gruppe)) +
     labs(x = "Zeit", y = "AV") +
+  scale_colour_manual(values = c("Gruppe1" = "#621C37",
+                               "Gruppe2" = "#EE0071")) +
     ggtitle("Mixed Design") +
   theme_classic() +
   theme(text = element_text(size = 25), axis.text.y = element_blank(), axis.ticks.y = element_blank())
@@ -372,7 +390,7 @@ knitr::kable(df_med,
 .center[
 ```{r echo = F, out.width="300px"}
 ggplot(df_long, aes(x = Time, y = Score)) +
-   stat_summary(size = 1.5) +
+   stat_summary(size = 1.5, colour = "#621C37") +
      stat_summary(geom = "line", aes(group = 1)) +
     labs(x = "Zeit", y = "AV") +
   ggtitle("Haupteffekt Zeit") +
@@ -417,7 +435,8 @@ knitr::kable(df_med,
 .center[
 ```{r echo = F, out.width="300px"}
 ggplot(df_long, aes(x = Gruppe, y = Score)) +
-   stat_summary(size = 1.5) +
+   stat_summary(geom = "bar", fun = "mean", fill = "#fdeef5", colour = "#621C37", width = .5) +
+  stat_summary(geom = "errorbar", fun.data = mean_se, width = .2) +
     labs(x = "Gruppe", y = "AV") +
   ggtitle("Haupteffekt Gruppe") +
   theme_classic() +
@@ -462,6 +481,8 @@ knitr::kable(df_med,
 ggplot(df_long, aes(x = Time, y = Score, colour = Gruppe)) +
    stat_summary(size = 1.5) +
   stat_summary(geom = "line", aes(group = Gruppe)) +
+  scale_colour_manual(values = c("Gruppe1" = "#621C37",
+                               "Gruppe2" = "#EE0071")) +
     labs(x = "Gruppe", y = "AV") +
   ggtitle("Interaktion Zeit x Gruppe") +
   theme_classic() +

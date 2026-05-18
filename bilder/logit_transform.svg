@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 290" font-family="Arial, sans-serif">
+  <rect width="820" height="290" fill="white"/>
+
+  <defs>
+    <marker id="ax" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0,8 3,0 6" fill="#555"/>
+    </marker>
+    <marker id="tr" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#621C37"/>
+    </marker>
+  </defs>
+
+  <!-- ============ LEFT PANEL ============ -->
+  <text x="185" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#621C37">Lineares Modell</text>
+  <text x="185" y="40" text-anchor="middle" font-size="11" fill="#999">(Problem: Werte außerhalb [0,1])</text>
+
+  <!-- Out-of-bounds shading top and bottom -->
+  <rect x="65" y="55" width="245" height="28" fill="#fdeef5" opacity="0.9"/>
+  <rect x="65" y="193" width="245" height="28" fill="#fdeef5" opacity="0.9"/>
+
+  <!-- P=0 and P=1 dashed reference lines -->
+  <line x1="61" y1="193" x2="313" y2="193" stroke="#bbb" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <line x1="61" y1="83"  x2="313" y2="83"  stroke="#bbb" stroke-width="1.2" stroke-dasharray="5,4"/>
+
+  <!-- Axes -->
+  <line x1="65" y1="221" x2="315" y2="221" stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+  <line x1="65" y1="221" x2="65"  y2="52"  stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+
+  <!-- Y-axis tick labels -->
+  <text x="58" y="197" text-anchor="end" font-size="11" fill="#777">0</text>
+  <text x="58" y="87"  text-anchor="end" font-size="11" fill="#777">1</text>
+  <text x="58" y="142" text-anchor="end" font-size="11" fill="#777">.5</text>
+
+  <!-- Axis labels -->
+  <text x="190" y="240" text-anchor="middle" font-size="12" fill="#555">Prädiktor x</text>
+  <text x="20" y="140" text-anchor="middle" font-size="12" fill="#555" transform="rotate(-90,20,140)">P(Y = 1)</text>
+
+  <!-- Linear regression line – extends clearly outside [0,1] -->
+  <line x1="48" y1="234" x2="316" y2="44" stroke="#EE0071" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Warning triangles at out-of-bounds regions -->
+  <text x="296" y="74"  text-anchor="middle" font-size="15" fill="#EE0071">⚠</text>
+  <text x="296" y="218" text-anchor="middle" font-size="15" fill="#EE0071">⚠</text>
+
+
+  <!-- ============ MIDDLE SECTION ============ -->
+  <!-- Label clearly above arrow -->
+  <text x="395" y="103" text-anchor="middle" font-size="12" font-weight="bold" fill="#621C37">logistische</text>
+  <text x="395" y="117" text-anchor="middle" font-size="12" font-weight="bold" fill="#621C37">Funktion</text>
+  <!-- Arrow with clear gap below label -->
+  <line x1="362" y1="128" x2="427" y2="128" stroke="#621C37" stroke-width="2.5" marker-end="url(#tr)"/>
+  <!-- Formula with proper superscripts (tspan dy shift) -->
+  <text font-size="12" fill="#621C37" font-style="italic">
+    <tspan x="386" y="150">e</tspan><tspan dy="-5" font-size="9">a + β·x</tspan>
+  </text>
+  <line x1="356" y1="156" x2="434" y2="156" stroke="#621C37" stroke-width="1.2"/>
+  <text font-size="12" fill="#621C37" font-style="italic">
+    <tspan x="370" y="171">1 + e</tspan><tspan dy="-5" font-size="9">a + β·x</tspan>
+  </text>
+
+
+  <!-- ============ RIGHT PANEL ============ -->
+  <text x="635" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#621C37">Logistisches Modell</text>
+  <text x="635" y="40" text-anchor="middle" font-size="11" fill="#3a7a3a">✓ Wertebereich bleibt in [0, 1]</text>
+
+  <!-- Bounded region fill -->
+  <rect x="495" y="83" width="245" height="110" fill="#fdeef5" opacity="0.35"/>
+
+  <!-- P=0 and P=1 dashed reference lines -->
+  <line x1="491" y1="193" x2="743" y2="193" stroke="#bbb" stroke-width="1.2" stroke-dasharray="5,4"/>
+  <line x1="491" y1="83"  x2="743" y2="83"  stroke="#bbb" stroke-width="1.2" stroke-dasharray="5,4"/>
+
+  <!-- Axes -->
+  <line x1="495" y1="221" x2="745" y2="221" stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+  <line x1="495" y1="221" x2="495" y2="52"  stroke="#555" stroke-width="1.5" marker-end="url(#ax)"/>
+
+  <!-- Y-axis tick labels -->
+  <text x="488" y="197" text-anchor="end" font-size="11" fill="#777">0</text>
+  <text x="488" y="87"  text-anchor="end" font-size="11" fill="#777">1</text>
+  <text x="488" y="142" text-anchor="end" font-size="11" fill="#777">.5</text>
+
+  <!-- Axis labels -->
+  <text x="620" y="240" text-anchor="middle" font-size="12" fill="#555">Prädiktor x</text>
+  <text x="450" y="140" text-anchor="middle" font-size="12" fill="#555" transform="rotate(-90,450,140)">P(Y = 1)</text>
+
+  <!-- Sigmoid curve: horizontal tangents at start/end, vertical tangent at inflection (619,138) -->
+  <path d="M 497,190 C 565,190 619,165 619,138 C 619,111 675,86 741,86"
+        fill="none" stroke="#EE0071" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Wendepunkt dot and annotation -->
+  <circle cx="619" cy="138" r="5" fill="#621C37"/>
+  <line x1="619" y1="138" x2="619" y2="193" stroke="#621C37" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <rect x="628" y="124" width="106" height="30" rx="4" fill="white" stroke="#621C37" stroke-width="1"/>
+  <text x="681" y="137" text-anchor="middle" font-size="10" fill="#621C37" font-weight="bold">Wendepunkt</text>
+  <text x="681" y="149" text-anchor="middle" font-size="10" fill="#621C37">P(Y=1) = 0.5</text>
+
+  <!-- Bottom note -->
+  <rect x="18" y="258" width="784" height="24" rx="6" fill="#fdeef5" stroke="#621C37" stroke-width="1"/>
+  <text x="410" y="274" text-anchor="middle" font-size="11" fill="#621C37">
+    Die logistische Funktion „biegt" die Gerade in eine S-Kurve – vorhergesagte Werte liegen immer zwischen 0 und 1.
+  </text>
+</svg>

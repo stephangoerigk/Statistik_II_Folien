@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 210" font-family="Arial, sans-serif">
+  <rect width="860" height="210" fill="white"/>
+
+  <!-- Title -->
+  <text x="430" y="24" text-anchor="middle" font-size="15" font-weight="bold" fill="#621C37">Wilcoxon-Test: Vorgehen Schritt für Schritt</text>
+
+  <!-- Arrow def -->
+  <defs>
+    <marker id="fw" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0,10 3.5,0 7" fill="#621C37"/>
+    </marker>
+  </defs>
+
+  <!-- Step boxes -->
+  <!-- Step 1 -->
+  <rect x="10" y="48" width="140" height="72" rx="8" fill="#621C37"/>
+  <text x="80" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="white">① Differenz</text>
+  <text x="80" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#fdeef5">d = x₂ – x₁</text>
+  <text x="80" y="106" text-anchor="middle" font-size="10" fill="#fdeef5">pro Messwertpaar</text>
+
+  <!-- Arrow 1→2 -->
+  <line x1="152" y1="84" x2="178" y2="84" stroke="#621C37" stroke-width="2" marker-end="url(#fw)"/>
+
+  <!-- Step 2 -->
+  <rect x="180" y="48" width="145" height="72" rx="8" fill="#621C37"/>
+  <text x="252" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="white">② Betrag</text>
+  <text x="252" y="88" text-anchor="middle" font-size="13" font-weight="bold" fill="#fdeef5">|d|</text>
+  <text x="252" y="106" text-anchor="middle" font-size="10" fill="#fdeef5">Vorzeichen ignorieren</text>
+  <text x="252" y="118" text-anchor="middle" font-size="10" fill="#fdeef5">d = 0 entfernen</text>
+
+  <!-- Arrow 2→3 -->
+  <line x1="327" y1="84" x2="353" y2="84" stroke="#621C37" stroke-width="2" marker-end="url(#fw)"/>
+
+  <!-- Step 3 -->
+  <rect x="355" y="48" width="145" height="72" rx="8" fill="#621C37"/>
+  <text x="427" y="70" text-anchor="middle" font-size="11" font-weight="bold" fill="white">③ Rang von |d|</text>
+  <text x="427" y="90" text-anchor="middle" font-size="12" fill="#fdeef5">kleinster |d| → Rang 1</text>
+  <text x="427" y="108" text-anchor="middle" font-size="10" fill="#fdeef5">Bindungen → mittlerer Rang</text>
+
+  <!-- Arrow 3→4 -->
+  <line x1="502" y1="84" x2="528" y2="84" stroke="#621C37" stroke-width="2" marker-end="url(#fw)"/>
+
+  <!-- Step 4 -->
+  <rect x="530" y="48" width="160" height="72" rx="8" fill="#EE0071"/>
+  <text x="610" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">④ Gerichteter Rang</text>
+  <text x="610" y="86" text-anchor="middle" font-size="12" fill="white">Vorzeichen von d</text>
+  <text x="610" y="102" text-anchor="middle" font-size="12" fill="white">auf Rang übertragen</text>
+  <text x="610" y="116" text-anchor="middle" font-size="10" fill="#fdeef5">neg. d → neg. Rang</text>
+
+  <!-- Arrow 4→5 -->
+  <line x1="692" y1="84" x2="718" y2="84" stroke="#621C37" stroke-width="2" marker-end="url(#fw)"/>
+
+  <!-- Step 5 -->
+  <rect x="720" y="48" width="130" height="72" rx="8" fill="#EE0071"/>
+  <text x="785" y="68" text-anchor="middle" font-size="11" font-weight="bold" fill="white">⑤ W-Wert</text>
+  <text x="785" y="86" text-anchor="middle" font-size="12" fill="white">W = |min(</text>
+  <text x="785" y="102" text-anchor="middle" font-size="12" fill="white">ΣR₊ , ΣR₋)|</text>
+  <text x="785" y="116" text-anchor="middle" font-size="10" fill="#fdeef5">kleinere Rangsumme</text>
+
+  <!-- Example row -->
+  <rect x="10" y="138" width="840" height="58" rx="8" fill="#fdeef5" stroke="#621C37" stroke-width="1"/>
+  <text x="430" y="156" text-anchor="middle" font-size="11" font-weight="bold" fill="#621C37">Beispiel (eine Versuchsperson):</text>
+  <text x="80"  y="174" text-anchor="middle" font-size="11" fill="#333">Prä=6, Post=9</text>
+  <text x="252" y="174" text-anchor="middle" font-size="11" fill="#333">d = 9–6 = +3</text>
+  <text x="252" y="188" text-anchor="middle" font-size="11" fill="#666">|d| = 3</text>
+  <text x="427" y="174" text-anchor="middle" font-size="11" fill="#333">|d|=3 → Rang 6</text>
+  <text x="610" y="174" text-anchor="middle" font-size="11" fill="#333">d positiv → +6</text>
+  <text x="785" y="174" text-anchor="middle" font-size="11" fill="#333">fließt in ΣR₊ ein</text>
+</svg>

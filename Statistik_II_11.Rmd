@@ -214,6 +214,18 @@ $$Y_i = a + \beta \cdot x_i + \varepsilon_i$$
 class: top, left
 ### Verfahren für Nominaldaten
 
+#### Logistische Regression – Lösung: die logistische Funktion
+
+.center[
+```{r eval = TRUE, echo = F, out.width = "900px"}
+knitr::include_graphics("bilder/logit_transform.svg")
+```
+]
+
+---
+class: top, left
+### Verfahren für Nominaldaten
+
 #### Logistische Regression
 
 **Modell für bedingte Wahrscheinlichkeiten:**
@@ -363,6 +375,18 @@ $$\frac{P(Y_i = 1|x_i)}{P(Y_i = 0|x_i)}$$
 >* Falls das Ereignis $Y_i = 0$ wahrscheinlicher ist als das Ereignis $Y_i= 1$  $\rightarrow$ Odds < 1
 
 >* Sind beide Ereignisse gleich wahrscheinlich $\rightarrow$ Odds = 1
+
+---
+class: top, left
+### Verfahren für Nominaldaten
+
+#### Logistische Regression – Odds visualisiert
+
+.center[
+```{r eval = TRUE, echo = F, out.width = "820px"}
+knitr::include_graphics("bilder/odds_balance.svg")
+```
+]
 
 ---
 class: top, left

@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 750 290" font-family="Arial, sans-serif">
+  <rect width="750" height="290" fill="white"/>
+
+  <!-- Title -->
+  <text x="375" y="26" text-anchor="middle" font-size="15" font-weight="bold" fill="#621C37">Odds: Verhältnis von P(Y=1) zu P(Y=0)</text>
+
+  <!-- ===== SCALE 1: Odds > 1 ===== -->
+  <!-- Pivot -->
+  <line x1="125" y1="100" x2="125" y2="155" stroke="#621C37" stroke-width="3"/>
+  <polygon points="110,155 140,155 125,175" fill="#621C37"/>
+  <!-- Beam: tilted left (Y=1 side heavier) -->
+  <line x1="50" y1="90" x2="200" y2="108" stroke="#621C37" stroke-width="3" stroke-linecap="round"/>
+  <!-- Left pan (Y=1, heavier, lower) -->
+  <line x1="50" y1="90" x2="50" y2="118" stroke="#621C37" stroke-width="2"/>
+  <rect x="20" y="118" width="60" height="36" rx="6" fill="#621C37"/>
+  <text x="50" y="132" text-anchor="middle" font-size="10" font-weight="bold" fill="white">P(Y=1)</text>
+  <text x="50" y="146" text-anchor="middle" font-size="11" font-weight="bold" fill="#fdeef5">0.75</text>
+  <!-- Right pan (Y=0, lighter, higher) -->
+  <line x1="200" y1="108" x2="200" y2="118" stroke="#621C37" stroke-width="2"/>
+  <rect x="172" y="118" width="56" height="36" rx="6" fill="#fdeef5" stroke="#621C37" stroke-width="1.5"/>
+  <text x="200" y="132" text-anchor="middle" font-size="10" fill="#621C37">P(Y=0)</text>
+  <text x="200" y="146" text-anchor="middle" font-size="11" fill="#621C37">0.25</text>
+  <!-- Odds label -->
+  <rect x="60" y="182" width="130" height="38" rx="6" fill="#621C37"/>
+  <text x="125" y="197" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Odds = 0.75/0.25</text>
+  <text x="125" y="213" text-anchor="middle" font-size="13" font-weight="bold" fill="#fdeef5">= 3  &gt; 1</text>
+  <text x="125" y="242" text-anchor="middle" font-size="11" fill="#621C37">Y=1 wahrscheinlicher</text>
+
+  <!-- ===== SCALE 2: Odds = 1 ===== -->
+  <line x1="375" y1="100" x2="375" y2="155" stroke="#621C37" stroke-width="3"/>
+  <polygon points="360,155 390,155 375,175" fill="#621C37"/>
+  <!-- Beam: level -->
+  <line x1="300" y1="100" x2="450" y2="100" stroke="#621C37" stroke-width="3" stroke-linecap="round"/>
+  <!-- Left pan -->
+  <line x1="300" y1="100" x2="300" y2="118" stroke="#621C37" stroke-width="2"/>
+  <rect x="270" y="118" width="60" height="36" rx="6" fill="#621C37"/>
+  <text x="300" y="132" text-anchor="middle" font-size="10" font-weight="bold" fill="white">P(Y=1)</text>
+  <text x="300" y="146" text-anchor="middle" font-size="11" font-weight="bold" fill="#fdeef5">0.50</text>
+  <!-- Right pan -->
+  <line x1="450" y1="100" x2="450" y2="118" stroke="#621C37" stroke-width="2"/>
+  <rect x="420" y="118" width="60" height="36" rx="6" fill="#fdeef5" stroke="#621C37" stroke-width="1.5"/>
+  <text x="450" y="132" text-anchor="middle" font-size="10" fill="#621C37">P(Y=0)</text>
+  <text x="450" y="146" text-anchor="middle" font-size="11" fill="#621C37">0.50</text>
+  <!-- Odds label -->
+  <rect x="305" y="182" width="140" height="38" rx="6" fill="#666"/>
+  <text x="375" y="197" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Odds = 0.50/0.50</text>
+  <text x="375" y="213" text-anchor="middle" font-size="13" font-weight="bold" fill="white">= 1</text>
+  <text x="375" y="242" text-anchor="middle" font-size="11" fill="#666">gleichwahrscheinlich</text>
+
+  <!-- ===== SCALE 3: Odds < 1 ===== -->
+  <line x1="625" y1="100" x2="625" y2="155" stroke="#621C37" stroke-width="3"/>
+  <polygon points="610,155 640,155 625,175" fill="#621C37"/>
+  <!-- Beam: tilted right (Y=0 side heavier) -->
+  <line x1="550" y1="108" x2="700" y2="90" stroke="#621C37" stroke-width="3" stroke-linecap="round"/>
+  <!-- Left pan (Y=1, lighter, higher) -->
+  <line x1="550" y1="108" x2="550" y2="118" stroke="#621C37" stroke-width="2"/>
+  <rect x="520" y="118" width="60" height="36" rx="6" fill="#fdeef5" stroke="#621C37" stroke-width="1.5"/>
+  <text x="550" y="132" text-anchor="middle" font-size="10" fill="#621C37">P(Y=1)</text>
+  <text x="550" y="146" text-anchor="middle" font-size="11" fill="#621C37">0.25</text>
+  <!-- Right pan (Y=0, heavier, lower) -->
+  <line x1="700" y1="90" x2="700" y2="118" stroke="#621C37" stroke-width="2"/>
+  <rect x="670" y="118" width="60" height="36" rx="6" fill="#EE0071"/>
+  <text x="700" y="132" text-anchor="middle" font-size="10" font-weight="bold" fill="white">P(Y=0)</text>
+  <text x="700" y="146" text-anchor="middle" font-size="11" font-weight="bold" fill="white">0.75</text>
+  <!-- Odds label -->
+  <rect x="555" y="182" width="140" height="38" rx="6" fill="#EE0071"/>
+  <text x="625" y="197" text-anchor="middle" font-size="11" font-weight="bold" fill="white">Odds = 0.25/0.75</text>
+  <text x="625" y="213" text-anchor="middle" font-size="13" font-weight="bold" fill="white">≈ 0.33  &lt; 1</text>
+  <text x="625" y="242" text-anchor="middle" font-size="11" fill="#EE0071">Y=0 wahrscheinlicher</text>
+
+  <!-- Bottom note -->
+  <rect x="20" y="255" width="710" height="28" rx="7" fill="#fdeef5" stroke="#621C37" stroke-width="1"/>
+  <text x="375" y="274" text-anchor="middle" font-size="11" fill="#621C37">
+    <tspan font-weight="bold">Log-Odds (Logit):</tspan>
+    <tspan> ln(Odds) = 0 wenn Odds = 1  |  </tspan>
+    <tspan font-weight="bold">Odds Ratio (e^β):</tspan>
+    <tspan> Faktor der Veränderung pro Einheit UV</tspan>
+  </text>
+</svg>

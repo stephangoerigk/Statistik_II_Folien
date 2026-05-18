@@ -4,6 +4,7 @@
     <title>Einheit 12</title>
     <meta charset="utf-8" />
     <meta name="author" content="Prof. Dr. Stephan Goerigk" />
+    <meta name="date" content="2026-04-28" />
     <script src="libs/header-attrs/header-attrs.js"></script>
     <link href="libs/remark-css/hygge.css" rel="stylesheet" />
     <script src="libs/jquery/jquery-3.6.0.min.js"></script>
@@ -46,7 +47,7 @@ class: top, left
   * Varianzhomogenität
   * ...
   
-* PROBLEM: Sind diese Voraussetzungen verletzt, liefern Sie keine akkuraten Ergebnisse
+* PROBLEM: Sind diese Voraussetzungen verletzt, liefern sie keine akkuraten Ergebnisse
 
 * Was macht man, wenn diese Voraussetzungen verletzt sind?
 
@@ -92,7 +93,7 @@ class: top, left
   
   * durch Verwendung von Rängen wird künstliche Äquidistanz zwischen Werten erzeugt (Rangabstand von genau 1)
   
-`\(\rightarrow\)` Nonparametrische Verfahren Arbeiten nicht mit Populationsverteilungen, sondern legen eigene Verteilung (Rangverteilung) zugrunde
+`\(\rightarrow\)` Nonparametrische Verfahren arbeiten nicht mit Populationsverteilungen, sondern legen eigene Verteilung (Rangverteilung) zugrunde
 
 ---
 class: top, left
@@ -126,7 +127,7 @@ class: top, left
   &lt;/tr&gt;
   &lt;tr&gt;
    &lt;td style="text-align:left;"&gt; ANOVA mit Messwiederholung &lt;/td&gt;
-   &lt;td style="text-align:left;"&gt; Fridman-Test &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Friedman-Test &lt;/td&gt;
   &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -223,6 +224,18 @@ class: top, left
 
 #### Nonparametrische Verfahren
 
+**Mann-Whitney U-Test – Rangbildung im Überblick**
+
+.center[
+&lt;img src="bilder/rang_utest.svg" alt="" width="940px" /&gt;
+]
+
+---
+class: top, left
+### Robuste Tests
+
+#### Nonparametrische Verfahren
+
 
 .pull-left[
 
@@ -232,7 +245,7 @@ Beispiel: "Mentaler Schmerz"
 
 * Hypothese: *Depressive Patient:innen geben höhere Werte bei "Mentalen Schmerzen" an als Patient:innen mit Zwangsstörungen.*
 
-* `\(AV:\)` Mentale Schmerzskale (0-30 Punkte)
+* `\(AV:\)` Mentale Schmerzskala (0-30 Punkte)
 
 * `\(UV: Diagnose\)`
 
@@ -738,7 +751,7 @@ class: top, left
   
   * Gleich viele Rangüberschreitungen und - unterschreitungen `\(\rightarrow\)` Kein Gruppenunterschied
 
-* Folglich ist lautet die `\(H_0\)` des U-Tests:
+* Folglich lautet die `\(H_0\)` des U-Tests:
 
 `$$U=U'$$`
 ---
@@ -763,11 +776,11 @@ Berechnung des, unter `\(H_0\)` erwarteten mittleren `\(U\)`-Werts `\((\mu_U):\)
 
 * Eigenschaften von `\(\mu_U:\)`
 
-  * Enspricht dem Mittelwertsunterschied von 0 in der Stichprobenkennwerteverteilung des unabhängigen t-Tests
+  * Entspricht dem Mittelwertsunterschied von 0 in der Stichprobenkennwerteverteilung des unabhängigen t-Tests
   
   * Starke Abweichungen des empirischen `\(U\)`-Werts von `\(\mu_U\)` in positive/negative Richtung sprechen gegen `\(H_0\)`
   
-  * Theoretische widerholte Stochprobenziehung resultiert in symmetrische Verteilung um `\(\mu_U\)` (rechts: Rangüberschreitungen; links: Rangunterschreitungen)
+  * Theoretisch wiederholte Stichprobenziehung resultiert in symmetrische Verteilung um `\(\mu_U\)` (rechts: Rangüberschreitungen; links: Rangunterschreitungen)
   
 ---
 class: top, left
@@ -779,11 +792,11 @@ class: top, left
  
 Berechnung der Streuung der Stichprobenkennwerteverteilung:
 
-* Frage: Welche Awreichung des empirischen `\(U\)`-Werts von `\(\mu_U\)` ist ausreichend für signifikantes Ergebnis?
+* Frage: Welche Abweichung des empirischen `\(U\)`-Werts von `\(\mu_U\)` ist ausreichend für signifikantes Ergebnis?
 
 * Alle denkbaren Werte von `\(U\)` und `\(U'\)` verteilen sich symmetrisch um `\(\mu_U\)`
 
-* Streuung der `\(U\)`-Werte um `\(\mu_U\)` wir berechnet als:
+* Streuung der `\(U\)`-Werte um `\(\mu_U\)` wird berechnet als:
 
 `$$\sigma_U=\sqrt{\frac{n_D \cdot n_Z \cdot (n_D + n_Z +1)}{12}}$$`
 
@@ -922,7 +935,7 @@ mit:
 
 * `\(N=n_1+n_2\)`
 
-* `\(t_1.\)` Anzahl Personen die Rang `\(i\)` teilen
+* `\(t_i:\)` Anzahl Personen die Rang `\(i\)` teilen
 
 * `\(k:\)` Gesamtzahl verbundener Ränge
 
@@ -991,6 +1004,18 @@ class: top, left
 
 #### Nonparametrische Verfahren
 
+**Wilcoxon-Test – Vorgehen im Überblick**
+
+.center[
+&lt;img src="bilder/wilcoxon_flow.svg" alt="" width="960px" /&gt;
+]
+
+---
+class: top, left
+### Robuste Tests
+
+#### Nonparametrische Verfahren
+
 **Wilcoxon-Test**
 
 `\(H_0\)` des Wilcoxon-Tests:
@@ -1001,7 +1026,7 @@ class: top, left
 
 Berechnung des Testwerts `\(W\)` des Wilcoxon-Tests:
 
-`$$W=|min(\sum R_{positiv} \cdot \sum R_{negaiv})|$$`
+`$$W=|min(\sum R_{positiv} \cdot \sum R_{negativ})|$$`
 ---
 class: top, left
 ### Robuste Tests
@@ -1128,7 +1153,7 @@ Berechnung der Summe positiver und negativer Ränge:
 `$$\sum R_{positiv} = 1.5 + 6 + 4+ 8+7+4+4=34.5$$`
 `$$\sum R_{negativ} = -1.5$$`
 
-`$$W=|min(\sum R_{positiv} \cdot \sum R_{negaiv})|=1.5$$`
+`$$W=|min(\sum R_{positiv} \cdot \sum R_{negativ})|=1.5$$`
 
 ]
 
@@ -1434,7 +1459,7 @@ class: top, left
 
 * Bei **ausreichend großen Stichproben** kann zur Signifikanzprüfung die Standardnormalverteilung oder die `\(\chi^2\)`-Verteilung verwendet werden (asymptotischer Test).
 
-* Bei **kleinen Stichproben** verwendet man die genauen Wahrscheinlichkeiten der Teststatistiken auf Ihrer jeweilien Verteilung.
+* Bei **kleinen Stichproben** verwendet man die genauen Wahrscheinlichkeiten der Teststatistiken auf ihrer jeweiligen Verteilung.
 
 ]
 ]
