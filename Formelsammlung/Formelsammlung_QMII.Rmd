@@ -3,13 +3,6 @@ title: "Formelsammlung"
 author: "Charlotte Fresenius Hochschule"
 date: "`r Sys.Date()`"
 output:
-  pdf_document:
-    toc: true
-    toc_depth: 2
-    latex_engine: xelatex
-  word_document:
-    toc: true
-    toc_depth: '2'
   html_document:
     toc: true
     toc_float: true
@@ -17,6 +10,13 @@ output:
     number_sections: false
     theme: flatly
     mathjax: default
+  word_document:
+    toc: true
+    toc_depth: '2'
+  pdf_document:
+    toc: true
+    toc_depth: 2
+    latex_engine: xelatex
 subtitle: Quantitative Methoden II (B.Sc. Psychologie)
 geometry:
   - a4paper
@@ -399,6 +399,44 @@ $$\chi^2_{emp} = \frac{N \cdot (a \cdot d - b \cdot c)^2}{(a + b) \cdot (c + d) 
 $$\phi = \frac{a \cdot d - b \cdot c}{\sqrt{(a+b) \cdot (c+d) \cdot (a+c) \cdot (b+d)}}$$
 
 ---
+
+
+## 8. Wilcoxon-Test
+
+- $T_{-}$ = Summe der Ränge mit negativen Vorzeichen
+- $T_{+}$ = Summe der Ränge mit positiven Vorzeichen
+
+$$T_{+} + T_{-} = \frac{n \cdot (n + 1)}{2}$$
+
+Bei großem $n$ ($n > 25$) geht die T-Verteilung in eine Normalverteilung über:
+
+$$\mu(T) = \frac{n \cdot (n + 1)}{4}$$
+
+$$\sigma_T^2 = \frac{n \cdot (n + 1) \cdot (2n + 1)}{24}$$
+
+$$z_T = \frac{T - \mu(T)}{\sigma_T}$$
+
+---
+
+## 9. U-Test
+
+$T_1$ und $T_2$ ergeben sich als Rangplatzsummen der Stichproben $S_1$ und $S_2$.
+
+$$U_1 = n_1 \cdot n_2 + \frac{n_1 \cdot (n_1 + 1)}{2} - T_1$$
+
+$$U_2 = n_1 \cdot n_2 + \frac{n_2 \cdot (n_2 + 1)}{2} - T_2 \quad \text{oder} \quad U_2 = (n_1 \cdot n_2) - U_1$$
+
+Bei großem $n_1$ oder $n_2 > 10$ nähert sich die U-Werte-Verteilung der Normalverteilung an:
+
+$$\mu_U = \frac{n_1 \cdot n_2}{2}$$
+
+$$\sigma_U = \sqrt{\frac{n_1 \cdot n_2 \cdot (n_1 + n_2 + 1)}{12}}$$
+
+$$z_U = \frac{U - \mu_U}{\sigma_U}$$
+
+---
+
+
 
 \newpage
 
