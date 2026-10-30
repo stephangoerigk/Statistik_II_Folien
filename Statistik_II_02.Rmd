@@ -58,7 +58,7 @@ class: middle, left
 # Statistik II
 ***
 ### Einheit 2: Einfaktorielle Varianzanalyse (2)
-##### Sommersemester 2026 | Prof. Dr. Stephan Goerigk
+##### Wintersemester 2026 | Prof. Dr. Stephan Goerigk
 
 ---
 class: top, left
