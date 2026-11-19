@@ -112,11 +112,16 @@ $$\hat{y} = a + b \cdot x$$
 
 $$a = \bar{y} - b \cdot \bar{x}$$
 
-**Y-Steigungsparameter:**
+**Steigungsparameter:**
 
 $$b = \frac{\widehat{cov}(x,y)}{\hat{\sigma}^2_x} = r_{xy} \cdot \frac{\hat{\sigma}_y}{\hat{\sigma}_x}$$
+<br>
+Pearson-Korrelationskoeffizient
 
-Bei dichotom nominalskaliertem Prädiktor:
+$$r_{xy} = \frac{cov_{emp}}{cov_{max}} = \frac{cov_{x,y}}{\hat{\sigma}_x \cdot \hat{\sigma}_y} = \frac{\sum_{i=1}^{n}(x_i - \bar{x}) \cdot (y_i - \bar{y})}{(n - 1) \cdot \hat{\sigma}_x \cdot \hat{\sigma}_y}$$
+
+
+**Steigungsparameter Bei dichotom nominalskaliertem Prädiktor:**
 
 $$b = \bar{y}_1 - \bar{y}_0$$
 $$a = \bar{y}_0$$
